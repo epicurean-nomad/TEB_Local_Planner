@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/home/abhigyan/Desktop/teb_local_planner/src -I/home/abhigyan/Desktop/teb_local_planner/lcm_types -I/usr/include/eigen3 -I/home/abhigyan/aux/g2o -isystem /usr/local/include/opencv4
 
-CXX_FLAGS = -Wall -Wextra -Wpedantic
+CXX_FLAGS = -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Wpedantic
 

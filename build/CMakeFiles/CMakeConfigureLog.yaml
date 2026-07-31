@@ -5,7 +5,7 @@ events:
     kind: "find-v1"
     backtrace:
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeDetermineSystem.cmake:12 (find_program)"
-      - "CMakeLists.txt:6 (project)"
+      - "CMakeLists.txt:13 (project)"
     mode: "program"
     variable: "CMAKE_UNAME"
     description: "Path to a program."
@@ -20,15 +20,6 @@ events:
     names:
       - "uname"
     candidate_directories:
-      - "/home/abhigyan/ros2_ws/install/teb_local_planner/bin/"
-      - "/home/abhigyan/ros2_ws/install/teb_local_planner/sbin/"
-      - "/home/abhigyan/ros2_ws/install/teb_local_planner/"
-      - "/home/abhigyan/ros2_ws/install/log_pkg/bin/"
-      - "/home/abhigyan/ros2_ws/install/log_pkg/sbin/"
-      - "/home/abhigyan/ros2_ws/install/log_pkg/"
-      - "/home/abhigyan/ros2_ws/install/TEBLocalPlanner/bin/"
-      - "/home/abhigyan/ros2_ws/install/TEBLocalPlanner/sbin/"
-      - "/home/abhigyan/ros2_ws/install/TEBLocalPlanner/"
       - "/home/abhigyan/chrono/src/chrono_ros_interfaces/install/chrono_ros_interfaces/bin/"
       - "/home/abhigyan/chrono/src/chrono_ros_interfaces/install/chrono_ros_interfaces/sbin/"
       - "/home/abhigyan/chrono/src/chrono_ros_interfaces/install/chrono_ros_interfaces/"
@@ -46,15 +37,6 @@ events:
       - "/usr/local/games/"
       - "/snap/bin/"
     searched_directories:
-      - "/home/abhigyan/ros2_ws/install/teb_local_planner/bin/uname"
-      - "/home/abhigyan/ros2_ws/install/teb_local_planner/sbin/uname"
-      - "/home/abhigyan/ros2_ws/install/teb_local_planner/uname"
-      - "/home/abhigyan/ros2_ws/install/log_pkg/bin/uname"
-      - "/home/abhigyan/ros2_ws/install/log_pkg/sbin/uname"
-      - "/home/abhigyan/ros2_ws/install/log_pkg/uname"
-      - "/home/abhigyan/ros2_ws/install/TEBLocalPlanner/bin/uname"
-      - "/home/abhigyan/ros2_ws/install/TEBLocalPlanner/sbin/uname"
-      - "/home/abhigyan/ros2_ws/install/TEBLocalPlanner/uname"
       - "/home/abhigyan/chrono/src/chrono_ros_interfaces/install/chrono_ros_interfaces/bin/uname"
       - "/home/abhigyan/chrono/src/chrono_ros_interfaces/install/chrono_ros_interfaces/sbin/uname"
       - "/home/abhigyan/chrono/src/chrono_ros_interfaces/install/chrono_ros_interfaces/uname"
@@ -68,9 +50,6 @@ events:
     found: "/usr/bin/uname"
     search_context:
       ENV{CMAKE_PREFIX_PATH}:
-        - "/home/abhigyan/ros2_ws/install/teb_local_planner"
-        - "/home/abhigyan/ros2_ws/install/log_pkg"
-        - "/home/abhigyan/ros2_ws/install/TEBLocalPlanner"
         - "/home/abhigyan/chrono/src/chrono_ros_interfaces/install/chrono_ros_interfaces"
       ENV{PATH}:
         - "/opt/ros/humble/bin"
@@ -91,14 +70,14 @@ events:
     kind: "message-v1"
     backtrace:
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeDetermineSystem.cmake:212 (message)"
-      - "CMakeLists.txt:6 (project)"
+      - "CMakeLists.txt:13 (project)"
     message: |
       The system is: Linux - 6.8.0-136-generic - x86_64
   -
     kind: "find-v1"
     backtrace:
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeUnixFindMake.cmake:5 (find_program)"
-      - "CMakeLists.txt:6 (project)"
+      - "CMakeLists.txt:13 (project)"
     mode: "program"
     variable: "CMAKE_MAKE_PROGRAM"
     description: "Path to a program."
@@ -115,15 +94,6 @@ events:
       - "make"
       - "smake"
     candidate_directories:
-      - "/home/abhigyan/ros2_ws/install/teb_local_planner/bin/"
-      - "/home/abhigyan/ros2_ws/install/teb_local_planner/sbin/"
-      - "/home/abhigyan/ros2_ws/install/teb_local_planner/"
-      - "/home/abhigyan/ros2_ws/install/log_pkg/bin/"
-      - "/home/abhigyan/ros2_ws/install/log_pkg/sbin/"
-      - "/home/abhigyan/ros2_ws/install/log_pkg/"
-      - "/home/abhigyan/ros2_ws/install/TEBLocalPlanner/bin/"
-      - "/home/abhigyan/ros2_ws/install/TEBLocalPlanner/sbin/"
-      - "/home/abhigyan/ros2_ws/install/TEBLocalPlanner/"
       - "/home/abhigyan/chrono/src/chrono_ros_interfaces/install/chrono_ros_interfaces/bin/"
       - "/home/abhigyan/chrono/src/chrono_ros_interfaces/install/chrono_ros_interfaces/sbin/"
       - "/home/abhigyan/chrono/src/chrono_ros_interfaces/install/chrono_ros_interfaces/"
@@ -141,15 +111,6 @@ events:
       - "/usr/local/games/"
       - "/snap/bin/"
     searched_directories:
-      - "/home/abhigyan/ros2_ws/install/teb_local_planner/bin/gmake"
-      - "/home/abhigyan/ros2_ws/install/teb_local_planner/sbin/gmake"
-      - "/home/abhigyan/ros2_ws/install/teb_local_planner/gmake"
-      - "/home/abhigyan/ros2_ws/install/log_pkg/bin/gmake"
-      - "/home/abhigyan/ros2_ws/install/log_pkg/sbin/gmake"
-      - "/home/abhigyan/ros2_ws/install/log_pkg/gmake"
-      - "/home/abhigyan/ros2_ws/install/TEBLocalPlanner/bin/gmake"
-      - "/home/abhigyan/ros2_ws/install/TEBLocalPlanner/sbin/gmake"
-      - "/home/abhigyan/ros2_ws/install/TEBLocalPlanner/gmake"
       - "/home/abhigyan/chrono/src/chrono_ros_interfaces/install/chrono_ros_interfaces/bin/gmake"
       - "/home/abhigyan/chrono/src/chrono_ros_interfaces/install/chrono_ros_interfaces/sbin/gmake"
       - "/home/abhigyan/chrono/src/chrono_ros_interfaces/install/chrono_ros_interfaces/gmake"
@@ -163,9 +124,6 @@ events:
     found: "/usr/bin/gmake"
     search_context:
       ENV{CMAKE_PREFIX_PATH}:
-        - "/home/abhigyan/ros2_ws/install/teb_local_planner"
-        - "/home/abhigyan/ros2_ws/install/log_pkg"
-        - "/home/abhigyan/ros2_ws/install/TEBLocalPlanner"
         - "/home/abhigyan/chrono/src/chrono_ros_interfaces/install/chrono_ros_interfaces"
       ENV{PATH}:
         - "/opt/ros/humble/bin"
@@ -187,7 +145,7 @@ events:
     backtrace:
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeDetermineCompiler.cmake:115 (find_program)"
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeDetermineCCompiler.cmake:67 (_cmake_find_compiler_path)"
-      - "CMakeLists.txt:6 (project)"
+      - "CMakeLists.txt:13 (project)"
     mode: "program"
     variable: "CMAKE_C_COMPILER_WITH_PATH"
     description: "Path to a program."
@@ -202,15 +160,6 @@ events:
     names:
       - "gcc-12"
     candidate_directories:
-      - "/home/abhigyan/ros2_ws/install/teb_local_planner/bin/"
-      - "/home/abhigyan/ros2_ws/install/teb_local_planner/sbin/"
-      - "/home/abhigyan/ros2_ws/install/teb_local_planner/"
-      - "/home/abhigyan/ros2_ws/install/log_pkg/bin/"
-      - "/home/abhigyan/ros2_ws/install/log_pkg/sbin/"
-      - "/home/abhigyan/ros2_ws/install/log_pkg/"
-      - "/home/abhigyan/ros2_ws/install/TEBLocalPlanner/bin/"
-      - "/home/abhigyan/ros2_ws/install/TEBLocalPlanner/sbin/"
-      - "/home/abhigyan/ros2_ws/install/TEBLocalPlanner/"
       - "/home/abhigyan/chrono/src/chrono_ros_interfaces/install/chrono_ros_interfaces/bin/"
       - "/home/abhigyan/chrono/src/chrono_ros_interfaces/install/chrono_ros_interfaces/sbin/"
       - "/home/abhigyan/chrono/src/chrono_ros_interfaces/install/chrono_ros_interfaces/"
@@ -228,15 +177,6 @@ events:
       - "/usr/local/games/"
       - "/snap/bin/"
     searched_directories:
-      - "/home/abhigyan/ros2_ws/install/teb_local_planner/bin/gcc-12"
-      - "/home/abhigyan/ros2_ws/install/teb_local_planner/sbin/gcc-12"
-      - "/home/abhigyan/ros2_ws/install/teb_local_planner/gcc-12"
-      - "/home/abhigyan/ros2_ws/install/log_pkg/bin/gcc-12"
-      - "/home/abhigyan/ros2_ws/install/log_pkg/sbin/gcc-12"
-      - "/home/abhigyan/ros2_ws/install/log_pkg/gcc-12"
-      - "/home/abhigyan/ros2_ws/install/TEBLocalPlanner/bin/gcc-12"
-      - "/home/abhigyan/ros2_ws/install/TEBLocalPlanner/sbin/gcc-12"
-      - "/home/abhigyan/ros2_ws/install/TEBLocalPlanner/gcc-12"
       - "/home/abhigyan/chrono/src/chrono_ros_interfaces/install/chrono_ros_interfaces/bin/gcc-12"
       - "/home/abhigyan/chrono/src/chrono_ros_interfaces/install/chrono_ros_interfaces/sbin/gcc-12"
       - "/home/abhigyan/chrono/src/chrono_ros_interfaces/install/chrono_ros_interfaces/gcc-12"
@@ -250,9 +190,6 @@ events:
     found: "/usr/bin/gcc-12"
     search_context:
       ENV{CMAKE_PREFIX_PATH}:
-        - "/home/abhigyan/ros2_ws/install/teb_local_planner"
-        - "/home/abhigyan/ros2_ws/install/log_pkg"
-        - "/home/abhigyan/ros2_ws/install/TEBLocalPlanner"
         - "/home/abhigyan/chrono/src/chrono_ros_interfaces/install/chrono_ros_interfaces"
       ENV{PATH}:
         - "/opt/ros/humble/bin"
@@ -277,7 +214,7 @@ events:
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
-      - "CMakeLists.txt:6 (project)"
+      - "CMakeLists.txt:13 (project)"
     mode: "file"
     variable: "src_in"
     description: "Path to a file."
@@ -296,9 +233,6 @@ events:
     found: "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeCCompilerId.c.in"
     search_context:
       ENV{CMAKE_PREFIX_PATH}:
-        - "/home/abhigyan/ros2_ws/install/teb_local_planner"
-        - "/home/abhigyan/ros2_ws/install/log_pkg"
-        - "/home/abhigyan/ros2_ws/install/TEBLocalPlanner"
         - "/home/abhigyan/chrono/src/chrono_ros_interfaces/install/chrono_ros_interfaces"
       ENV{PATH}:
         - "/opt/ros/humble/bin"
@@ -321,7 +255,7 @@ events:
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
-      - "CMakeLists.txt:6 (project)"
+      - "CMakeLists.txt:13 (project)"
     message: |
       Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
       Compiler: /usr/bin/gcc-12 
@@ -342,7 +276,7 @@ events:
     backtrace:
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
-      - "CMakeLists.txt:6 (project)"
+      - "CMakeLists.txt:13 (project)"
     mode: "program"
     variable: "CMAKE_AR"
     description: "Path to a program."
@@ -388,9 +322,6 @@ events:
     found: "/usr/bin/ar"
     search_context:
       ENV{CMAKE_PREFIX_PATH}:
-        - "/home/abhigyan/ros2_ws/install/teb_local_planner"
-        - "/home/abhigyan/ros2_ws/install/log_pkg"
-        - "/home/abhigyan/ros2_ws/install/TEBLocalPlanner"
         - "/home/abhigyan/chrono/src/chrono_ros_interfaces/install/chrono_ros_interfaces"
       ENV{PATH}:
         - "/opt/ros/humble/bin"
@@ -412,7 +343,7 @@ events:
     backtrace:
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
-      - "CMakeLists.txt:6 (project)"
+      - "CMakeLists.txt:13 (project)"
     mode: "program"
     variable: "CMAKE_RANLIB"
     description: "Path to a program."
@@ -458,9 +389,6 @@ events:
     found: "/usr/bin/ranlib"
     search_context:
       ENV{CMAKE_PREFIX_PATH}:
-        - "/home/abhigyan/ros2_ws/install/teb_local_planner"
-        - "/home/abhigyan/ros2_ws/install/log_pkg"
-        - "/home/abhigyan/ros2_ws/install/TEBLocalPlanner"
         - "/home/abhigyan/chrono/src/chrono_ros_interfaces/install/chrono_ros_interfaces"
       ENV{PATH}:
         - "/opt/ros/humble/bin"
@@ -482,7 +410,7 @@ events:
     backtrace:
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
-      - "CMakeLists.txt:6 (project)"
+      - "CMakeLists.txt:13 (project)"
     mode: "program"
     variable: "CMAKE_STRIP"
     description: "Path to a program."
@@ -528,9 +456,6 @@ events:
     found: "/usr/bin/strip"
     search_context:
       ENV{CMAKE_PREFIX_PATH}:
-        - "/home/abhigyan/ros2_ws/install/teb_local_planner"
-        - "/home/abhigyan/ros2_ws/install/log_pkg"
-        - "/home/abhigyan/ros2_ws/install/TEBLocalPlanner"
         - "/home/abhigyan/chrono/src/chrono_ros_interfaces/install/chrono_ros_interfaces"
       ENV{PATH}:
         - "/opt/ros/humble/bin"
@@ -552,7 +477,7 @@ events:
     backtrace:
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
-      - "CMakeLists.txt:6 (project)"
+      - "CMakeLists.txt:13 (project)"
     mode: "program"
     variable: "CMAKE_LINKER"
     description: "Path to a program."
@@ -598,9 +523,6 @@ events:
     found: "/usr/bin/ld"
     search_context:
       ENV{CMAKE_PREFIX_PATH}:
-        - "/home/abhigyan/ros2_ws/install/teb_local_planner"
-        - "/home/abhigyan/ros2_ws/install/log_pkg"
-        - "/home/abhigyan/ros2_ws/install/TEBLocalPlanner"
         - "/home/abhigyan/chrono/src/chrono_ros_interfaces/install/chrono_ros_interfaces"
       ENV{PATH}:
         - "/opt/ros/humble/bin"
@@ -622,7 +544,7 @@ events:
     backtrace:
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
-      - "CMakeLists.txt:6 (project)"
+      - "CMakeLists.txt:13 (project)"
     mode: "program"
     variable: "CMAKE_NM"
     description: "Path to a program."
@@ -668,9 +590,6 @@ events:
     found: "/usr/bin/nm"
     search_context:
       ENV{CMAKE_PREFIX_PATH}:
-        - "/home/abhigyan/ros2_ws/install/teb_local_planner"
-        - "/home/abhigyan/ros2_ws/install/log_pkg"
-        - "/home/abhigyan/ros2_ws/install/TEBLocalPlanner"
         - "/home/abhigyan/chrono/src/chrono_ros_interfaces/install/chrono_ros_interfaces"
       ENV{PATH}:
         - "/opt/ros/humble/bin"
@@ -692,7 +611,7 @@ events:
     backtrace:
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
-      - "CMakeLists.txt:6 (project)"
+      - "CMakeLists.txt:13 (project)"
     mode: "program"
     variable: "CMAKE_OBJDUMP"
     description: "Path to a program."
@@ -738,9 +657,6 @@ events:
     found: "/usr/bin/objdump"
     search_context:
       ENV{CMAKE_PREFIX_PATH}:
-        - "/home/abhigyan/ros2_ws/install/teb_local_planner"
-        - "/home/abhigyan/ros2_ws/install/log_pkg"
-        - "/home/abhigyan/ros2_ws/install/TEBLocalPlanner"
         - "/home/abhigyan/chrono/src/chrono_ros_interfaces/install/chrono_ros_interfaces"
       ENV{PATH}:
         - "/opt/ros/humble/bin"
@@ -762,7 +678,7 @@ events:
     backtrace:
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
-      - "CMakeLists.txt:6 (project)"
+      - "CMakeLists.txt:13 (project)"
     mode: "program"
     variable: "CMAKE_OBJCOPY"
     description: "Path to a program."
@@ -808,9 +724,6 @@ events:
     found: "/usr/bin/objcopy"
     search_context:
       ENV{CMAKE_PREFIX_PATH}:
-        - "/home/abhigyan/ros2_ws/install/teb_local_planner"
-        - "/home/abhigyan/ros2_ws/install/log_pkg"
-        - "/home/abhigyan/ros2_ws/install/TEBLocalPlanner"
         - "/home/abhigyan/chrono/src/chrono_ros_interfaces/install/chrono_ros_interfaces"
       ENV{PATH}:
         - "/opt/ros/humble/bin"
@@ -832,7 +745,7 @@ events:
     backtrace:
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
-      - "CMakeLists.txt:6 (project)"
+      - "CMakeLists.txt:13 (project)"
     mode: "program"
     variable: "CMAKE_READELF"
     description: "Path to a program."
@@ -878,9 +791,6 @@ events:
     found: "/usr/bin/readelf"
     search_context:
       ENV{CMAKE_PREFIX_PATH}:
-        - "/home/abhigyan/ros2_ws/install/teb_local_planner"
-        - "/home/abhigyan/ros2_ws/install/log_pkg"
-        - "/home/abhigyan/ros2_ws/install/TEBLocalPlanner"
         - "/home/abhigyan/chrono/src/chrono_ros_interfaces/install/chrono_ros_interfaces"
       ENV{PATH}:
         - "/opt/ros/humble/bin"
@@ -902,7 +812,7 @@ events:
     backtrace:
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
-      - "CMakeLists.txt:6 (project)"
+      - "CMakeLists.txt:13 (project)"
     mode: "program"
     variable: "CMAKE_DLLTOOL"
     description: "Path to a program."
@@ -961,9 +871,6 @@ events:
     found: false
     search_context:
       ENV{CMAKE_PREFIX_PATH}:
-        - "/home/abhigyan/ros2_ws/install/teb_local_planner"
-        - "/home/abhigyan/ros2_ws/install/log_pkg"
-        - "/home/abhigyan/ros2_ws/install/TEBLocalPlanner"
         - "/home/abhigyan/chrono/src/chrono_ros_interfaces/install/chrono_ros_interfaces"
       ENV{PATH}:
         - "/opt/ros/humble/bin"
@@ -985,7 +892,7 @@ events:
     backtrace:
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
-      - "CMakeLists.txt:6 (project)"
+      - "CMakeLists.txt:13 (project)"
     mode: "program"
     variable: "CMAKE_ADDR2LINE"
     description: "Path to a program."
@@ -1031,9 +938,6 @@ events:
     found: "/usr/bin/addr2line"
     search_context:
       ENV{CMAKE_PREFIX_PATH}:
-        - "/home/abhigyan/ros2_ws/install/teb_local_planner"
-        - "/home/abhigyan/ros2_ws/install/log_pkg"
-        - "/home/abhigyan/ros2_ws/install/TEBLocalPlanner"
         - "/home/abhigyan/chrono/src/chrono_ros_interfaces/install/chrono_ros_interfaces"
       ENV{PATH}:
         - "/opt/ros/humble/bin"
@@ -1055,7 +959,7 @@ events:
     backtrace:
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
-      - "CMakeLists.txt:6 (project)"
+      - "CMakeLists.txt:13 (project)"
     mode: "program"
     variable: "CMAKE_TAPI"
     description: "Path to a program."
@@ -1114,9 +1018,6 @@ events:
     found: false
     search_context:
       ENV{CMAKE_PREFIX_PATH}:
-        - "/home/abhigyan/ros2_ws/install/teb_local_planner"
-        - "/home/abhigyan/ros2_ws/install/log_pkg"
-        - "/home/abhigyan/ros2_ws/install/TEBLocalPlanner"
         - "/home/abhigyan/chrono/src/chrono_ros_interfaces/install/chrono_ros_interfaces"
       ENV{PATH}:
         - "/opt/ros/humble/bin"
@@ -1138,7 +1039,7 @@ events:
     backtrace:
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/Compiler/GNU-FindBinUtils.cmake:18 (find_program)"
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeDetermineCCompiler.cmake:201 (include)"
-      - "CMakeLists.txt:6 (project)"
+      - "CMakeLists.txt:13 (project)"
     mode: "program"
     variable: "CMAKE_C_COMPILER_AR"
     description: "A wrapper around 'ar' adding the appropriate '--plugin' option for the GCC compiler"
@@ -1186,9 +1087,6 @@ events:
     found: "/usr/bin/gcc-ar-12"
     search_context:
       ENV{CMAKE_PREFIX_PATH}:
-        - "/home/abhigyan/ros2_ws/install/teb_local_planner"
-        - "/home/abhigyan/ros2_ws/install/log_pkg"
-        - "/home/abhigyan/ros2_ws/install/TEBLocalPlanner"
         - "/home/abhigyan/chrono/src/chrono_ros_interfaces/install/chrono_ros_interfaces"
       ENV{PATH}:
         - "/opt/ros/humble/bin"
@@ -1210,7 +1108,7 @@ events:
     backtrace:
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/Compiler/GNU-FindBinUtils.cmake:30 (find_program)"
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeDetermineCCompiler.cmake:201 (include)"
-      - "CMakeLists.txt:6 (project)"
+      - "CMakeLists.txt:13 (project)"
     mode: "program"
     variable: "CMAKE_C_COMPILER_RANLIB"
     description: "A wrapper around 'ranlib' adding the appropriate '--plugin' option for the GCC compiler"
@@ -1258,9 +1156,6 @@ events:
     found: "/usr/bin/gcc-ranlib-12"
     search_context:
       ENV{CMAKE_PREFIX_PATH}:
-        - "/home/abhigyan/ros2_ws/install/teb_local_planner"
-        - "/home/abhigyan/ros2_ws/install/log_pkg"
-        - "/home/abhigyan/ros2_ws/install/TEBLocalPlanner"
         - "/home/abhigyan/chrono/src/chrono_ros_interfaces/install/chrono_ros_interfaces"
       ENV{PATH}:
         - "/opt/ros/humble/bin"
@@ -1282,7 +1177,7 @@ events:
     backtrace:
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeDetermineCompiler.cmake:115 (find_program)"
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeDetermineCXXCompiler.cmake:71 (_cmake_find_compiler_path)"
-      - "CMakeLists.txt:6 (project)"
+      - "CMakeLists.txt:13 (project)"
     mode: "program"
     variable: "CMAKE_CXX_COMPILER_WITH_PATH"
     description: "Path to a program."
@@ -1297,15 +1192,6 @@ events:
     names:
       - "g++-12"
     candidate_directories:
-      - "/home/abhigyan/ros2_ws/install/teb_local_planner/bin/"
-      - "/home/abhigyan/ros2_ws/install/teb_local_planner/sbin/"
-      - "/home/abhigyan/ros2_ws/install/teb_local_planner/"
-      - "/home/abhigyan/ros2_ws/install/log_pkg/bin/"
-      - "/home/abhigyan/ros2_ws/install/log_pkg/sbin/"
-      - "/home/abhigyan/ros2_ws/install/log_pkg/"
-      - "/home/abhigyan/ros2_ws/install/TEBLocalPlanner/bin/"
-      - "/home/abhigyan/ros2_ws/install/TEBLocalPlanner/sbin/"
-      - "/home/abhigyan/ros2_ws/install/TEBLocalPlanner/"
       - "/home/abhigyan/chrono/src/chrono_ros_interfaces/install/chrono_ros_interfaces/bin/"
       - "/home/abhigyan/chrono/src/chrono_ros_interfaces/install/chrono_ros_interfaces/sbin/"
       - "/home/abhigyan/chrono/src/chrono_ros_interfaces/install/chrono_ros_interfaces/"
@@ -1323,15 +1209,6 @@ events:
       - "/usr/local/games/"
       - "/snap/bin/"
     searched_directories:
-      - "/home/abhigyan/ros2_ws/install/teb_local_planner/bin/g++-12"
-      - "/home/abhigyan/ros2_ws/install/teb_local_planner/sbin/g++-12"
-      - "/home/abhigyan/ros2_ws/install/teb_local_planner/g++-12"
-      - "/home/abhigyan/ros2_ws/install/log_pkg/bin/g++-12"
-      - "/home/abhigyan/ros2_ws/install/log_pkg/sbin/g++-12"
-      - "/home/abhigyan/ros2_ws/install/log_pkg/g++-12"
-      - "/home/abhigyan/ros2_ws/install/TEBLocalPlanner/bin/g++-12"
-      - "/home/abhigyan/ros2_ws/install/TEBLocalPlanner/sbin/g++-12"
-      - "/home/abhigyan/ros2_ws/install/TEBLocalPlanner/g++-12"
       - "/home/abhigyan/chrono/src/chrono_ros_interfaces/install/chrono_ros_interfaces/bin/g++-12"
       - "/home/abhigyan/chrono/src/chrono_ros_interfaces/install/chrono_ros_interfaces/sbin/g++-12"
       - "/home/abhigyan/chrono/src/chrono_ros_interfaces/install/chrono_ros_interfaces/g++-12"
@@ -1345,9 +1222,6 @@ events:
     found: "/usr/bin/g++-12"
     search_context:
       ENV{CMAKE_PREFIX_PATH}:
-        - "/home/abhigyan/ros2_ws/install/teb_local_planner"
-        - "/home/abhigyan/ros2_ws/install/log_pkg"
-        - "/home/abhigyan/ros2_ws/install/TEBLocalPlanner"
         - "/home/abhigyan/chrono/src/chrono_ros_interfaces/install/chrono_ros_interfaces"
       ENV{PATH}:
         - "/opt/ros/humble/bin"
@@ -1372,7 +1246,7 @@ events:
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
-      - "CMakeLists.txt:6 (project)"
+      - "CMakeLists.txt:13 (project)"
     mode: "file"
     variable: "src_in"
     description: "Path to a file."
@@ -1391,9 +1265,6 @@ events:
     found: "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeCXXCompilerId.cpp.in"
     search_context:
       ENV{CMAKE_PREFIX_PATH}:
-        - "/home/abhigyan/ros2_ws/install/teb_local_planner"
-        - "/home/abhigyan/ros2_ws/install/log_pkg"
-        - "/home/abhigyan/ros2_ws/install/TEBLocalPlanner"
         - "/home/abhigyan/chrono/src/chrono_ros_interfaces/install/chrono_ros_interfaces"
       ENV{PATH}:
         - "/opt/ros/humble/bin"
@@ -1416,7 +1287,7 @@ events:
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
-      - "CMakeLists.txt:6 (project)"
+      - "CMakeLists.txt:13 (project)"
     message: |
       Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
       Compiler: /usr/bin/g++-12 
@@ -1437,7 +1308,7 @@ events:
     backtrace:
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/Compiler/GNU-FindBinUtils.cmake:18 (find_program)"
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeDetermineCXXCompiler.cmake:207 (include)"
-      - "CMakeLists.txt:6 (project)"
+      - "CMakeLists.txt:13 (project)"
     mode: "program"
     variable: "CMAKE_CXX_COMPILER_AR"
     description: "A wrapper around 'ar' adding the appropriate '--plugin' option for the GCC compiler"
@@ -1485,9 +1356,6 @@ events:
     found: "/usr/bin/gcc-ar-12"
     search_context:
       ENV{CMAKE_PREFIX_PATH}:
-        - "/home/abhigyan/ros2_ws/install/teb_local_planner"
-        - "/home/abhigyan/ros2_ws/install/log_pkg"
-        - "/home/abhigyan/ros2_ws/install/TEBLocalPlanner"
         - "/home/abhigyan/chrono/src/chrono_ros_interfaces/install/chrono_ros_interfaces"
       ENV{PATH}:
         - "/opt/ros/humble/bin"
@@ -1509,7 +1377,7 @@ events:
     backtrace:
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/Compiler/GNU-FindBinUtils.cmake:30 (find_program)"
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeDetermineCXXCompiler.cmake:207 (include)"
-      - "CMakeLists.txt:6 (project)"
+      - "CMakeLists.txt:13 (project)"
     mode: "program"
     variable: "CMAKE_CXX_COMPILER_RANLIB"
     description: "A wrapper around 'ranlib' adding the appropriate '--plugin' option for the GCC compiler"
@@ -1557,9 +1425,6 @@ events:
     found: "/usr/bin/gcc-ranlib-12"
     search_context:
       ENV{CMAKE_PREFIX_PATH}:
-        - "/home/abhigyan/ros2_ws/install/teb_local_planner"
-        - "/home/abhigyan/ros2_ws/install/log_pkg"
-        - "/home/abhigyan/ros2_ws/install/TEBLocalPlanner"
         - "/home/abhigyan/chrono/src/chrono_ros_interfaces/install/chrono_ros_interfaces"
       ENV{PATH}:
         - "/opt/ros/humble/bin"
@@ -1581,12 +1446,12 @@ events:
     backtrace:
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeDetermineCompilerABI.cmake:83 (try_compile)"
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
-      - "CMakeLists.txt:6 (project)"
+      - "CMakeLists.txt:13 (project)"
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "/home/abhigyan/Desktop/teb_local_planner/build/CMakeFiles/CMakeScratch/TryCompile-Gp7WrF"
-      binary: "/home/abhigyan/Desktop/teb_local_planner/build/CMakeFiles/CMakeScratch/TryCompile-Gp7WrF"
+      source: "/home/abhigyan/Desktop/teb_local_planner/build/CMakeFiles/CMakeScratch/TryCompile-vGQsaV"
+      binary: "/home/abhigyan/Desktop/teb_local_planner/build/CMakeFiles/CMakeScratch/TryCompile-vGQsaV"
     cmakeVariables:
       CMAKE_CXX_STDLIB_MODULES_JSON: ""
       CMAKE_C_FLAGS: ""
@@ -1596,13 +1461,13 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: '/home/abhigyan/Desktop/teb_local_planner/build/CMakeFiles/CMakeScratch/TryCompile-Gp7WrF'
+        Change Dir: '/home/abhigyan/Desktop/teb_local_planner/build/CMakeFiles/CMakeScratch/TryCompile-vGQsaV'
         
-        Run Build Command(s): /home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_be7d1/fast
-        /usr/bin/gmake  -f CMakeFiles/cmTC_be7d1.dir/build.make CMakeFiles/cmTC_be7d1.dir/build
-        gmake[1]: Entering directory '/home/abhigyan/Desktop/teb_local_planner/build/CMakeFiles/CMakeScratch/TryCompile-Gp7WrF'
-        Building C object CMakeFiles/cmTC_be7d1.dir/CMakeCCompilerABI.c.o
-        /usr/bin/gcc-12   -v -o CMakeFiles/cmTC_be7d1.dir/CMakeCCompilerABI.c.o -c /home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeCCompilerABI.c
+        Run Build Command(s): /home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_4d0af/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_4d0af.dir/build.make CMakeFiles/cmTC_4d0af.dir/build
+        gmake[1]: Entering directory '/home/abhigyan/Desktop/teb_local_planner/build/CMakeFiles/CMakeScratch/TryCompile-vGQsaV'
+        Building C object CMakeFiles/cmTC_4d0af.dir/CMakeCCompilerABI.c.o
+        /usr/bin/gcc-12   -v -o CMakeFiles/cmTC_4d0af.dir/CMakeCCompilerABI.c.o -c /home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeCCompilerABI.c
         Using built-in specs.
         COLLECT_GCC=/usr/bin/gcc-12
         OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa
@@ -1612,8 +1477,8 @@ events:
         Thread model: posix
         Supported LTO compression algorithms: zlib zstd
         gcc version 12.3.0 (Ubuntu 12.3.0-1ubuntu1~22.04.3) 
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_be7d1.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_be7d1.dir/'
-         /usr/lib/gcc/x86_64-linux-gnu/12/cc1 -quiet -v -imultiarch x86_64-linux-gnu /home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_be7d1.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/ccyE49pX.s
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_4d0af.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_4d0af.dir/'
+         /usr/lib/gcc/x86_64-linux-gnu/12/cc1 -quiet -v -imultiarch x86_64-linux-gnu /home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_4d0af.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/ccKsuyfM.s
         GNU C17 (Ubuntu 12.3.0-1ubuntu1~22.04.3) version 12.3.0 (x86_64-linux-gnu)
         	compiled by GNU C version 12.3.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
         
@@ -1633,14 +1498,14 @@ events:
         
         GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
         Compiler executable checksum: 65d1edd4fb1e0f618a87b24c70895372
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_be7d1.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_be7d1.dir/'
-         as -v --64 -o CMakeFiles/cmTC_be7d1.dir/CMakeCCompilerABI.c.o /tmp/ccyE49pX.s
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_4d0af.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_4d0af.dir/'
+         as -v --64 -o CMakeFiles/cmTC_4d0af.dir/CMakeCCompilerABI.c.o /tmp/ccKsuyfM.s
         GNU assembler version 2.38 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.38
         COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/12/:/usr/lib/gcc/x86_64-linux-gnu/12/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/12/:/usr/lib/gcc/x86_64-linux-gnu/
         LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/12/:/usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/12/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/12/../../../:/lib/:/usr/lib/
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_be7d1.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_be7d1.dir/CMakeCCompilerABI.c.'
-        Linking C executable cmTC_be7d1
-        /home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/bin/cmake -E cmake_link_script CMakeFiles/cmTC_be7d1.dir/link.txt --verbose=1
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_4d0af.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_4d0af.dir/CMakeCCompilerABI.c.'
+        Linking C executable cmTC_4d0af
+        /home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4d0af.dir/link.txt --verbose=1
         Using built-in specs.
         COLLECT_GCC=/usr/bin/gcc-12
         COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/12/lto-wrapper
@@ -1653,14 +1518,14 @@ events:
         gcc version 12.3.0 (Ubuntu 12.3.0-1ubuntu1~22.04.3) 
         COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/12/:/usr/lib/gcc/x86_64-linux-gnu/12/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/12/:/usr/lib/gcc/x86_64-linux-gnu/
         LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/12/:/usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/12/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/12/../../../:/lib/:/usr/lib/
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_be7d1' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_be7d1.'
-         /usr/lib/gcc/x86_64-linux-gnu/12/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/12/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/12/lto-wrapper -plugin-opt=-fresolution=/tmp/cc4rqJLW.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_be7d1 /usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/12/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/12 -L/usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/12/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/12/../../.. -v CMakeFiles/cmTC_be7d1.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/12/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/crtn.o
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_4d0af' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_4d0af.'
+         /usr/lib/gcc/x86_64-linux-gnu/12/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/12/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/12/lto-wrapper -plugin-opt=-fresolution=/tmp/ccNl0a7O.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_4d0af /usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/12/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/12 -L/usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/12/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/12/../../.. -v CMakeFiles/cmTC_4d0af.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/12/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/crtn.o
         collect2 version 12.3.0
-        /usr/bin/ld -plugin /usr/lib/gcc/x86_64-linux-gnu/12/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/12/lto-wrapper -plugin-opt=-fresolution=/tmp/cc4rqJLW.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_be7d1 /usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/12/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/12 -L/usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/12/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/12/../../.. -v CMakeFiles/cmTC_be7d1.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/12/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/crtn.o
+        /usr/bin/ld -plugin /usr/lib/gcc/x86_64-linux-gnu/12/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/12/lto-wrapper -plugin-opt=-fresolution=/tmp/ccNl0a7O.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_4d0af /usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/12/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/12 -L/usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/12/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/12/../../.. -v CMakeFiles/cmTC_4d0af.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/12/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/crtn.o
         GNU ld (GNU Binutils for Ubuntu) 2.38
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_be7d1' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_be7d1.'
-        /usr/bin/gcc-12  -v -Wl,-v CMakeFiles/cmTC_be7d1.dir/CMakeCCompilerABI.c.o -o cmTC_be7d1
-        gmake[1]: Leaving directory '/home/abhigyan/Desktop/teb_local_planner/build/CMakeFiles/CMakeScratch/TryCompile-Gp7WrF'
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_4d0af' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_4d0af.'
+        /usr/bin/gcc-12  -v -Wl,-v CMakeFiles/cmTC_4d0af.dir/CMakeCCompilerABI.c.o -o cmTC_4d0af
+        gmake[1]: Leaving directory '/home/abhigyan/Desktop/teb_local_planner/build/CMakeFiles/CMakeScratch/TryCompile-vGQsaV'
         
       exitCode: 0
   -
@@ -1668,7 +1533,7 @@ events:
     backtrace:
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeDetermineCompilerABI.cmake:217 (message)"
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
-      - "CMakeLists.txt:6 (project)"
+      - "CMakeLists.txt:13 (project)"
     message: |
       Parsed C implicit include dir info: rv=done
         found start of include info
@@ -1690,18 +1555,18 @@ events:
     backtrace:
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeDetermineCompilerABI.cmake:253 (message)"
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
-      - "CMakeLists.txt:6 (project)"
+      - "CMakeLists.txt:13 (project)"
     message: |
       Parsed C implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|"|[0-9]+>[ 	-]*Build:[ 	0-9]+ ms[ 	]*)?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)))("|,| |$)]
-        ignore line: [Change Dir: '/home/abhigyan/Desktop/teb_local_planner/build/CMakeFiles/CMakeScratch/TryCompile-Gp7WrF']
+        ignore line: [Change Dir: '/home/abhigyan/Desktop/teb_local_planner/build/CMakeFiles/CMakeScratch/TryCompile-vGQsaV']
         ignore line: []
-        ignore line: [Run Build Command(s): /home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_be7d1/fast]
-        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_be7d1.dir/build.make CMakeFiles/cmTC_be7d1.dir/build]
-        ignore line: [gmake[1]: Entering directory '/home/abhigyan/Desktop/teb_local_planner/build/CMakeFiles/CMakeScratch/TryCompile-Gp7WrF']
-        ignore line: [Building C object CMakeFiles/cmTC_be7d1.dir/CMakeCCompilerABI.c.o]
-        ignore line: [/usr/bin/gcc-12   -v -o CMakeFiles/cmTC_be7d1.dir/CMakeCCompilerABI.c.o -c /home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeCCompilerABI.c]
+        ignore line: [Run Build Command(s): /home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_4d0af/fast]
+        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_4d0af.dir/build.make CMakeFiles/cmTC_4d0af.dir/build]
+        ignore line: [gmake[1]: Entering directory '/home/abhigyan/Desktop/teb_local_planner/build/CMakeFiles/CMakeScratch/TryCompile-vGQsaV']
+        ignore line: [Building C object CMakeFiles/cmTC_4d0af.dir/CMakeCCompilerABI.c.o]
+        ignore line: [/usr/bin/gcc-12   -v -o CMakeFiles/cmTC_4d0af.dir/CMakeCCompilerABI.c.o -c /home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeCCompilerABI.c]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=/usr/bin/gcc-12]
         ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa]
@@ -1711,8 +1576,8 @@ events:
         ignore line: [Thread model: posix]
         ignore line: [Supported LTO compression algorithms: zlib zstd]
         ignore line: [gcc version 12.3.0 (Ubuntu 12.3.0-1ubuntu1~22.04.3) ]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_be7d1.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_be7d1.dir/']
-        ignore line: [ /usr/lib/gcc/x86_64-linux-gnu/12/cc1 -quiet -v -imultiarch x86_64-linux-gnu /home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_be7d1.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/ccyE49pX.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_4d0af.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_4d0af.dir/']
+        ignore line: [ /usr/lib/gcc/x86_64-linux-gnu/12/cc1 -quiet -v -imultiarch x86_64-linux-gnu /home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_4d0af.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/ccKsuyfM.s]
         ignore line: [GNU C17 (Ubuntu 12.3.0-1ubuntu1~22.04.3) version 12.3.0 (x86_64-linux-gnu)]
         ignore line: [	compiled by GNU C version 12.3.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.1  isl version isl-0.24-GMP]
         ignore line: []
@@ -1732,14 +1597,14 @@ events:
         ignore line: []
         ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
         ignore line: [Compiler executable checksum: 65d1edd4fb1e0f618a87b24c70895372]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_be7d1.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_be7d1.dir/']
-        ignore line: [ as -v --64 -o CMakeFiles/cmTC_be7d1.dir/CMakeCCompilerABI.c.o /tmp/ccyE49pX.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_4d0af.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_4d0af.dir/']
+        ignore line: [ as -v --64 -o CMakeFiles/cmTC_4d0af.dir/CMakeCCompilerABI.c.o /tmp/ccKsuyfM.s]
         ignore line: [GNU assembler version 2.38 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.38]
         ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/12/:/usr/lib/gcc/x86_64-linux-gnu/12/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/12/:/usr/lib/gcc/x86_64-linux-gnu/]
         ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/12/:/usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/12/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/12/../../../:/lib/:/usr/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_be7d1.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_be7d1.dir/CMakeCCompilerABI.c.']
-        ignore line: [Linking C executable cmTC_be7d1]
-        ignore line: [/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/bin/cmake -E cmake_link_script CMakeFiles/cmTC_be7d1.dir/link.txt --verbose=1]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_4d0af.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_4d0af.dir/CMakeCCompilerABI.c.']
+        ignore line: [Linking C executable cmTC_4d0af]
+        ignore line: [/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4d0af.dir/link.txt --verbose=1]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=/usr/bin/gcc-12]
         ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/12/lto-wrapper]
@@ -1752,13 +1617,13 @@ events:
         ignore line: [gcc version 12.3.0 (Ubuntu 12.3.0-1ubuntu1~22.04.3) ]
         ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/12/:/usr/lib/gcc/x86_64-linux-gnu/12/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/12/:/usr/lib/gcc/x86_64-linux-gnu/]
         ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/12/:/usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/12/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/12/../../../:/lib/:/usr/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_be7d1' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_be7d1.']
-        link line: [ /usr/lib/gcc/x86_64-linux-gnu/12/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/12/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/12/lto-wrapper -plugin-opt=-fresolution=/tmp/cc4rqJLW.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_be7d1 /usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/12/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/12 -L/usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/12/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/12/../../.. -v CMakeFiles/cmTC_be7d1.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/12/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/crtn.o]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_4d0af' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_4d0af.']
+        link line: [ /usr/lib/gcc/x86_64-linux-gnu/12/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/12/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/12/lto-wrapper -plugin-opt=-fresolution=/tmp/ccNl0a7O.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_4d0af /usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/12/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/12 -L/usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/12/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/12/../../.. -v CMakeFiles/cmTC_4d0af.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/12/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/crtn.o]
           arg [/usr/lib/gcc/x86_64-linux-gnu/12/collect2] ==> ignore
           arg [-plugin] ==> ignore
           arg [/usr/lib/gcc/x86_64-linux-gnu/12/liblto_plugin.so] ==> ignore
           arg [-plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/12/lto-wrapper] ==> ignore
-          arg [-plugin-opt=-fresolution=/tmp/cc4rqJLW.res] ==> ignore
+          arg [-plugin-opt=-fresolution=/tmp/ccNl0a7O.res] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
           arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -1776,7 +1641,7 @@ events:
           arg [-znow] ==> ignore
           arg [-zrelro] ==> ignore
           arg [-o] ==> ignore
-          arg [cmTC_be7d1] ==> ignore
+          arg [cmTC_4d0af] ==> ignore
           arg [/usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/Scrt1.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/Scrt1.o]
           arg [/usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/crti.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/crti.o]
           arg [/usr/lib/gcc/x86_64-linux-gnu/12/crtbeginS.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/12/crtbeginS.o]
@@ -1789,7 +1654,7 @@ events:
           arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
           arg [-L/usr/lib/gcc/x86_64-linux-gnu/12/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/12/../../..]
           arg [-v] ==> ignore
-          arg [CMakeFiles/cmTC_be7d1.dir/CMakeCCompilerABI.c.o] ==> ignore
+          arg [CMakeFiles/cmTC_4d0af.dir/CMakeCCompilerABI.c.o] ==> ignore
           arg [-lgcc] ==> lib [gcc]
           arg [--push-state] ==> ignore
           arg [--as-needed] ==> ignore
@@ -1804,7 +1669,7 @@ events:
           arg [/usr/lib/gcc/x86_64-linux-gnu/12/crtendS.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/12/crtendS.o]
           arg [/usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/crtn.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/crtn.o]
         ignore line: [collect2 version 12.3.0]
-        ignore line: [/usr/bin/ld -plugin /usr/lib/gcc/x86_64-linux-gnu/12/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/12/lto-wrapper -plugin-opt=-fresolution=/tmp/cc4rqJLW.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_be7d1 /usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/12/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/12 -L/usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/12/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/12/../../.. -v CMakeFiles/cmTC_be7d1.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/12/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/crtn.o]
+        ignore line: [/usr/bin/ld -plugin /usr/lib/gcc/x86_64-linux-gnu/12/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/12/lto-wrapper -plugin-opt=-fresolution=/tmp/ccNl0a7O.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_4d0af /usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/12/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/12 -L/usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/12/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/12/../../.. -v CMakeFiles/cmTC_4d0af.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/12/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/crtn.o]
         linker tool for 'C': /usr/bin/ld
         collapse obj [/usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/Scrt1.o] ==> [/usr/lib/x86_64-linux-gnu/Scrt1.o]
         collapse obj [/usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/crti.o] ==> [/usr/lib/x86_64-linux-gnu/crti.o]
@@ -1829,7 +1694,7 @@ events:
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/Internal/CMakeDetermineLinkerId.cmake:38 (message)"
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeDetermineCompilerABI.cmake:299 (cmake_determine_linker_id)"
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
-      - "CMakeLists.txt:6 (project)"
+      - "CMakeLists.txt:13 (project)"
     message: |
       Running the C compiler's linker: "/usr/bin/ld" "-v"
       GNU ld (GNU Binutils for Ubuntu) 2.38
@@ -1838,12 +1703,12 @@ events:
     backtrace:
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeDetermineCompilerABI.cmake:83 (try_compile)"
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
-      - "CMakeLists.txt:6 (project)"
+      - "CMakeLists.txt:13 (project)"
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "/home/abhigyan/Desktop/teb_local_planner/build/CMakeFiles/CMakeScratch/TryCompile-yokTTp"
-      binary: "/home/abhigyan/Desktop/teb_local_planner/build/CMakeFiles/CMakeScratch/TryCompile-yokTTp"
+      source: "/home/abhigyan/Desktop/teb_local_planner/build/CMakeFiles/CMakeScratch/TryCompile-BAQVfn"
+      binary: "/home/abhigyan/Desktop/teb_local_planner/build/CMakeFiles/CMakeScratch/TryCompile-BAQVfn"
     cmakeVariables:
       CMAKE_CXX_FLAGS: ""
       CMAKE_CXX_FLAGS_DEBUG: "-g"
@@ -1854,13 +1719,13 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: '/home/abhigyan/Desktop/teb_local_planner/build/CMakeFiles/CMakeScratch/TryCompile-yokTTp'
+        Change Dir: '/home/abhigyan/Desktop/teb_local_planner/build/CMakeFiles/CMakeScratch/TryCompile-BAQVfn'
         
-        Run Build Command(s): /home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_47d8b/fast
-        /usr/bin/gmake  -f CMakeFiles/cmTC_47d8b.dir/build.make CMakeFiles/cmTC_47d8b.dir/build
-        gmake[1]: Entering directory '/home/abhigyan/Desktop/teb_local_planner/build/CMakeFiles/CMakeScratch/TryCompile-yokTTp'
-        Building CXX object CMakeFiles/cmTC_47d8b.dir/CMakeCXXCompilerABI.cpp.o
-        /usr/bin/g++-12   -v -o CMakeFiles/cmTC_47d8b.dir/CMakeCXXCompilerABI.cpp.o -c /home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeCXXCompilerABI.cpp
+        Run Build Command(s): /home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_a1fd3/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_a1fd3.dir/build.make CMakeFiles/cmTC_a1fd3.dir/build
+        gmake[1]: Entering directory '/home/abhigyan/Desktop/teb_local_planner/build/CMakeFiles/CMakeScratch/TryCompile-BAQVfn'
+        Building CXX object CMakeFiles/cmTC_a1fd3.dir/CMakeCXXCompilerABI.cpp.o
+        /usr/bin/g++-12   -v -o CMakeFiles/cmTC_a1fd3.dir/CMakeCXXCompilerABI.cpp.o -c /home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeCXXCompilerABI.cpp
         Using built-in specs.
         COLLECT_GCC=/usr/bin/g++-12
         OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa
@@ -1870,8 +1735,8 @@ events:
         Thread model: posix
         Supported LTO compression algorithms: zlib zstd
         gcc version 12.3.0 (Ubuntu 12.3.0-1ubuntu1~22.04.3) 
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_47d8b.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_47d8b.dir/'
-         /usr/lib/gcc/x86_64-linux-gnu/12/cc1plus -quiet -v -imultiarch x86_64-linux-gnu -D_GNU_SOURCE /home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_47d8b.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/ccYopX35.s
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_a1fd3.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_a1fd3.dir/'
+         /usr/lib/gcc/x86_64-linux-gnu/12/cc1plus -quiet -v -imultiarch x86_64-linux-gnu -D_GNU_SOURCE /home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_a1fd3.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/cc6BuuWd.s
         GNU C++17 (Ubuntu 12.3.0-1ubuntu1~22.04.3) version 12.3.0 (x86_64-linux-gnu)
         	compiled by GNU C version 12.3.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
         
@@ -1895,14 +1760,14 @@ events:
         
         GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
         Compiler executable checksum: c10ddf8ebdf2c305adc34ed4a12c969e
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_47d8b.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_47d8b.dir/'
-         as -v --64 -o CMakeFiles/cmTC_47d8b.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccYopX35.s
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_a1fd3.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_a1fd3.dir/'
+         as -v --64 -o CMakeFiles/cmTC_a1fd3.dir/CMakeCXXCompilerABI.cpp.o /tmp/cc6BuuWd.s
         GNU assembler version 2.38 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.38
         COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/12/:/usr/lib/gcc/x86_64-linux-gnu/12/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/12/:/usr/lib/gcc/x86_64-linux-gnu/
         LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/12/:/usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/12/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/12/../../../:/lib/:/usr/lib/
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_47d8b.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_47d8b.dir/CMakeCXXCompilerABI.cpp.'
-        Linking CXX executable cmTC_47d8b
-        /home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/bin/cmake -E cmake_link_script CMakeFiles/cmTC_47d8b.dir/link.txt --verbose=1
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_a1fd3.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_a1fd3.dir/CMakeCXXCompilerABI.cpp.'
+        Linking CXX executable cmTC_a1fd3
+        /home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a1fd3.dir/link.txt --verbose=1
         Using built-in specs.
         COLLECT_GCC=/usr/bin/g++-12
         COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/12/lto-wrapper
@@ -1915,14 +1780,14 @@ events:
         gcc version 12.3.0 (Ubuntu 12.3.0-1ubuntu1~22.04.3) 
         COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/12/:/usr/lib/gcc/x86_64-linux-gnu/12/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/12/:/usr/lib/gcc/x86_64-linux-gnu/
         LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/12/:/usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/12/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/12/../../../:/lib/:/usr/lib/
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_47d8b' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_47d8b.'
-         /usr/lib/gcc/x86_64-linux-gnu/12/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/12/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/12/lto-wrapper -plugin-opt=-fresolution=/tmp/cc7dwtvE.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_47d8b /usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/12/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/12 -L/usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/12/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/12/../../.. -v CMakeFiles/cmTC_47d8b.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/12/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/crtn.o
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_a1fd3' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_a1fd3.'
+         /usr/lib/gcc/x86_64-linux-gnu/12/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/12/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/12/lto-wrapper -plugin-opt=-fresolution=/tmp/ccSGVqqO.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_a1fd3 /usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/12/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/12 -L/usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/12/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/12/../../.. -v CMakeFiles/cmTC_a1fd3.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/12/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/crtn.o
         collect2 version 12.3.0
-        /usr/bin/ld -plugin /usr/lib/gcc/x86_64-linux-gnu/12/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/12/lto-wrapper -plugin-opt=-fresolution=/tmp/cc7dwtvE.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_47d8b /usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/12/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/12 -L/usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/12/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/12/../../.. -v CMakeFiles/cmTC_47d8b.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/12/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/crtn.o
+        /usr/bin/ld -plugin /usr/lib/gcc/x86_64-linux-gnu/12/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/12/lto-wrapper -plugin-opt=-fresolution=/tmp/ccSGVqqO.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_a1fd3 /usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/12/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/12 -L/usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/12/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/12/../../.. -v CMakeFiles/cmTC_a1fd3.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/12/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/crtn.o
         GNU ld (GNU Binutils for Ubuntu) 2.38
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_47d8b' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_47d8b.'
-        /usr/bin/g++-12  -v -Wl,-v CMakeFiles/cmTC_47d8b.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_47d8b
-        gmake[1]: Leaving directory '/home/abhigyan/Desktop/teb_local_planner/build/CMakeFiles/CMakeScratch/TryCompile-yokTTp'
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_a1fd3' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_a1fd3.'
+        /usr/bin/g++-12  -v -Wl,-v CMakeFiles/cmTC_a1fd3.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_a1fd3
+        gmake[1]: Leaving directory '/home/abhigyan/Desktop/teb_local_planner/build/CMakeFiles/CMakeScratch/TryCompile-BAQVfn'
         
       exitCode: 0
   -
@@ -1930,7 +1795,7 @@ events:
     backtrace:
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeDetermineCompilerABI.cmake:217 (message)"
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
-      - "CMakeLists.txt:6 (project)"
+      - "CMakeLists.txt:13 (project)"
     message: |
       Parsed CXX implicit include dir info: rv=done
         found start of include info
@@ -1958,18 +1823,18 @@ events:
     backtrace:
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeDetermineCompilerABI.cmake:253 (message)"
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
-      - "CMakeLists.txt:6 (project)"
+      - "CMakeLists.txt:13 (project)"
     message: |
       Parsed CXX implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|"|[0-9]+>[ 	-]*Build:[ 	0-9]+ ms[ 	]*)?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)))("|,| |$)]
-        ignore line: [Change Dir: '/home/abhigyan/Desktop/teb_local_planner/build/CMakeFiles/CMakeScratch/TryCompile-yokTTp']
+        ignore line: [Change Dir: '/home/abhigyan/Desktop/teb_local_planner/build/CMakeFiles/CMakeScratch/TryCompile-BAQVfn']
         ignore line: []
-        ignore line: [Run Build Command(s): /home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_47d8b/fast]
-        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_47d8b.dir/build.make CMakeFiles/cmTC_47d8b.dir/build]
-        ignore line: [gmake[1]: Entering directory '/home/abhigyan/Desktop/teb_local_planner/build/CMakeFiles/CMakeScratch/TryCompile-yokTTp']
-        ignore line: [Building CXX object CMakeFiles/cmTC_47d8b.dir/CMakeCXXCompilerABI.cpp.o]
-        ignore line: [/usr/bin/g++-12   -v -o CMakeFiles/cmTC_47d8b.dir/CMakeCXXCompilerABI.cpp.o -c /home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [Run Build Command(s): /home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_a1fd3/fast]
+        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_a1fd3.dir/build.make CMakeFiles/cmTC_a1fd3.dir/build]
+        ignore line: [gmake[1]: Entering directory '/home/abhigyan/Desktop/teb_local_planner/build/CMakeFiles/CMakeScratch/TryCompile-BAQVfn']
+        ignore line: [Building CXX object CMakeFiles/cmTC_a1fd3.dir/CMakeCXXCompilerABI.cpp.o]
+        ignore line: [/usr/bin/g++-12   -v -o CMakeFiles/cmTC_a1fd3.dir/CMakeCXXCompilerABI.cpp.o -c /home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeCXXCompilerABI.cpp]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=/usr/bin/g++-12]
         ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa]
@@ -1979,8 +1844,8 @@ events:
         ignore line: [Thread model: posix]
         ignore line: [Supported LTO compression algorithms: zlib zstd]
         ignore line: [gcc version 12.3.0 (Ubuntu 12.3.0-1ubuntu1~22.04.3) ]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_47d8b.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_47d8b.dir/']
-        ignore line: [ /usr/lib/gcc/x86_64-linux-gnu/12/cc1plus -quiet -v -imultiarch x86_64-linux-gnu -D_GNU_SOURCE /home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_47d8b.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/ccYopX35.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_a1fd3.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_a1fd3.dir/']
+        ignore line: [ /usr/lib/gcc/x86_64-linux-gnu/12/cc1plus -quiet -v -imultiarch x86_64-linux-gnu -D_GNU_SOURCE /home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_a1fd3.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/cc6BuuWd.s]
         ignore line: [GNU C++17 (Ubuntu 12.3.0-1ubuntu1~22.04.3) version 12.3.0 (x86_64-linux-gnu)]
         ignore line: [	compiled by GNU C version 12.3.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.1  isl version isl-0.24-GMP]
         ignore line: []
@@ -2004,14 +1869,14 @@ events:
         ignore line: []
         ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
         ignore line: [Compiler executable checksum: c10ddf8ebdf2c305adc34ed4a12c969e]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_47d8b.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_47d8b.dir/']
-        ignore line: [ as -v --64 -o CMakeFiles/cmTC_47d8b.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccYopX35.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_a1fd3.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_a1fd3.dir/']
+        ignore line: [ as -v --64 -o CMakeFiles/cmTC_a1fd3.dir/CMakeCXXCompilerABI.cpp.o /tmp/cc6BuuWd.s]
         ignore line: [GNU assembler version 2.38 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.38]
         ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/12/:/usr/lib/gcc/x86_64-linux-gnu/12/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/12/:/usr/lib/gcc/x86_64-linux-gnu/]
         ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/12/:/usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/12/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/12/../../../:/lib/:/usr/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_47d8b.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_47d8b.dir/CMakeCXXCompilerABI.cpp.']
-        ignore line: [Linking CXX executable cmTC_47d8b]
-        ignore line: [/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/bin/cmake -E cmake_link_script CMakeFiles/cmTC_47d8b.dir/link.txt --verbose=1]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_a1fd3.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_a1fd3.dir/CMakeCXXCompilerABI.cpp.']
+        ignore line: [Linking CXX executable cmTC_a1fd3]
+        ignore line: [/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a1fd3.dir/link.txt --verbose=1]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=/usr/bin/g++-12]
         ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/12/lto-wrapper]
@@ -2024,13 +1889,13 @@ events:
         ignore line: [gcc version 12.3.0 (Ubuntu 12.3.0-1ubuntu1~22.04.3) ]
         ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/12/:/usr/lib/gcc/x86_64-linux-gnu/12/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/12/:/usr/lib/gcc/x86_64-linux-gnu/]
         ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/12/:/usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/12/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/12/../../../:/lib/:/usr/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_47d8b' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_47d8b.']
-        link line: [ /usr/lib/gcc/x86_64-linux-gnu/12/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/12/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/12/lto-wrapper -plugin-opt=-fresolution=/tmp/cc7dwtvE.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_47d8b /usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/12/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/12 -L/usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/12/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/12/../../.. -v CMakeFiles/cmTC_47d8b.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/12/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/crtn.o]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_a1fd3' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_a1fd3.']
+        link line: [ /usr/lib/gcc/x86_64-linux-gnu/12/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/12/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/12/lto-wrapper -plugin-opt=-fresolution=/tmp/ccSGVqqO.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_a1fd3 /usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/12/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/12 -L/usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/12/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/12/../../.. -v CMakeFiles/cmTC_a1fd3.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/12/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/crtn.o]
           arg [/usr/lib/gcc/x86_64-linux-gnu/12/collect2] ==> ignore
           arg [-plugin] ==> ignore
           arg [/usr/lib/gcc/x86_64-linux-gnu/12/liblto_plugin.so] ==> ignore
           arg [-plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/12/lto-wrapper] ==> ignore
-          arg [-plugin-opt=-fresolution=/tmp/cc7dwtvE.res] ==> ignore
+          arg [-plugin-opt=-fresolution=/tmp/ccSGVqqO.res] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
           arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -2048,7 +1913,7 @@ events:
           arg [-znow] ==> ignore
           arg [-zrelro] ==> ignore
           arg [-o] ==> ignore
-          arg [cmTC_47d8b] ==> ignore
+          arg [cmTC_a1fd3] ==> ignore
           arg [/usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/Scrt1.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/Scrt1.o]
           arg [/usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/crti.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/crti.o]
           arg [/usr/lib/gcc/x86_64-linux-gnu/12/crtbeginS.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/12/crtbeginS.o]
@@ -2061,7 +1926,7 @@ events:
           arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
           arg [-L/usr/lib/gcc/x86_64-linux-gnu/12/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/12/../../..]
           arg [-v] ==> ignore
-          arg [CMakeFiles/cmTC_47d8b.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+          arg [CMakeFiles/cmTC_a1fd3.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
           arg [-lstdc++] ==> lib [stdc++]
           arg [-lm] ==> lib [m]
           arg [-lgcc_s] ==> lib [gcc_s]
@@ -2072,7 +1937,7 @@ events:
           arg [/usr/lib/gcc/x86_64-linux-gnu/12/crtendS.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/12/crtendS.o]
           arg [/usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/crtn.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/crtn.o]
         ignore line: [collect2 version 12.3.0]
-        ignore line: [/usr/bin/ld -plugin /usr/lib/gcc/x86_64-linux-gnu/12/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/12/lto-wrapper -plugin-opt=-fresolution=/tmp/cc7dwtvE.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_47d8b /usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/12/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/12 -L/usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/12/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/12/../../.. -v CMakeFiles/cmTC_47d8b.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/12/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/crtn.o]
+        ignore line: [/usr/bin/ld -plugin /usr/lib/gcc/x86_64-linux-gnu/12/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/12/lto-wrapper -plugin-opt=-fresolution=/tmp/ccSGVqqO.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_a1fd3 /usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/12/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/12 -L/usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/12/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/12/../../.. -v CMakeFiles/cmTC_a1fd3.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/12/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/crtn.o]
         linker tool for 'CXX': /usr/bin/ld
         collapse obj [/usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/Scrt1.o] ==> [/usr/lib/x86_64-linux-gnu/Scrt1.o]
         collapse obj [/usr/lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/crti.o] ==> [/usr/lib/x86_64-linux-gnu/crti.o]
@@ -2097,7 +1962,7 @@ events:
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/Internal/CMakeDetermineLinkerId.cmake:38 (message)"
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeDetermineCompilerABI.cmake:299 (cmake_determine_linker_id)"
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
-      - "CMakeLists.txt:6 (project)"
+      - "CMakeLists.txt:13 (project)"
     message: |
       Running the CXX compiler's linker: "/usr/bin/ld" "-v"
       GNU ld (GNU Binutils for Ubuntu) 2.38
@@ -2108,12 +1973,12 @@ events:
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/CheckCSourceCompiles.cmake:103 (cmake_check_source_compiles)"
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/FindThreads.cmake:160 (check_c_source_compiles)"
       - "/home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/share/cmake-4.3/Modules/FindThreads.cmake:226 (_threads_check_libc)"
-      - "CMakeLists.txt:15 (find_package)"
+      - "CMakeLists.txt:22 (find_package)"
     checks:
       - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
     directories:
-      source: "/home/abhigyan/Desktop/teb_local_planner/build/CMakeFiles/CMakeScratch/TryCompile-2zIeJU"
-      binary: "/home/abhigyan/Desktop/teb_local_planner/build/CMakeFiles/CMakeScratch/TryCompile-2zIeJU"
+      source: "/home/abhigyan/Desktop/teb_local_planner/build/CMakeFiles/CMakeScratch/TryCompile-LM119L"
+      binary: "/home/abhigyan/Desktop/teb_local_planner/build/CMakeFiles/CMakeScratch/TryCompile-LM119L"
     cmakeVariables:
       CMAKE_CXX_STDLIB_MODULES_JSON: ""
       CMAKE_C_FLAGS: ""
@@ -2123,23 +1988,23 @@ events:
       variable: "CMAKE_HAVE_LIBC_PTHREAD"
       cached: true
       stdout: |
-        Change Dir: '/home/abhigyan/Desktop/teb_local_planner/build/CMakeFiles/CMakeScratch/TryCompile-2zIeJU'
+        Change Dir: '/home/abhigyan/Desktop/teb_local_planner/build/CMakeFiles/CMakeScratch/TryCompile-LM119L'
         
-        Run Build Command(s): /home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_2b62f/fast
-        /usr/bin/gmake  -f CMakeFiles/cmTC_2b62f.dir/build.make CMakeFiles/cmTC_2b62f.dir/build
-        gmake[1]: Entering directory '/home/abhigyan/Desktop/teb_local_planner/build/CMakeFiles/CMakeScratch/TryCompile-2zIeJU'
-        Building C object CMakeFiles/cmTC_2b62f.dir/src.c.o
-        /usr/bin/gcc-12 -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_2b62f.dir/src.c.o -c /home/abhigyan/Desktop/teb_local_planner/build/CMakeFiles/CMakeScratch/TryCompile-2zIeJU/src.c
-        Linking C executable cmTC_2b62f
-        /home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2b62f.dir/link.txt --verbose=1
-        /usr/bin/gcc-12 CMakeFiles/cmTC_2b62f.dir/src.c.o -o cmTC_2b62f
-        gmake[1]: Leaving directory '/home/abhigyan/Desktop/teb_local_planner/build/CMakeFiles/CMakeScratch/TryCompile-2zIeJU'
+        Run Build Command(s): /home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_bcf29/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_bcf29.dir/build.make CMakeFiles/cmTC_bcf29.dir/build
+        gmake[1]: Entering directory '/home/abhigyan/Desktop/teb_local_planner/build/CMakeFiles/CMakeScratch/TryCompile-LM119L'
+        Building C object CMakeFiles/cmTC_bcf29.dir/src.c.o
+        /usr/bin/gcc-12 -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_bcf29.dir/src.c.o -c /home/abhigyan/Desktop/teb_local_planner/build/CMakeFiles/CMakeScratch/TryCompile-LM119L/src.c
+        Linking C executable cmTC_bcf29
+        /home/abhigyan/.local/lib/python3.10/site-packages/cmake/data/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bcf29.dir/link.txt --verbose=1
+        /usr/bin/gcc-12 CMakeFiles/cmTC_bcf29.dir/src.c.o -o cmTC_bcf29
+        gmake[1]: Leaving directory '/home/abhigyan/Desktop/teb_local_planner/build/CMakeFiles/CMakeScratch/TryCompile-LM119L'
         
       exitCode: 0
   -
     kind: "find_package-v1"
     backtrace:
-      - "CMakeLists.txt:16 (find_package)"
+      - "CMakeLists.txt:23 (find_package)"
     name: "Eigen3"
     configs:
       -
@@ -2207,102 +2072,6 @@ events:
         reason: "no_exist"
       -
         path: "/home/abhigyan/Desktop/teb_local_planner/build/CMakeFiles/pkgRedirects/share/cps/eigen3.cps"
-        mode: "cps"
-        reason: "no_exist"
-      -
-        path: "/home/abhigyan/ros2_ws/install/teb_local_planner/Eigen3Config.cmake"
-        mode: "config"
-        reason: "no_exist"
-      -
-        path: "/home/abhigyan/ros2_ws/install/teb_local_planner/eigen3-config.cmake"
-        mode: "config"
-        reason: "no_exist"
-      -
-        path: "/home/abhigyan/ros2_ws/install/teb_local_planner/lib/x86_64-linux-gnu/cps/Eigen3.cps"
-        mode: "cps"
-        reason: "no_exist"
-      -
-        path: "/home/abhigyan/ros2_ws/install/teb_local_planner/lib/x86_64-linux-gnu/cps/eigen3.cps"
-        mode: "cps"
-        reason: "no_exist"
-      -
-        path: "/home/abhigyan/ros2_ws/install/teb_local_planner/lib/cps/Eigen3.cps"
-        mode: "cps"
-        reason: "no_exist"
-      -
-        path: "/home/abhigyan/ros2_ws/install/teb_local_planner/lib/cps/eigen3.cps"
-        mode: "cps"
-        reason: "no_exist"
-      -
-        path: "/home/abhigyan/ros2_ws/install/teb_local_planner/share/cps/Eigen3.cps"
-        mode: "cps"
-        reason: "no_exist"
-      -
-        path: "/home/abhigyan/ros2_ws/install/teb_local_planner/share/cps/eigen3.cps"
-        mode: "cps"
-        reason: "no_exist"
-      -
-        path: "/home/abhigyan/ros2_ws/install/log_pkg/Eigen3Config.cmake"
-        mode: "config"
-        reason: "no_exist"
-      -
-        path: "/home/abhigyan/ros2_ws/install/log_pkg/eigen3-config.cmake"
-        mode: "config"
-        reason: "no_exist"
-      -
-        path: "/home/abhigyan/ros2_ws/install/log_pkg/lib/x86_64-linux-gnu/cps/Eigen3.cps"
-        mode: "cps"
-        reason: "no_exist"
-      -
-        path: "/home/abhigyan/ros2_ws/install/log_pkg/lib/x86_64-linux-gnu/cps/eigen3.cps"
-        mode: "cps"
-        reason: "no_exist"
-      -
-        path: "/home/abhigyan/ros2_ws/install/log_pkg/lib/cps/Eigen3.cps"
-        mode: "cps"
-        reason: "no_exist"
-      -
-        path: "/home/abhigyan/ros2_ws/install/log_pkg/lib/cps/eigen3.cps"
-        mode: "cps"
-        reason: "no_exist"
-      -
-        path: "/home/abhigyan/ros2_ws/install/log_pkg/share/cps/Eigen3.cps"
-        mode: "cps"
-        reason: "no_exist"
-      -
-        path: "/home/abhigyan/ros2_ws/install/log_pkg/share/cps/eigen3.cps"
-        mode: "cps"
-        reason: "no_exist"
-      -
-        path: "/home/abhigyan/ros2_ws/install/TEBLocalPlanner/Eigen3Config.cmake"
-        mode: "config"
-        reason: "no_exist"
-      -
-        path: "/home/abhigyan/ros2_ws/install/TEBLocalPlanner/eigen3-config.cmake"
-        mode: "config"
-        reason: "no_exist"
-      -
-        path: "/home/abhigyan/ros2_ws/install/TEBLocalPlanner/lib/x86_64-linux-gnu/cps/Eigen3.cps"
-        mode: "cps"
-        reason: "no_exist"
-      -
-        path: "/home/abhigyan/ros2_ws/install/TEBLocalPlanner/lib/x86_64-linux-gnu/cps/eigen3.cps"
-        mode: "cps"
-        reason: "no_exist"
-      -
-        path: "/home/abhigyan/ros2_ws/install/TEBLocalPlanner/lib/cps/Eigen3.cps"
-        mode: "cps"
-        reason: "no_exist"
-      -
-        path: "/home/abhigyan/ros2_ws/install/TEBLocalPlanner/lib/cps/eigen3.cps"
-        mode: "cps"
-        reason: "no_exist"
-      -
-        path: "/home/abhigyan/ros2_ws/install/TEBLocalPlanner/share/cps/Eigen3.cps"
-        mode: "cps"
-        reason: "no_exist"
-      -
-        path: "/home/abhigyan/ros2_ws/install/TEBLocalPlanner/share/cps/eigen3.cps"
         mode: "cps"
         reason: "no_exist"
       -
@@ -2543,9 +2312,6 @@ events:
       version: "3.4.0"
     search_context:
       ENV{CMAKE_PREFIX_PATH}:
-        - "/home/abhigyan/ros2_ws/install/teb_local_planner"
-        - "/home/abhigyan/ros2_ws/install/log_pkg"
-        - "/home/abhigyan/ros2_ws/install/TEBLocalPlanner"
         - "/home/abhigyan/chrono/src/chrono_ros_interfaces/install/chrono_ros_interfaces"
       ENV{PATH}:
         - "/opt/ros/humble/bin"
@@ -2575,7 +2341,7 @@ events:
   -
     kind: "find_package-v1"
     backtrace:
-      - "CMakeLists.txt:20 (find_package)"
+      - "CMakeLists.txt:27 (find_package)"
     name: "OpenCV"
     configs:
       -
@@ -2643,102 +2409,6 @@ events:
         reason: "no_exist"
       -
         path: "/home/abhigyan/Desktop/teb_local_planner/build/CMakeFiles/pkgRedirects/share/cps/opencv.cps"
-        mode: "cps"
-        reason: "no_exist"
-      -
-        path: "/home/abhigyan/ros2_ws/install/teb_local_planner/OpenCVConfig.cmake"
-        mode: "config"
-        reason: "no_exist"
-      -
-        path: "/home/abhigyan/ros2_ws/install/teb_local_planner/opencv-config.cmake"
-        mode: "config"
-        reason: "no_exist"
-      -
-        path: "/home/abhigyan/ros2_ws/install/teb_local_planner/lib/x86_64-linux-gnu/cps/OpenCV.cps"
-        mode: "cps"
-        reason: "no_exist"
-      -
-        path: "/home/abhigyan/ros2_ws/install/teb_local_planner/lib/x86_64-linux-gnu/cps/opencv.cps"
-        mode: "cps"
-        reason: "no_exist"
-      -
-        path: "/home/abhigyan/ros2_ws/install/teb_local_planner/lib/cps/OpenCV.cps"
-        mode: "cps"
-        reason: "no_exist"
-      -
-        path: "/home/abhigyan/ros2_ws/install/teb_local_planner/lib/cps/opencv.cps"
-        mode: "cps"
-        reason: "no_exist"
-      -
-        path: "/home/abhigyan/ros2_ws/install/teb_local_planner/share/cps/OpenCV.cps"
-        mode: "cps"
-        reason: "no_exist"
-      -
-        path: "/home/abhigyan/ros2_ws/install/teb_local_planner/share/cps/opencv.cps"
-        mode: "cps"
-        reason: "no_exist"
-      -
-        path: "/home/abhigyan/ros2_ws/install/log_pkg/OpenCVConfig.cmake"
-        mode: "config"
-        reason: "no_exist"
-      -
-        path: "/home/abhigyan/ros2_ws/install/log_pkg/opencv-config.cmake"
-        mode: "config"
-        reason: "no_exist"
-      -
-        path: "/home/abhigyan/ros2_ws/install/log_pkg/lib/x86_64-linux-gnu/cps/OpenCV.cps"
-        mode: "cps"
-        reason: "no_exist"
-      -
-        path: "/home/abhigyan/ros2_ws/install/log_pkg/lib/x86_64-linux-gnu/cps/opencv.cps"
-        mode: "cps"
-        reason: "no_exist"
-      -
-        path: "/home/abhigyan/ros2_ws/install/log_pkg/lib/cps/OpenCV.cps"
-        mode: "cps"
-        reason: "no_exist"
-      -
-        path: "/home/abhigyan/ros2_ws/install/log_pkg/lib/cps/opencv.cps"
-        mode: "cps"
-        reason: "no_exist"
-      -
-        path: "/home/abhigyan/ros2_ws/install/log_pkg/share/cps/OpenCV.cps"
-        mode: "cps"
-        reason: "no_exist"
-      -
-        path: "/home/abhigyan/ros2_ws/install/log_pkg/share/cps/opencv.cps"
-        mode: "cps"
-        reason: "no_exist"
-      -
-        path: "/home/abhigyan/ros2_ws/install/TEBLocalPlanner/OpenCVConfig.cmake"
-        mode: "config"
-        reason: "no_exist"
-      -
-        path: "/home/abhigyan/ros2_ws/install/TEBLocalPlanner/opencv-config.cmake"
-        mode: "config"
-        reason: "no_exist"
-      -
-        path: "/home/abhigyan/ros2_ws/install/TEBLocalPlanner/lib/x86_64-linux-gnu/cps/OpenCV.cps"
-        mode: "cps"
-        reason: "no_exist"
-      -
-        path: "/home/abhigyan/ros2_ws/install/TEBLocalPlanner/lib/x86_64-linux-gnu/cps/opencv.cps"
-        mode: "cps"
-        reason: "no_exist"
-      -
-        path: "/home/abhigyan/ros2_ws/install/TEBLocalPlanner/lib/cps/OpenCV.cps"
-        mode: "cps"
-        reason: "no_exist"
-      -
-        path: "/home/abhigyan/ros2_ws/install/TEBLocalPlanner/lib/cps/opencv.cps"
-        mode: "cps"
-        reason: "no_exist"
-      -
-        path: "/home/abhigyan/ros2_ws/install/TEBLocalPlanner/share/cps/OpenCV.cps"
-        mode: "cps"
-        reason: "no_exist"
-      -
-        path: "/home/abhigyan/ros2_ws/install/TEBLocalPlanner/share/cps/opencv.cps"
         mode: "cps"
         reason: "no_exist"
       -
@@ -2923,9 +2593,6 @@ events:
       version: "4.13.0"
     search_context:
       ENV{CMAKE_PREFIX_PATH}:
-        - "/home/abhigyan/ros2_ws/install/teb_local_planner"
-        - "/home/abhigyan/ros2_ws/install/log_pkg"
-        - "/home/abhigyan/ros2_ws/install/TEBLocalPlanner"
         - "/home/abhigyan/chrono/src/chrono_ros_interfaces/install/chrono_ros_interfaces"
       ENV{PATH}:
         - "/opt/ros/humble/bin"

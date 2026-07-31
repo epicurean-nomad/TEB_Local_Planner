@@ -53,11 +53,13 @@ CMakeFiles/test_local_planner_viz.dir/aux/APSP.cpp.o: /home/abhigyan/Desktop/teb
   /usr/include/c++/12/bits/invoke.h \
   /usr/include/c++/12/bits/ios_base.h \
   /usr/include/c++/12/bits/istream.tcc \
+  /usr/include/c++/12/bits/iterator_concepts.h \
   /usr/include/c++/12/bits/locale_classes.h \
   /usr/include/c++/12/bits/locale_classes.tcc \
   /usr/include/c++/12/bits/locale_facets.h \
   /usr/include/c++/12/bits/locale_facets.tcc \
   /usr/include/c++/12/bits/localefwd.h \
+  /usr/include/c++/12/bits/max_size_type.h \
   /usr/include/c++/12/bits/memoryfwd.h \
   /usr/include/c++/12/bits/move.h \
   /usr/include/c++/12/bits/nested_exception.h \
@@ -69,6 +71,11 @@ CMakeFiles/test_local_planner_viz.dir/aux/APSP.cpp.o: /home/abhigyan/Desktop/teb
   /usr/include/c++/12/bits/predefined_ops.h \
   /usr/include/c++/12/bits/ptr_traits.h \
   /usr/include/c++/12/bits/range_access.h \
+  /usr/include/c++/12/bits/ranges_algo.h \
+  /usr/include/c++/12/bits/ranges_algobase.h \
+  /usr/include/c++/12/bits/ranges_base.h \
+  /usr/include/c++/12/bits/ranges_cmp.h \
+  /usr/include/c++/12/bits/ranges_util.h \
   /usr/include/c++/12/bits/refwrap.h \
   /usr/include/c++/12/bits/specfun.h \
   /usr/include/c++/12/bits/std_abs.h \
@@ -107,6 +114,7 @@ CMakeFiles/test_local_planner_viz.dir/aux/APSP.cpp.o: /home/abhigyan/Desktop/teb
   /usr/include/c++/12/clocale \
   /usr/include/c++/12/cmath \
   /usr/include/c++/12/compare \
+  /usr/include/c++/12/concepts \
   /usr/include/c++/12/cstddef \
   /usr/include/c++/12/cstdint \
   /usr/include/c++/12/cstdio \
@@ -130,6 +138,7 @@ CMakeFiles/test_local_planner_viz.dir/aux/APSP.cpp.o: /home/abhigyan/Desktop/teb
   /usr/include/c++/12/istream \
   /usr/include/c++/12/limits \
   /usr/include/c++/12/new \
+  /usr/include/c++/12/numbers \
   /usr/include/c++/12/numeric \
   /usr/include/c++/12/ostream \
   /usr/include/c++/12/pstl/execution_defs.h \
@@ -209,11 +218,16 @@ CMakeFiles/test_local_planner_viz.dir/aux/APSP.cpp.o: /home/abhigyan/Desktop/teb
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
   /usr/include/x86_64-linux-gnu/bits/sched.h \
   /usr/include/x86_64-linux-gnu/bits/select.h \
+  /usr/include/x86_64-linux-gnu/bits/select2.h \
   /usr/include/x86_64-linux-gnu/bits/setjmp.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio2.h \
   /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib.h \
   /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
   /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
   /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
@@ -252,6 +266,7 @@ CMakeFiles/test_local_planner_viz.dir/aux/APSP.cpp.o: /home/abhigyan/Desktop/teb
   /usr/include/x86_64-linux-gnu/bits/waitflags.h \
   /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
   /usr/include/x86_64-linux-gnu/bits/wchar.h \
+  /usr/include/x86_64-linux-gnu/bits/wchar2.h \
   /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h \
   /usr/include/x86_64-linux-gnu/bits/wordsize.h \
   /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
@@ -330,11 +345,13 @@ CMakeFiles/test_local_planner_viz.dir/aux/AreaGraph.cpp.o: /home/abhigyan/Deskto
   /usr/include/c++/12/bits/invoke.h \
   /usr/include/c++/12/bits/ios_base.h \
   /usr/include/c++/12/bits/istream.tcc \
+  /usr/include/c++/12/bits/iterator_concepts.h \
   /usr/include/c++/12/bits/locale_classes.h \
   /usr/include/c++/12/bits/locale_classes.tcc \
   /usr/include/c++/12/bits/locale_facets.h \
   /usr/include/c++/12/bits/locale_facets.tcc \
   /usr/include/c++/12/bits/localefwd.h \
+  /usr/include/c++/12/bits/max_size_type.h \
   /usr/include/c++/12/bits/memoryfwd.h \
   /usr/include/c++/12/bits/move.h \
   /usr/include/c++/12/bits/nested_exception.h \
@@ -346,6 +363,11 @@ CMakeFiles/test_local_planner_viz.dir/aux/AreaGraph.cpp.o: /home/abhigyan/Deskto
   /usr/include/c++/12/bits/predefined_ops.h \
   /usr/include/c++/12/bits/ptr_traits.h \
   /usr/include/c++/12/bits/range_access.h \
+  /usr/include/c++/12/bits/ranges_algo.h \
+  /usr/include/c++/12/bits/ranges_algobase.h \
+  /usr/include/c++/12/bits/ranges_base.h \
+  /usr/include/c++/12/bits/ranges_cmp.h \
+  /usr/include/c++/12/bits/ranges_util.h \
   /usr/include/c++/12/bits/refwrap.h \
   /usr/include/c++/12/bits/specfun.h \
   /usr/include/c++/12/bits/std_abs.h \
@@ -379,6 +401,7 @@ CMakeFiles/test_local_planner_viz.dir/aux/AreaGraph.cpp.o: /home/abhigyan/Deskto
   /usr/include/c++/12/clocale \
   /usr/include/c++/12/cmath \
   /usr/include/c++/12/compare \
+  /usr/include/c++/12/concepts \
   /usr/include/c++/12/cstddef \
   /usr/include/c++/12/cstdint \
   /usr/include/c++/12/cstdio \
@@ -402,6 +425,7 @@ CMakeFiles/test_local_planner_viz.dir/aux/AreaGraph.cpp.o: /home/abhigyan/Deskto
   /usr/include/c++/12/istream \
   /usr/include/c++/12/limits \
   /usr/include/c++/12/new \
+  /usr/include/c++/12/numbers \
   /usr/include/c++/12/numeric \
   /usr/include/c++/12/ostream \
   /usr/include/c++/12/pstl/execution_defs.h \
@@ -481,11 +505,18 @@ CMakeFiles/test_local_planner_viz.dir/aux/AreaGraph.cpp.o: /home/abhigyan/Deskto
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
   /usr/include/x86_64-linux-gnu/bits/sched.h \
   /usr/include/x86_64-linux-gnu/bits/select.h \
+  /usr/include/x86_64-linux-gnu/bits/select2.h \
   /usr/include/x86_64-linux-gnu/bits/setjmp.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio2.h \
   /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib.h \
+  /usr/include/x86_64-linux-gnu/bits/string_fortified.h \
+  /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \
   /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
   /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
   /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
@@ -524,6 +555,7 @@ CMakeFiles/test_local_planner_viz.dir/aux/AreaGraph.cpp.o: /home/abhigyan/Deskto
   /usr/include/x86_64-linux-gnu/bits/waitflags.h \
   /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
   /usr/include/x86_64-linux-gnu/bits/wchar.h \
+  /usr/include/x86_64-linux-gnu/bits/wchar2.h \
   /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h \
   /usr/include/x86_64-linux-gnu/bits/wordsize.h \
   /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
@@ -569,12 +601,14 @@ CMakeFiles/test_local_planner_viz.dir/aux/Junction.cpp.o: /home/abhigyan/Desktop
   /usr/include/c++/12/bits/functional_hash.h \
   /usr/include/c++/12/bits/hash_bytes.h \
   /usr/include/c++/12/bits/invoke.h \
+  /usr/include/c++/12/bits/iterator_concepts.h \
   /usr/include/c++/12/bits/memoryfwd.h \
   /usr/include/c++/12/bits/move.h \
   /usr/include/c++/12/bits/new_allocator.h \
   /usr/include/c++/12/bits/predefined_ops.h \
   /usr/include/c++/12/bits/ptr_traits.h \
   /usr/include/c++/12/bits/range_access.h \
+  /usr/include/c++/12/bits/ranges_cmp.h \
   /usr/include/c++/12/bits/refwrap.h \
   /usr/include/c++/12/bits/specfun.h \
   /usr/include/c++/12/bits/std_abs.h \
@@ -592,6 +626,8 @@ CMakeFiles/test_local_planner_viz.dir/aux/Junction.cpp.o: /home/abhigyan/Desktop
   /usr/include/c++/12/bits/vector.tcc \
   /usr/include/c++/12/climits \
   /usr/include/c++/12/cmath \
+  /usr/include/c++/12/compare \
+  /usr/include/c++/12/concepts \
   /usr/include/c++/12/cstdint \
   /usr/include/c++/12/debug/assertions.h \
   /usr/include/c++/12/debug/debug.h \
@@ -649,9 +685,12 @@ CMakeFiles/test_local_planner_viz.dir/aux/Junction.cpp.o: /home/abhigyan/Desktop
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
   /usr/include/x86_64-linux-gnu/bits/select.h \
+  /usr/include/x86_64-linux-gnu/bits/select2.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib.h \
   /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
   /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
   /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
@@ -724,11 +763,13 @@ CMakeFiles/test_local_planner_viz.dir/aux/RoadSegment.cpp.o: /home/abhigyan/Desk
   /usr/include/c++/12/bits/invoke.h \
   /usr/include/c++/12/bits/ios_base.h \
   /usr/include/c++/12/bits/istream.tcc \
+  /usr/include/c++/12/bits/iterator_concepts.h \
   /usr/include/c++/12/bits/locale_classes.h \
   /usr/include/c++/12/bits/locale_classes.tcc \
   /usr/include/c++/12/bits/locale_facets.h \
   /usr/include/c++/12/bits/locale_facets.tcc \
   /usr/include/c++/12/bits/localefwd.h \
+  /usr/include/c++/12/bits/max_size_type.h \
   /usr/include/c++/12/bits/memoryfwd.h \
   /usr/include/c++/12/bits/move.h \
   /usr/include/c++/12/bits/nested_exception.h \
@@ -739,6 +780,11 @@ CMakeFiles/test_local_planner_viz.dir/aux/RoadSegment.cpp.o: /home/abhigyan/Desk
   /usr/include/c++/12/bits/predefined_ops.h \
   /usr/include/c++/12/bits/ptr_traits.h \
   /usr/include/c++/12/bits/range_access.h \
+  /usr/include/c++/12/bits/ranges_algo.h \
+  /usr/include/c++/12/bits/ranges_algobase.h \
+  /usr/include/c++/12/bits/ranges_base.h \
+  /usr/include/c++/12/bits/ranges_cmp.h \
+  /usr/include/c++/12/bits/ranges_util.h \
   /usr/include/c++/12/bits/refwrap.h \
   /usr/include/c++/12/bits/specfun.h \
   /usr/include/c++/12/bits/std_abs.h \
@@ -767,6 +813,8 @@ CMakeFiles/test_local_planner_viz.dir/aux/RoadSegment.cpp.o: /home/abhigyan/Desk
   /usr/include/c++/12/climits \
   /usr/include/c++/12/clocale \
   /usr/include/c++/12/cmath \
+  /usr/include/c++/12/compare \
+  /usr/include/c++/12/concepts \
   /usr/include/c++/12/cstdint \
   /usr/include/c++/12/cstdio \
   /usr/include/c++/12/cstdlib \
@@ -787,6 +835,7 @@ CMakeFiles/test_local_planner_viz.dir/aux/RoadSegment.cpp.o: /home/abhigyan/Desk
   /usr/include/c++/12/istream \
   /usr/include/c++/12/limits \
   /usr/include/c++/12/new \
+  /usr/include/c++/12/numbers \
   /usr/include/c++/12/ostream \
   /usr/include/c++/12/pstl/execution_defs.h \
   /usr/include/c++/12/pstl/glue_algorithm_defs.h \
@@ -859,11 +908,16 @@ CMakeFiles/test_local_planner_viz.dir/aux/RoadSegment.cpp.o: /home/abhigyan/Desk
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
   /usr/include/x86_64-linux-gnu/bits/sched.h \
   /usr/include/x86_64-linux-gnu/bits/select.h \
+  /usr/include/x86_64-linux-gnu/bits/select2.h \
   /usr/include/x86_64-linux-gnu/bits/setjmp.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio2.h \
   /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib.h \
   /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
   /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
   /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
@@ -902,6 +956,7 @@ CMakeFiles/test_local_planner_viz.dir/aux/RoadSegment.cpp.o: /home/abhigyan/Desk
   /usr/include/x86_64-linux-gnu/bits/waitflags.h \
   /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
   /usr/include/x86_64-linux-gnu/bits/wchar.h \
+  /usr/include/x86_64-linux-gnu/bits/wchar2.h \
   /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h \
   /usr/include/x86_64-linux-gnu/bits/wordsize.h \
   /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
@@ -983,11 +1038,13 @@ CMakeFiles/test_local_planner_viz.dir/aux/RoutingLayer.cpp.o: /home/abhigyan/Des
   /usr/include/c++/12/bits/invoke.h \
   /usr/include/c++/12/bits/ios_base.h \
   /usr/include/c++/12/bits/istream.tcc \
+  /usr/include/c++/12/bits/iterator_concepts.h \
   /usr/include/c++/12/bits/locale_classes.h \
   /usr/include/c++/12/bits/locale_classes.tcc \
   /usr/include/c++/12/bits/locale_facets.h \
   /usr/include/c++/12/bits/locale_facets.tcc \
   /usr/include/c++/12/bits/localefwd.h \
+  /usr/include/c++/12/bits/max_size_type.h \
   /usr/include/c++/12/bits/memoryfwd.h \
   /usr/include/c++/12/bits/move.h \
   /usr/include/c++/12/bits/nested_exception.h \
@@ -1000,8 +1057,14 @@ CMakeFiles/test_local_planner_viz.dir/aux/RoutingLayer.cpp.o: /home/abhigyan/Des
   /usr/include/c++/12/bits/predefined_ops.h \
   /usr/include/c++/12/bits/ptr_traits.h \
   /usr/include/c++/12/bits/range_access.h \
+  /usr/include/c++/12/bits/ranges_algo.h \
+  /usr/include/c++/12/bits/ranges_algobase.h \
+  /usr/include/c++/12/bits/ranges_base.h \
+  /usr/include/c++/12/bits/ranges_cmp.h \
+  /usr/include/c++/12/bits/ranges_util.h \
   /usr/include/c++/12/bits/refwrap.h \
   /usr/include/c++/12/bits/specfun.h \
+  /usr/include/c++/12/bits/sstream.tcc \
   /usr/include/c++/12/bits/std_abs.h \
   /usr/include/c++/12/bits/stl_algo.h \
   /usr/include/c++/12/bits/stl_algobase.h \
@@ -1034,6 +1097,7 @@ CMakeFiles/test_local_planner_viz.dir/aux/RoutingLayer.cpp.o: /home/abhigyan/Des
   /usr/include/c++/12/clocale \
   /usr/include/c++/12/cmath \
   /usr/include/c++/12/compare \
+  /usr/include/c++/12/concepts \
   /usr/include/c++/12/cstddef \
   /usr/include/c++/12/cstdint \
   /usr/include/c++/12/cstdio \
@@ -1058,6 +1122,7 @@ CMakeFiles/test_local_planner_viz.dir/aux/RoutingLayer.cpp.o: /home/abhigyan/Des
   /usr/include/c++/12/istream \
   /usr/include/c++/12/limits \
   /usr/include/c++/12/new \
+  /usr/include/c++/12/numbers \
   /usr/include/c++/12/numeric \
   /usr/include/c++/12/ostream \
   /usr/include/c++/12/pstl/execution_defs.h \
@@ -1065,6 +1130,7 @@ CMakeFiles/test_local_planner_viz.dir/aux/RoutingLayer.cpp.o: /home/abhigyan/Des
   /usr/include/c++/12/pstl/glue_numeric_defs.h \
   /usr/include/c++/12/pstl/pstl_config.h \
   /usr/include/c++/12/ratio \
+  /usr/include/c++/12/sstream \
   /usr/include/c++/12/stdexcept \
   /usr/include/c++/12/streambuf \
   /usr/include/c++/12/string \
@@ -1136,11 +1202,16 @@ CMakeFiles/test_local_planner_viz.dir/aux/RoutingLayer.cpp.o: /home/abhigyan/Des
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
   /usr/include/x86_64-linux-gnu/bits/sched.h \
   /usr/include/x86_64-linux-gnu/bits/select.h \
+  /usr/include/x86_64-linux-gnu/bits/select2.h \
   /usr/include/x86_64-linux-gnu/bits/setjmp.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio2.h \
   /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib.h \
   /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
   /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
   /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
@@ -1179,6 +1250,7 @@ CMakeFiles/test_local_planner_viz.dir/aux/RoutingLayer.cpp.o: /home/abhigyan/Des
   /usr/include/x86_64-linux-gnu/bits/waitflags.h \
   /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
   /usr/include/x86_64-linux-gnu/bits/wchar.h \
+  /usr/include/x86_64-linux-gnu/bits/wchar2.h \
   /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h \
   /usr/include/x86_64-linux-gnu/bits/wordsize.h \
   /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
@@ -1258,11 +1330,13 @@ CMakeFiles/test_local_planner_viz.dir/aux/Serializer.cpp.o: /home/abhigyan/Deskt
   /usr/include/c++/12/bits/invoke.h \
   /usr/include/c++/12/bits/ios_base.h \
   /usr/include/c++/12/bits/istream.tcc \
+  /usr/include/c++/12/bits/iterator_concepts.h \
   /usr/include/c++/12/bits/locale_classes.h \
   /usr/include/c++/12/bits/locale_classes.tcc \
   /usr/include/c++/12/bits/locale_facets.h \
   /usr/include/c++/12/bits/locale_facets.tcc \
   /usr/include/c++/12/bits/localefwd.h \
+  /usr/include/c++/12/bits/max_size_type.h \
   /usr/include/c++/12/bits/memoryfwd.h \
   /usr/include/c++/12/bits/move.h \
   /usr/include/c++/12/bits/nested_exception.h \
@@ -1274,6 +1348,11 @@ CMakeFiles/test_local_planner_viz.dir/aux/Serializer.cpp.o: /home/abhigyan/Deskt
   /usr/include/c++/12/bits/predefined_ops.h \
   /usr/include/c++/12/bits/ptr_traits.h \
   /usr/include/c++/12/bits/range_access.h \
+  /usr/include/c++/12/bits/ranges_algo.h \
+  /usr/include/c++/12/bits/ranges_algobase.h \
+  /usr/include/c++/12/bits/ranges_base.h \
+  /usr/include/c++/12/bits/ranges_cmp.h \
+  /usr/include/c++/12/bits/ranges_util.h \
   /usr/include/c++/12/bits/refwrap.h \
   /usr/include/c++/12/bits/specfun.h \
   /usr/include/c++/12/bits/std_abs.h \
@@ -1307,6 +1386,7 @@ CMakeFiles/test_local_planner_viz.dir/aux/Serializer.cpp.o: /home/abhigyan/Deskt
   /usr/include/c++/12/clocale \
   /usr/include/c++/12/cmath \
   /usr/include/c++/12/compare \
+  /usr/include/c++/12/concepts \
   /usr/include/c++/12/cstddef \
   /usr/include/c++/12/cstdint \
   /usr/include/c++/12/cstdio \
@@ -1330,6 +1410,7 @@ CMakeFiles/test_local_planner_viz.dir/aux/Serializer.cpp.o: /home/abhigyan/Deskt
   /usr/include/c++/12/istream \
   /usr/include/c++/12/limits \
   /usr/include/c++/12/new \
+  /usr/include/c++/12/numbers \
   /usr/include/c++/12/numeric \
   /usr/include/c++/12/ostream \
   /usr/include/c++/12/pstl/execution_defs.h \
@@ -1409,11 +1490,18 @@ CMakeFiles/test_local_planner_viz.dir/aux/Serializer.cpp.o: /home/abhigyan/Deskt
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
   /usr/include/x86_64-linux-gnu/bits/sched.h \
   /usr/include/x86_64-linux-gnu/bits/select.h \
+  /usr/include/x86_64-linux-gnu/bits/select2.h \
   /usr/include/x86_64-linux-gnu/bits/setjmp.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio2.h \
   /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib.h \
+  /usr/include/x86_64-linux-gnu/bits/string_fortified.h \
+  /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \
   /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
   /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
   /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
@@ -1452,6 +1540,7 @@ CMakeFiles/test_local_planner_viz.dir/aux/Serializer.cpp.o: /home/abhigyan/Deskt
   /usr/include/x86_64-linux-gnu/bits/waitflags.h \
   /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
   /usr/include/x86_64-linux-gnu/bits/wchar.h \
+  /usr/include/x86_64-linux-gnu/bits/wchar2.h \
   /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h \
   /usr/include/x86_64-linux-gnu/bits/wordsize.h \
   /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
@@ -1502,6 +1591,7 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
   /home/abhigyan/Desktop/teb_local_planner/include/hyperedges.hpp \
   /home/abhigyan/Desktop/teb_local_planner/include/lidarObstPolyMsg.hpp \
   /home/abhigyan/Desktop/teb_local_planner/include/localPlannerTEB.hpp \
+  /home/abhigyan/Desktop/teb_local_planner/include/purePursuit.hpp \
   /home/abhigyan/Desktop/teb_local_planner/include/utils.hpp \
   /home/abhigyan/aux/g2o/g2o/autodiff/fixed_array.h \
   /home/abhigyan/aux/g2o/g2o/autodiff/memory.h \
@@ -1575,6 +1665,7 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
   /usr/include/c++/12/bits/allocator.h \
   /usr/include/c++/12/bits/atomic_base.h \
   /usr/include/c++/12/bits/atomic_lockfree_defines.h \
+  /usr/include/c++/12/bits/atomic_wait.h \
   /usr/include/c++/12/bits/basic_ios.h \
   /usr/include/c++/12/bits/basic_ios.tcc \
   /usr/include/c++/12/bits/basic_string.h \
@@ -1602,6 +1693,7 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
   /usr/include/c++/12/bits/invoke.h \
   /usr/include/c++/12/bits/ios_base.h \
   /usr/include/c++/12/bits/istream.tcc \
+  /usr/include/c++/12/bits/iterator_concepts.h \
   /usr/include/c++/12/bits/list.tcc \
   /usr/include/c++/12/bits/locale_classes.h \
   /usr/include/c++/12/bits/locale_classes.tcc \
@@ -1611,6 +1703,7 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
   /usr/include/c++/12/bits/locale_facets_nonio.h \
   /usr/include/c++/12/bits/locale_facets_nonio.tcc \
   /usr/include/c++/12/bits/localefwd.h \
+  /usr/include/c++/12/bits/max_size_type.h \
   /usr/include/c++/12/bits/memoryfwd.h \
   /usr/include/c++/12/bits/move.h \
   /usr/include/c++/12/bits/nested_exception.h \
@@ -1624,6 +1717,12 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
   /usr/include/c++/12/bits/ptr_traits.h \
   /usr/include/c++/12/bits/quoted_string.h \
   /usr/include/c++/12/bits/range_access.h \
+  /usr/include/c++/12/bits/ranges_algo.h \
+  /usr/include/c++/12/bits/ranges_algobase.h \
+  /usr/include/c++/12/bits/ranges_base.h \
+  /usr/include/c++/12/bits/ranges_cmp.h \
+  /usr/include/c++/12/bits/ranges_uninitialized.h \
+  /usr/include/c++/12/bits/ranges_util.h \
   /usr/include/c++/12/bits/refwrap.h \
   /usr/include/c++/12/bits/shared_ptr.h \
   /usr/include/c++/12/bits/shared_ptr_atomic.h \
@@ -1669,6 +1768,7 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
   /usr/include/c++/12/bits/unordered_map.h \
   /usr/include/c++/12/bits/unordered_set.h \
   /usr/include/c++/12/bits/uses_allocator.h \
+  /usr/include/c++/12/bits/uses_allocator_args.h \
   /usr/include/c++/12/bits/utility.h \
   /usr/include/c++/12/bits/vector.tcc \
   /usr/include/c++/12/bitset \
@@ -1682,6 +1782,7 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
   /usr/include/c++/12/cmath \
   /usr/include/c++/12/compare \
   /usr/include/c++/12/complex \
+  /usr/include/c++/12/concepts \
   /usr/include/c++/12/cstddef \
   /usr/include/c++/12/cstdint \
   /usr/include/c++/12/cstdio \
@@ -1718,6 +1819,7 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
   /usr/include/c++/12/memory \
   /usr/include/c++/12/mutex \
   /usr/include/c++/12/new \
+  /usr/include/c++/12/numbers \
   /usr/include/c++/12/numeric \
   /usr/include/c++/12/ostream \
   /usr/include/c++/12/pstl/execution_defs.h \
@@ -2037,11 +2139,14 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
   /usr/include/stdlib.h \
   /usr/include/string.h \
   /usr/include/strings.h \
+  /usr/include/syscall.h \
   /usr/include/time.h \
   /usr/include/unistd.h \
   /usr/include/wchar.h \
   /usr/include/wctype.h \
   /usr/include/x86_64-linux-gnu/asm/errno.h \
+  /usr/include/x86_64-linux-gnu/asm/unistd.h \
+  /usr/include/x86_64-linux-gnu/asm/unistd_64.h \
   /usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h \
   /usr/include/x86_64-linux-gnu/bits/byteswap.h \
   /usr/include/x86_64-linux-gnu/bits/confname.h \
@@ -2075,13 +2180,21 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
   /usr/include/x86_64-linux-gnu/bits/sched.h \
   /usr/include/x86_64-linux-gnu/bits/select.h \
+  /usr/include/x86_64-linux-gnu/bits/select2.h \
   /usr/include/x86_64-linux-gnu/bits/setjmp.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio2.h \
   /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib.h \
+  /usr/include/x86_64-linux-gnu/bits/string_fortified.h \
+  /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \
   /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
   /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
+  /usr/include/x86_64-linux-gnu/bits/syscall.h \
   /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
   /usr/include/x86_64-linux-gnu/bits/time.h \
   /usr/include/x86_64-linux-gnu/bits/time64.h \
@@ -2115,10 +2228,12 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
   /usr/include/x86_64-linux-gnu/bits/typesizes.h \
   /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
   /usr/include/x86_64-linux-gnu/bits/uio_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/unistd.h \
   /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
   /usr/include/x86_64-linux-gnu/bits/waitflags.h \
   /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
   /usr/include/x86_64-linux-gnu/bits/wchar.h \
+  /usr/include/x86_64-linux-gnu/bits/wchar2.h \
   /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h \
   /usr/include/x86_64-linux-gnu/bits/wordsize.h \
   /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
@@ -2142,6 +2257,7 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
   /usr/include/x86_64-linux-gnu/sys/cdefs.h \
   /usr/include/x86_64-linux-gnu/sys/select.h \
   /usr/include/x86_64-linux-gnu/sys/single_threaded.h \
+  /usr/include/x86_64-linux-gnu/sys/syscall.h \
   /usr/include/x86_64-linux-gnu/sys/types.h \
   /usr/lib/gcc/x86_64-linux-gnu/12/include/emmintrin.h \
   /usr/lib/gcc/x86_64-linux-gnu/12/include/float.h \
@@ -2322,8 +2438,6 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
 
 /usr/local/include/opencv4/opencv2/flann/dist.h:
 
-/usr/local/include/opencv4/opencv2/dnn/layer.hpp:
-
 /usr/local/include/opencv4/opencv2/dnn/dnn.hpp:
 
 /usr/local/include/opencv4/opencv2/dnn/dict.hpp:
@@ -2368,19 +2482,23 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
 
 /usr/lib/gcc/x86_64-linux-gnu/12/include/emmintrin.h:
 
+/usr/include/x86_64-linux-gnu/sys/syscall.h:
+
 /usr/include/x86_64-linux-gnu/c++/12/bits/time_members.h:
 
 /usr/include/x86_64-linux-gnu/c++/12/bits/messages_members.h:
 
 /usr/include/x86_64-linux-gnu/bits/unistd_ext.h:
 
+/usr/include/x86_64-linux-gnu/bits/syscall.h:
+
 /usr/include/x86_64-linux-gnu/bits/posix_opt.h:
 
 /usr/include/x86_64-linux-gnu/bits/getopt_posix.h:
 
-/usr/include/x86_64-linux-gnu/bits/getopt_core.h:
-
 /usr/include/unistd.h:
+
+/usr/include/syscall.h:
 
 /usr/include/linux/close_range.h:
 
@@ -2437,8 +2555,6 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
 /usr/include/eigen3/Eigen/src/SparseCore/SparseBlock.h:
 
 /usr/include/eigen3/Eigen/src/SparseCore/SparseAssign.h:
-
-/usr/include/eigen3/Eigen/src/SparseCore/MappedSparseMatrix.h:
 
 /usr/include/eigen3/Eigen/src/SparseCore/ConservativeSparseSparseProduct.h:
 
@@ -2514,29 +2630,57 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
 
 /usr/include/eigen3/Eigen/src/Core/util/ReshapedHelper.h:
 
-/usr/include/x86_64-linux-gnu/bits/waitstatus.h:
+/usr/include/eigen3/Eigen/src/IterativeLinearSolvers/ConjugateGradient.h:
 
-/usr/include/c++/12/chrono:
+/usr/include/eigen3/Eigen/src/Core/util/ReenableStupidWarnings.h:
 
-/usr/local/include/opencv4/opencv2/highgui.hpp:
+/usr/include/eigen3/Eigen/src/Core/util/Meta.h:
 
-/usr/include/x86_64-linux-gnu/bits/typesizes.h:
+/usr/include/eigen3/Eigen/src/Core/util/Memory.h:
 
-/usr/include/c++/12/bits/stl_pair.h:
+/usr/include/eigen3/Eigen/src/Core/util/Macros.h:
 
-/home/abhigyan/aux/g2o/g2o/core/base_multi_edge.h:
+/usr/include/eigen3/Eigen/src/Core/util/IntegralConstant.h:
 
-/usr/include/eigen3/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h:
+/usr/include/eigen3/Eigen/src/Core/util/IndexedViewHelper.h:
 
-/usr/include/c++/12/bits/unique_lock.h:
+/usr/include/eigen3/Eigen/src/Core/util/ForwardDeclarations.h:
 
-/usr/local/include/opencv4/opencv2/core/affine.hpp:
+/usr/include/eigen3/Eigen/src/Core/util/ConfigureVectorization.h:
 
-/usr/include/eigen3/Eigen/src/SVD/JacobiSVD.h:
+/usr/include/eigen3/Eigen/src/Core/util/BlasUtil.h:
 
-/usr/include/x86_64-linux-gnu/bits/types/timer_t.h:
+/usr/local/include/opencv4/opencv2/video/background_segm.hpp:
+
+/usr/include/eigen3/Eigen/src/SparseCore/SparseCwiseBinaryOp.h:
+
+/usr/include/eigen3/Eigen/src/Core/products/TriangularSolverMatrix.h:
+
+/usr/include/eigen3/Eigen/src/misc/RealSvd2x2.h:
+
+/usr/include/eigen3/Eigen/src/Core/products/TriangularMatrixVector.h:
+
+/usr/include/eigen3/Eigen/src/Core/products/TriangularMatrixMatrix.h:
+
+/usr/local/include/opencv4/opencv2/flann/ground_truth.h:
+
+/usr/include/eigen3/Eigen/src/Core/products/SelfadjointRank2Update.h:
+
+/usr/include/eigen3/Eigen/src/Core/products/SelfadjointProduct.h:
+
+/usr/include/eigen3/Eigen/src/Core/products/SelfadjointMatrixVector.h:
+
+/usr/include/eigen3/Eigen/src/Eigenvalues/RealQZ.h:
+
+/usr/include/eigen3/Eigen/src/Core/products/SelfadjointMatrixMatrix.h:
+
+/usr/include/eigen3/Eigen/src/LU/InverseImpl.h:
+
+/usr/include/eigen3/Eigen/src/Core/products/Parallelizer.h:
 
 /usr/local/include/opencv4/opencv2/core/cuda.hpp:
+
+/usr/include/x86_64-linux-gnu/asm/unistd_64.h:
 
 /home/abhigyan/Desktop/teb_local_planner/aux/Serializer.cpp:
 
@@ -2551,8 +2695,6 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
 /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h:
 
 /home/abhigyan/Desktop/teb_local_planner/aux/ParkingSpot.h:
-
-/usr/include/eigen3/Eigen/src/Core/util/BlasUtil.h:
 
 /usr/include/eigen3/Eigen/src/LU/PartialPivLU.h:
 
@@ -2588,13 +2730,7 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
 
 /usr/include/x86_64-linux-gnu/bits/select.h:
 
-/usr/include/eigen3/Eigen/src/Core/util/IntegralConstant.h:
-
 /usr/include/x86_64-linux-gnu/bits/struct_mutex.h:
-
-/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
-
-/usr/include/eigen3/Eigen/src/plugins/CommonCwiseBinaryOps.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/time_t.h:
 
@@ -2610,13 +2746,9 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
 
 /usr/include/time.h:
 
-/usr/include/x86_64-linux-gnu/c++/12/bits/basic_file.h:
+/usr/local/include/opencv4/opencv2/flann/timer.h:
 
-/usr/local/include/opencv4/opencv2/flann/sampling.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h:
-
-/usr/include/eigen3/Eigen/src/Core/Swap.h:
+/usr/include/c++/12/bits/hashtable.h:
 
 /usr/include/eigen3/Eigen/src/SparseCore/SparseUtil.h:
 
@@ -2630,11 +2762,15 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
 
 /usr/include/x86_64-linux-gnu/bits/long-double.h:
 
-/usr/include/x86_64-linux-gnu/bits/wchar.h:
+/usr/local/include/opencv4/opencv2/flann/sampling.h:
 
-/usr/include/c++/12/cstdlib:
+/usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h:
 
-/usr/include/x86_64-linux-gnu/bits/local_lim.h:
+/usr/include/x86_64-linux-gnu/c++/12/bits/basic_file.h:
+
+/usr/include/eigen3/Eigen/src/Core/Swap.h:
+
+/usr/include/x86_64-linux-gnu/bits/unistd.h:
 
 /usr/include/c++/12/memory:
 
@@ -2643,8 +2779,6 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
 /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h:
 
 /home/abhigyan/aux/g2o/g2o/stuff/logger.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/wint_t.h:
 
 /usr/include/x86_64-linux-gnu/bits/floatn-common.h:
 
@@ -2675,12 +2809,6 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
 /usr/include/stdint.h:
 
 /usr/include/endian.h:
-
-/usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h:
-
-/usr/include/eigen3/Eigen/src/Core/products/GeneralBlockPanelKernel.h:
-
-/usr/include/linux/errno.h:
 
 /usr/include/errno.h:
 
@@ -2718,6 +2846,10 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
 
 /usr/include/c++/12/tr1/legendre_function.tcc:
 
+/usr/include/eigen3/Eigen/src/Core/util/MKL_support.h:
+
+/usr/include/c++/12/tr1/gamma.tcc:
+
 /usr/include/eigen3/Eigen/src/Geometry/AlignedBox.h:
 
 /home/abhigyan/aux/g2o/g2o/core/base_variable_sized_edge.hpp:
@@ -2725,6 +2857,10 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
 /usr/include/c++/12/tr1/ell_integral.tcc:
 
 /usr/include/c++/12/tr1/beta_function.tcc:
+
+/usr/include/eigen3/Eigen/src/Core/util/Constants.h:
+
+/usr/include/c++/12/cwchar:
 
 /usr/include/c++/12/system_error:
 
@@ -2738,9 +2874,9 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h:
 
-/usr/include/eigen3/Eigen/IterativeLinearSolvers:
+/usr/include/x86_64-linux-gnu/bits/getopt_core.h:
 
-/usr/include/x86_64-linux-gnu/asm/errno.h:
+/usr/include/x86_64-linux-gnu/bits/stdlib.h:
 
 /usr/include/x86_64-linux-gnu/c++/12/bits/ctype_inline.h:
 
@@ -2764,23 +2900,55 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
 
 /usr/include/c++/12/limits:
 
+/usr/include/c++/12/iosfwd:
+
+/usr/local/include/opencv4/opencv2/flann/allocator.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_tm.h:
+
+/usr/include/c++/12/initializer_list:
+
+/usr/include/x86_64-linux-gnu/bits/fp-fast.h:
+
+/usr/local/include/opencv4/opencv2/flann/autotuned_index.h:
+
+/usr/include/c++/12/fstream:
+
+/usr/include/c++/12/bits/max_size_type.h:
+
+/usr/include/x86_64-linux-gnu/sys/select.h:
+
+/home/abhigyan/aux/g2o/g2o/core/g2o_core_api.h:
+
 /usr/include/x86_64-linux-gnu/bits/posix1_lim.h:
 
 /usr/include/x86_64-linux-gnu/bits/locale.h:
 
-/usr/include/x86_64-linux-gnu/bits/sched.h:
+/usr/include/c++/12/bits/stream_iterator.h:
 
-/usr/include/c++/12/bits/locale_facets.tcc:
+/usr/include/c++/12/bits/stl_tree.h:
+
+/usr/include/eigen3/Eigen/src/Core/functors/AssignmentFunctors.h:
+
+/usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h:
+
+/usr/include/eigen3/Eigen/src/Core/products/GeneralBlockPanelKernel.h:
+
+/usr/include/linux/errno.h:
+
+/usr/include/c++/12/bits/ranges_algo.h:
 
 /usr/include/x86_64-linux-gnu/bits/timesize.h:
+
+/usr/include/eigen3/Eigen/src/Eigenvalues/RealSchur.h:
+
+/usr/include/c++/12/bits/string_view.tcc:
+
+/usr/include/eigen3/Eigen/src/plugins/ArrayCwiseUnaryOps.h:
 
 /usr/include/c++/12/bits/hashtable_policy.h:
 
 /usr/include/c++/12/climits:
-
-/usr/local/include/opencv4/opencv2/flann/timer.h:
-
-/usr/include/c++/12/bits/hashtable.h:
 
 /usr/include/stdio.h:
 
@@ -2800,9 +2968,9 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
 
 /usr/include/c++/12/bits/stringfwd.h:
 
-/usr/include/eigen3/Eigen/src/IterativeLinearSolvers/ConjugateGradient.h:
+/usr/include/x86_64-linux-gnu/asm/unistd.h:
 
-/usr/include/eigen3/Eigen/src/Core/util/ReenableStupidWarnings.h:
+/usr/include/x86_64-linux-gnu/bits/stdio.h:
 
 /usr/include/c++/12/bits/stl_uninitialized.h:
 
@@ -2860,10 +3028,6 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
 
 /home/abhigyan/aux/g2o/g2o/core/optimizable_graph.h:
 
-/usr/include/c++/12/bits/memoryfwd.h:
-
-/usr/include/c++/12/bits/cxxabi_init_exception.h:
-
 /usr/include/c++/12/backward/binders.h:
 
 /usr/include/x86_64-linux-gnu/bits/libc-header-start.h:
@@ -2896,19 +3060,49 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
 
 /usr/include/c++/12/bits/locale_classes.h:
 
-/usr/include/x86_64-linux-gnu/bits/wordsize.h:
+/usr/include/eigen3/Eigen/src/misc/Kernel.h:
+
+/home/abhigyan/Desktop/teb_local_planner/aux/RTree.h:
 
 /usr/include/c++/12/pstl/execution_defs.h:
-
-/usr/include/x86_64-linux-gnu/bits/waitflags.h:
-
-/usr/include/c++/12/bits/basic_ios.h:
 
 /usr/include/c++/12/sstream:
 
 /usr/include/eigen3/Eigen/src/Core/Reshaped.h:
 
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/__FILE.h:
+
+/usr/include/c++/12/bits/nested_exception.h:
+
+/usr/include/c++/12/pstl/pstl_config.h:
+
+/usr/include/c++/12/bits/allocated_ptr.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h:
+
 /usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h:
+
+/usr/include/c++/12/bits/cxxabi_init_exception.h:
+
+/usr/include/c++/12/bits/memoryfwd.h:
+
+/usr/include/c++/12/bits/stl_pair.h:
+
+/usr/include/eigen3/Eigen/src/SparseCore/MappedSparseMatrix.h:
+
+/usr/include/c++/12/concepts:
+
+/usr/local/include/opencv4/opencv2/highgui.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/typesizes.h:
+
+/home/abhigyan/aux/g2o/g2o/core/base_multi_edge.h:
+
+/usr/include/eigen3/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h:
+
+/usr/include/c++/12/bits/unique_lock.h:
 
 /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h:
 
@@ -2930,6 +3124,8 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
 
 /usr/include/c++/12/bits/enable_special_members.h:
 
+/usr/include/c++/12/bits/ranges_base.h:
+
 /usr/local/include/opencv4/opencv2/flann/index_testing.h:
 
 /usr/include/c++/12/bits/stl_heap.h:
@@ -2948,27 +3144,17 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
 
 /usr/include/c++/12/bits/stl_deque.h:
 
-/usr/include/c++/12/bits/stl_tree.h:
-
-/usr/include/eigen3/Eigen/src/Core/functors/AssignmentFunctors.h:
-
-/usr/include/c++/12/bits/stream_iterator.h:
+/home/abhigyan/Desktop/teb_local_planner/include/purePursuit.hpp:
 
 /usr/include/math.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h:
 
-/usr/include/eigen3/Eigen/src/SparseCore/SparseColEtree.h:
+/usr/include/x86_64-linux-gnu/bits/sched.h:
 
-/home/abhigyan/aux/g2o/g2o/core/sparse_block_matrix.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/uio_lim.h:
+/usr/include/c++/12/bits/locale_facets.tcc:
 
 /usr/include/c++/12/bits/stl_iterator_base_types.h:
-
-/usr/local/include/opencv4/opencv2/core/optim.hpp:
-
-/usr/include/c++/12/bits/move.h:
 
 /usr/local/include/opencv4/opencv2/flann/result_set.h:
 
@@ -2984,15 +3170,7 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
 
 /home/abhigyan/Desktop/teb_local_planner/aux/APSP.cpp:
 
-/usr/include/c++/12/iosfwd:
-
-/usr/local/include/opencv4/opencv2/flann/allocator.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct_tm.h:
-
 /usr/lib/gcc/x86_64-linux-gnu/12/include/limits.h:
-
-/usr/include/eigen3/Eigen/src/Core/products/TriangularMatrixMatrix.h:
 
 /usr/include/c++/12/bits/locale_classes.tcc:
 
@@ -3003,6 +3181,14 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
 /usr/include/c++/12/bits/exception.h:
 
 /usr/include/c++/12/bits/locale_facets_nonio.h:
+
+/usr/include/c++/12/ext/string_conversions.h:
+
+/usr/include/c++/12/tr1/hypergeometric.tcc:
+
+/usr/include/c++/12/bits/vector.tcc:
+
+/usr/include/eigen3/Eigen/src/Core/Visitor.h:
 
 /usr/local/include/opencv4/opencv2/core/bufferpool.hpp:
 
@@ -3020,13 +3206,15 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
 
 /home/abhigyan/Desktop/teb_local_planner/aux/APSP.h:
 
-/usr/include/c++/12/unordered_set:
-
-/usr/include/c++/12/bits/erase_if.h:
-
 /usr/include/eigen3/Eigen/src/SparseLU/SparseLU_pivotL.h:
 
+/usr/include/c++/12/bits/ranges_algobase.h:
+
 /usr/include/c++/12/bits/specfun.h:
+
+/usr/include/eigen3/Eigen/src/Core/util/DisableStupidWarnings.h:
+
+/usr/include/asm-generic/errno-base.h:
 
 /usr/include/eigen3/Eigen/src/Core/BandMatrix.h:
 
@@ -3038,29 +3226,27 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
 
 /usr/include/c++/12/bits/functexcept.h:
 
-/usr/include/eigen3/Eigen/src/SparseLU/SparseLU_gemm_kernel.h:
+/usr/include/libintl.h:
 
-/home/abhigyan/Desktop/teb_local_planner/aux/PathKey.h:
+/usr/include/x86_64-linux-gnu/bits/thread-shared-types.h:
 
-/usr/include/eigen3/Eigen/src/misc/Kernel.h:
+/usr/local/include/opencv4/opencv2/features2d.hpp:
 
-/home/abhigyan/Desktop/teb_local_planner/aux/RTree.h:
+/usr/include/eigen3/Eigen/src/Cholesky/LDLT.h:
 
-/usr/include/eigen3/Eigen/src/Core/products/TriangularSolverVector.h:
+/usr/include/eigen3/Eigen/src/misc/Image.h:
 
-/usr/include/stdc-predef.h:
+/usr/include/x86_64-linux-gnu/c++/12/bits/cpu_defines.h:
 
-/usr/include/c++/12/bits/basic_string.h:
+/usr/include/x86_64-linux-gnu/c++/12/bits/gthr-default.h:
 
-/usr/include/x86_64-linux-gnu/bits/types/__FILE.h:
-
-/usr/include/c++/12/bits/nested_exception.h:
-
-/usr/include/c++/12/bits/locale_facets.h:
+/usr/include/x86_64-linux-gnu/bits/byteswap.h:
 
 /usr/local/include/opencv4/opencv2/core/traits.hpp:
 
 /home/abhigyan/Desktop/teb_local_planner/aux/Path.h:
+
+/usr/include/c++/12/bits/locale_facets.h:
 
 /usr/include/c++/12/string_view:
 
@@ -3068,17 +3254,31 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
 
 /home/abhigyan/aux/g2o/g2o/stuff/property.h:
 
+/usr/include/c++/12/cstdlib:
+
+/usr/include/x86_64-linux-gnu/bits/wchar.h:
+
+/usr/include/eigen3/Eigen/src/SparseLU/SparseLU_gemm_kernel.h:
+
+/home/abhigyan/Desktop/teb_local_planner/aux/PathKey.h:
+
+/usr/include/c++/12/bits/iterator_concepts.h:
+
+/usr/include/eigen3/Eigen/src/Core/products/TriangularSolverVector.h:
+
+/usr/include/c++/12/bits/basic_string.h:
+
+/usr/include/stdc-predef.h:
+
+/usr/local/include/opencv4/opencv2/core/optim.hpp:
+
+/usr/include/c++/12/bits/move.h:
+
 /usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h:
 
 /usr/include/c++/12/bits/ostream.tcc:
 
 /usr/include/c++/12/bits/ostream_insert.h:
-
-/usr/include/x86_64-linux-gnu/bits/fp-fast.h:
-
-/usr/local/include/opencv4/opencv2/flann/autotuned_index.h:
-
-/usr/include/c++/12/fstream:
 
 /usr/include/c++/12/bits/ptr_traits.h:
 
@@ -3106,11 +3306,15 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
 
 /usr/include/c++/12/bits/unordered_set.h:
 
+/home/abhigyan/Desktop/teb_local_planner/include/lidarObstPolyMsg.hpp:
+
+/home/abhigyan/Desktop/teb_local_planner/aux/Junction.cpp:
+
+/usr/include/eigen3/Eigen/src/Core/ArithmeticSequence.h:
+
 /usr/include/eigen3/Eigen/src/Core/GlobalFunctions.h:
 
-/usr/include/eigen3/Eigen/src/LU/InverseImpl.h:
-
-/usr/include/eigen3/Eigen/src/Core/products/Parallelizer.h:
+/usr/include/c++/12/bits/ranges_util.h:
 
 /usr/local/include/opencv4/opencv2/flann/params.h:
 
@@ -3132,15 +3336,15 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
 
 /usr/include/c++/12/bits/stl_multiset.h:
 
+/usr/include/c++/12/bits/erase_if.h:
+
+/usr/include/c++/12/unordered_set:
+
 /usr/local/include/opencv4/opencv2/flann/lsh_table.h:
 
 /usr/include/eigen3/Eigen/src/IterativeLinearSolvers/LeastSquareConjugateGradient.h:
 
 /usr/include/c++/12/bits/stl_numeric.h:
-
-/usr/include/x86_64-linux-gnu/c++/12/bits/c++allocator.h:
-
-/usr/include/x86_64-linux-gnu/bits/math-vector.h:
 
 /usr/include/c++/12/bits/stl_bvector.h:
 
@@ -3164,13 +3368,23 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
 
 /usr/include/c++/12/bits/uses_allocator.h:
 
-/usr/include/c++/12/tr1/hypergeometric.tcc:
+/usr/include/x86_64-linux-gnu/bits/types/locale_t.h:
 
-/usr/include/c++/12/bits/vector.tcc:
+/usr/include/features-time64.h:
 
-/usr/include/c++/12/ext/string_conversions.h:
+/usr/include/stdlib.h:
 
-/usr/include/eigen3/Eigen/src/Core/Visitor.h:
+/usr/include/c++/12/ext/aligned_buffer.h:
+
+/usr/include/eigen3/Eigen/Sparse:
+
+/usr/include/eigen3/Eigen/src/Core/GenericPacketMath.h:
+
+/usr/include/c++/12/stdexcept:
+
+/usr/include/c++/12/istream:
+
+/usr/include/c++/12/cctype:
 
 /usr/include/x86_64-linux-gnu/bits/errno.h:
 
@@ -3180,37 +3394,15 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
 
 /home/abhigyan/aux/g2o/g2o/core/base_binary_edge.h:
 
+/usr/include/c++/12/functional:
+
+/usr/include/c++/12/bits/deque.tcc:
+
 /usr/include/x86_64-linux-gnu/bits/endian.h:
 
 /usr/include/x86_64-linux-gnu/bits/mathcalls.h:
 
 /usr/include/c++/12/cstdint:
-
-/usr/include/libintl.h:
-
-/usr/include/x86_64-linux-gnu/bits/thread-shared-types.h:
-
-/usr/include/c++/12/bits/deque.tcc:
-
-/usr/include/c++/12/functional:
-
-/usr/local/include/opencv4/opencv2/features2d.hpp:
-
-/usr/include/eigen3/Eigen/src/Cholesky/LDLT.h:
-
-/usr/include/eigen3/Eigen/src/misc/Image.h:
-
-/usr/include/x86_64-linux-gnu/c++/12/bits/cpu_defines.h:
-
-/usr/include/x86_64-linux-gnu/c++/12/bits/gthr-default.h:
-
-/usr/include/x86_64-linux-gnu/bits/byteswap.h:
-
-/home/abhigyan/Desktop/teb_local_planner/aux/Junction.cpp:
-
-/usr/include/eigen3/Eigen/src/Core/ArithmeticSequence.h:
-
-/home/abhigyan/Desktop/teb_local_planner/include/lidarObstPolyMsg.hpp:
 
 /usr/include/c++/12/bits/char_traits.h:
 
@@ -3222,39 +3414,55 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
 
 /usr/include/x86_64-linux-gnu/bits/fp-logb.h:
 
+/usr/local/include/opencv4/opencv2/dnn/layer.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/wchar2.h:
+
 /usr/local/include/opencv4/opencv2/stitching/detail/motion_estimators.hpp:
 
 /usr/include/eigen3/Eigen/src/Core/arch/SSE/MathFunctions.h:
 
 /usr/include/c++/12/exception:
 
-/usr/include/stdlib.h:
+/usr/local/include/opencv4/opencv2/core/affine.hpp:
 
-/usr/include/c++/12/ext/aligned_buffer.h:
+/usr/include/eigen3/Eigen/src/SVD/JacobiSVD.h:
 
-/usr/include/x86_64-linux-gnu/bits/types/locale_t.h:
+/usr/include/x86_64-linux-gnu/bits/types/timer_t.h:
 
-/usr/include/features-time64.h:
+/usr/include/x86_64-linux-gnu/bits/types/wint_t.h:
 
-/usr/include/eigen3/Eigen/Sparse:
+/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
 
-/usr/include/eigen3/Eigen/src/Core/GenericPacketMath.h:
+/usr/include/x86_64-linux-gnu/asm/errno.h:
 
-/usr/include/c++/12/bits/allocated_ptr.h:
+/usr/include/eigen3/Eigen/IterativeLinearSolvers:
 
-/usr/include/c++/12/pstl/pstl_config.h:
+/usr/include/eigen3/Eigen/src/plugins/CommonCwiseBinaryOps.h:
+
+/usr/include/eigen3/Eigen/src/SparseCore/SparseColEtree.h:
+
+/home/abhigyan/aux/g2o/g2o/core/sparse_block_matrix.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/uio_lim.h:
+
+/usr/include/c++/12/bits/basic_ios.h:
+
+/usr/include/x86_64-linux-gnu/bits/waitflags.h:
+
+/usr/include/c++/12/chrono:
+
+/usr/include/x86_64-linux-gnu/bits/waitstatus.h:
+
+/usr/include/x86_64-linux-gnu/bits/wordsize.h:
 
 /usr/include/c++/12/cwctype:
 
 /usr/include/x86_64-linux-gnu/bits/xopen_lim.h:
 
-/usr/include/c++/12/initializer_list:
+/usr/include/x86_64-linux-gnu/bits/math-vector.h:
 
-/usr/include/c++/12/stdexcept:
-
-/usr/include/c++/12/cctype:
-
-/usr/include/c++/12/istream:
+/usr/include/x86_64-linux-gnu/c++/12/bits/c++allocator.h:
 
 /usr/include/x86_64-linux-gnu/c++/12/bits/c++config.h:
 
@@ -3266,6 +3474,14 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
 
 /usr/include/eigen3/Eigen/src/Core/Select.h:
 
+/usr/local/include/opencv4/opencv2/flann/miniflann.hpp:
+
+/home/abhigyan/aux/g2o/g2o/core/matrix_operations.h:
+
+/usr/include/eigen3/Eigen/src/Core/CwiseUnaryOp.h:
+
+/usr/include/x86_64-linux-gnu/c++/12/bits/ctype_base.h:
+
 /usr/include/x86_64-linux-gnu/c++/12/bits/gthr.h:
 
 /usr/include/eigen3/Eigen/src/SparseCore/SparsePermutation.h:
@@ -3275,10 +3491,6 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
 /usr/include/eigen3/Eigen/src/Eigenvalues/EigenSolver.h:
 
 /usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
-
-/usr/include/x86_64-linux-gnu/sys/select.h:
-
-/home/abhigyan/aux/g2o/g2o/core/g2o_core_api.h:
 
 /usr/include/eigen3/Eigen/src/Core/CommaInitializer.h:
 
@@ -3318,6 +3530,8 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
 
 /usr/include/strings.h:
 
+/usr/include/x86_64-linux-gnu/bits/string_fortified.h:
+
 /usr/include/eigen3/Eigen/src/SparseCore/SparseTranspose.h:
 
 /home/abhigyan/Desktop/teb_local_planner/aux/RoadNode.h:
@@ -3338,6 +3552,10 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
 
 /usr/include/c++/12/bits/parse_numbers.h:
 
+/home/abhigyan/Desktop/teb_local_planner/aux/Junction.h:
+
+/usr/include/c++/12/bits/sstream.tcc:
+
 /usr/include/eigen3/Eigen/LU:
 
 /usr/include/c++/12/ctime:
@@ -3349,6 +3567,8 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
 /home/abhigyan/Desktop/teb_local_planner/aux/ValidityCheckLocal.h:
 
 /usr/local/include/opencv4/opencv2/dnn/utils/inference_engine.hpp:
+
+/usr/include/c++/12/bits/ranges_cmp.h:
 
 /home/abhigyan/Desktop/teb_local_planner/aux/geometry_2D_utils.hpp:
 
@@ -3364,6 +3584,8 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
 
 /home/abhigyan/aux/g2o/g2o/autodiff/fixed_array.h:
 
+/usr/include/c++/12/numbers:
+
 /home/abhigyan/aux/g2o/g2o/autodiff/memory.h:
 
 /home/abhigyan/aux/g2o/g2o/stuff/timeutil.h:
@@ -3373,10 +3595,6 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
 /home/abhigyan/aux/g2o/g2o/core/base_fixed_sized_edge.hpp:
 
 /usr/include/eigen3/Eigen/SVD:
-
-/usr/include/c++/12/cwchar:
-
-/usr/include/eigen3/Eigen/src/Core/util/Constants.h:
 
 /home/abhigyan/aux/g2o/g2o/core/base_vertex.hpp:
 
@@ -3399,14 +3617,6 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
 /home/abhigyan/aux/g2o/g2o/core/batch_stats.h:
 
 /home/abhigyan/aux/g2o/g2o/core/marginal_covariance_cholesky.h:
-
-/usr/local/include/opencv4/opencv2/flann/miniflann.hpp:
-
-/usr/include/eigen3/Eigen/src/Core/CwiseUnaryOp.h:
-
-/usr/include/x86_64-linux-gnu/c++/12/bits/ctype_base.h:
-
-/home/abhigyan/aux/g2o/g2o/core/matrix_operations.h:
 
 /home/abhigyan/aux/g2o/g2o/core/matrix_structure.h:
 
@@ -3460,9 +3670,9 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
 
 /usr/include/eigen3/Eigen/src/Core/products/GeneralMatrixVector.h:
 
-/usr/include/eigen3/Eigen/src/Core/Random.h:
-
 /usr/include/c++/12/ios:
+
+/usr/include/eigen3/Eigen/src/Core/Random.h:
 
 /home/abhigyan/aux/g2o/g2o/stuff/tuple_tools.h:
 
@@ -3484,7 +3694,9 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
 
 /usr/include/c++/12/bits/atomic_lockfree_defines.h:
 
-/usr/include/eigen3/Eigen/src/Core/util/ConfigureVectorization.h:
+/usr/include/x86_64-linux-gnu/bits/local_lim.h:
+
+/usr/include/c++/12/bits/atomic_wait.h:
 
 /usr/include/c++/12/bits/locale_facets_nonio.tcc:
 
@@ -3494,7 +3706,15 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
 
 /usr/include/c++/12/bits/quoted_string.h:
 
+/usr/include/c++/12/bits/ranges_uninitialized.h:
+
+/usr/include/c++/12/bits/cxxabi_forced.h:
+
+/usr/include/c++/12/bits/stl_stack.h:
+
 /usr/include/c++/12/tr1/bessel_function.tcc:
+
+/usr/include/x86_64-linux-gnu/bits/strings_fortified.h:
 
 /usr/include/c++/12/bits/shared_ptr.h:
 
@@ -3506,27 +3726,19 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
 
 /usr/include/c++/12/bits/shared_ptr_base.h:
 
-/home/abhigyan/Desktop/teb_local_planner/aux/Junction.h:
-
-/usr/include/c++/12/bits/sstream.tcc:
-
 /usr/local/include/opencv4/opencv2/objdetect/face.hpp:
 
 /usr/include/c++/12/bits/std_mutex.h:
 
 /usr/include/c++/12/bits/stl_map.h:
 
+/usr/include/x86_64-linux-gnu/bits/select2.h:
+
 /usr/include/c++/12/bits/stl_multimap.h:
 
 /usr/include/c++/12/bits/stl_raw_storage_iter.h:
 
-/usr/include/eigen3/Eigen/src/Core/util/Memory.h:
-
 /usr/include/c++/12/bits/stl_relops.h:
-
-/usr/include/c++/12/bits/cxxabi_forced.h:
-
-/usr/include/c++/12/bits/stl_stack.h:
 
 /usr/include/c++/12/bits/unique_ptr.h:
 
@@ -3537,6 +3749,8 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
 /usr/include/eigen3/Eigen/src/IterativeLinearSolvers/BasicPreconditioners.h:
 
 /usr/include/c++/12/iterator:
+
+/usr/include/c++/12/bits/uses_allocator_args.h:
 
 /usr/include/c++/12/bitset:
 
@@ -3617,12 +3831,6 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
 /usr/include/eigen3/Eigen/src/SVD/BDCSVD.h:
 
 /usr/include/eigen3/Eigen/src/plugins/ArrayCwiseBinaryOps.h:
-
-/usr/include/eigen3/Eigen/src/Eigenvalues/RealSchur.h:
-
-/usr/include/c++/12/bits/string_view.tcc:
-
-/usr/include/eigen3/Eigen/src/plugins/ArrayCwiseUnaryOps.h:
 
 /usr/include/eigen3/Eigen/src/plugins/MatrixCwiseUnaryOps.h:
 
@@ -3750,12 +3958,6 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
 
 /usr/include/eigen3/Eigen/src/Core/arch/Default/BFloat16.h:
 
-/usr/local/include/opencv4/opencv2/video/background_segm.hpp:
-
-/usr/include/eigen3/Eigen/src/SparseCore/SparseCwiseBinaryOp.h:
-
-/usr/include/eigen3/Eigen/src/Core/products/TriangularSolverMatrix.h:
-
 /usr/include/x86_64-linux-gnu/bits/timex.h:
 
 /usr/include/eigen3/Eigen/src/Core/PartialReduxEvaluator.h:
@@ -3787,35 +3989,3 @@ CMakeFiles/test_local_planner_viz.dir/src/test_local_planner_viz.cpp.o: /home/ab
 /usr/include/eigen3/Eigen/src/Core/functors/UnaryFunctors.h:
 
 /usr/include/eigen3/Eigen/src/Core/products/GeneralMatrixMatrix.h:
-
-/usr/include/eigen3/Eigen/src/Eigenvalues/RealQZ.h:
-
-/usr/include/eigen3/Eigen/src/Core/products/SelfadjointMatrixMatrix.h:
-
-/usr/include/eigen3/Eigen/src/Core/products/SelfadjointMatrixVector.h:
-
-/usr/include/eigen3/Eigen/src/Core/products/SelfadjointProduct.h:
-
-/usr/local/include/opencv4/opencv2/flann/ground_truth.h:
-
-/usr/include/eigen3/Eigen/src/Core/products/SelfadjointRank2Update.h:
-
-/usr/include/asm-generic/errno-base.h:
-
-/usr/include/eigen3/Eigen/src/Core/util/DisableStupidWarnings.h:
-
-/usr/include/eigen3/Eigen/src/misc/RealSvd2x2.h:
-
-/usr/include/eigen3/Eigen/src/Core/products/TriangularMatrixVector.h:
-
-/usr/include/eigen3/Eigen/src/Core/util/ForwardDeclarations.h:
-
-/usr/include/eigen3/Eigen/src/Core/util/IndexedViewHelper.h:
-
-/usr/include/c++/12/tr1/gamma.tcc:
-
-/usr/include/eigen3/Eigen/src/Core/util/MKL_support.h:
-
-/usr/include/eigen3/Eigen/src/Core/util/Macros.h:
-
-/usr/include/eigen3/Eigen/src/Core/util/Meta.h:

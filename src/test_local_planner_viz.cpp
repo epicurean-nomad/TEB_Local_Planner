@@ -70,6 +70,8 @@
 #include "../aux/ValidityCheckLocal.h"
 #include "../aux/RoutingLayer.h"
 #include "../include/localPlannerTEB.hpp"
+#include "../include/purePursuit.hpp"
+
 
 // ============================================================================
 // CLI args
@@ -295,27 +297,6 @@ struct RoutePlayback {
     }
     double totalLength() const { return cumDist.empty() ? 0.0 : cumDist.back(); }
 
-    // Sample position + heading at arc-length s via linear interpolation;
-    // heading from the local tangent (matches estimateHeadingFromPath's
-    // convention elsewhere: forward difference, no stored heading needed).
-    VehicleState sampleAt(const std::vector<Vec3>& route, double s) const {
-        VehicleState vs{};
-        if (route.empty()) return vs;
-        s = std::max(0.0, std::min(s, totalLength()));
-
-        size_t i = std::upper_bound(cumDist.begin(), cumDist.end(), s) - cumDist.begin();
-        if (i == 0) i = 1;
-        if (i >= route.size()) i = route.size() - 1;
-
-        double segLen = cumDist[i] - cumDist[i - 1];
-        double t = (segLen > 1e-9) ? (s - cumDist[i - 1]) / segLen : 0.0;
-        t = std::max(0.0, std::min(1.0, t));
-
-        vs.x = route[i - 1].X + t * (route[i].X - route[i - 1].X);
-        vs.y = route[i - 1].Y + t * (route[i].Y - route[i - 1].Y);
-        vs.theta = std::atan2(route[i].Y - route[i - 1].Y, route[i].X - route[i - 1].X);
-        return vs;
-    }
 };
 
 // ============================================================================
@@ -324,7 +305,7 @@ struct RoutePlayback {
 struct UIState {
     std::vector<SimObstacle> obstacles;
     Camera cam;
-    double obstacleHalfSize = 1.0;
+    double obstacleHalfSize = 4.5;
 };
 
 void onMouse(int event, int px, int py, int, void* userdata) {
@@ -396,12 +377,36 @@ void drawVehicle(cv::Mat& img, const VehicleState& vs, const Camera& cam) {
         return cam.toPx(wx, wy);
     };
     std::vector<cv::Point> pts = {
-        corner(length * 0.5, 0),
+        corner(length * 0.5, width * 0.5),
         corner(-length * 0.5, width * 0.5),
         corner(-length * 0.5, -width * 0.5),
+        corner(length * 0.5, -width * 0.5)
     };
     cv::fillConvexPoly(img, pts, cv::Scalar(40, 200, 40), cv::LINE_AA);
 }
+
+
+std::vector<Vec3> extractLocalWindow(const std::vector<Vec3>& route, const VehicleState& vs, double horizonM) {
+    if (route.size() < 2) return route;
+    int i0 = 0;
+    double bestD2 = 1e18;
+    for (size_t i = 0; i < route.size(); ++i) {
+        double dx = route[i].X - vs.x, dy = route[i].Y - vs.y;
+        double d2 = dx * dx + dy * dy;
+        if (d2 < bestD2) { bestD2 = d2; i0 = static_cast<int>(i); }
+    }
+    int i1 = i0;
+    double acc = 0.0;
+    for (size_t i = i0; i + 1 < route.size(); ++i) {
+        if (route[i + 1].Dir != route[i0].Dir) break; // stop at a gear change -- can't represent a cusp in one window
+        acc += std::hypot(route[i + 1].X - route[i].X, route[i + 1].Y - route[i].Y);
+        i1 = static_cast<int>(i + 1);
+        if (acc >= horizonM) break;
+    }
+    if (i1 <= i0) i1 = std::min(static_cast<int>(route.size()) - 1, i0 + 1);
+    return std::vector<Vec3>(route.begin() + i0, route.begin() + i1 + 1);
+}
+
 
 // ============================================================================
 // main
@@ -423,17 +428,7 @@ int main(int argc, char** argv) {
     validity_local_.init(&router.graph());
     validity_local_.setVehicle(2.2f, 1.3f);
 
-    // CRITICAL: local_polygons_ inside ValidityCheckLocal starts empty and
-    // is ONLY populated by setLocalZone()/setRouteZone() -- without this,
-    // isInsideZone() always falls through to `return false`, which makes
-    // isVehicleFeasible() reject every single pose unconditionally,
-    // regardless of obstacles. The real PlannerNode calls setRouteZone()
-    // inside getKinodynamicPath() for the route it just planned; this
-    // harness bypasses that entirely (we load a CSV directly), so we call
-    // it here ourselves. Passing every node in the graph is a deliberately
-    // maximal zone (the documented semantics of setRouteZone are "a safe
-    // superset of the route corridor") -- fine for a small test map, avoids
-    // having to correlate arbitrary CSV points back to specific node IDs.
+
     {
         std::vector<uint32_t> allNodeIds;
         allNodeIds.reserve(router.graph().nodeCount());
@@ -441,7 +436,7 @@ int main(int argc, char** argv) {
         validity_local_.setRouteZone(allNodeIds);
     }
 
-    const float margin = 0.3f, planHorizon = 35.0f;
+    const float margin = 0.1f, planHorizon = 15.0f;
     TebLocalPlanner planner(margin, planHorizon);
     planner.init(&validity_local_);
 
@@ -468,13 +463,10 @@ int main(int argc, char** argv) {
     cv::namedWindow(winName, cv::WINDOW_AUTOSIZE);
     cv::setMouseCallback(winName, onMouse, &ui);
 
-    // Vehicle state now persists across frames directly (rather than a
-    // scalar arc-length re-sampled from the static original route each
-    // time), since it needs to end up wherever the CURRENT plan actually
-    // put it -- see the closed-loop note below.
+    
     VehicleState vs{};
     vs.x = globalRoute[0].X; vs.y = globalRoute[0].Y;
-    vs.theta = playback.sampleAt(globalRoute, 0.0).theta;
+    vs.theta = atan2(globalRoute[1].Y - globalRoute[0].Y, globalRoute[1].X - globalRoute[0].X);
 
     // Persistent, monotonically-increasing arc-length progress. Deliberately
     // NOT re-derived via a nearest-point search each frame: doing that
@@ -485,7 +477,12 @@ int main(int argc, char** argv) {
     // current one, and gets stuck re-deriving the exact same baseline
     // forever. Tracking it as a plain persistent scalar avoids that
     // entirely.
-    double sGlobal = 0.0;
+    // double sGlobal = 0.0;
+
+    PurePursuitConfig ppCfg;
+    ppCfg.steer_sign = 1.0;
+    PurePursuitController pp(ppCfg);
+
 
     double speed = args.Speed;    // [m/s]
     bool paused = false;
@@ -498,6 +495,10 @@ int main(int argc, char** argv) {
                  "  [ / ] = shrink/grow follow radius, +/-=speed, q/ESC=quit\n\n";
 
     std::vector<Vec3> routeCopy = globalRoute;
+    double currentSpeed = 0.0;
+
+    std::vector<Vec3> trajectoryHistory;
+    
     while (true) {
         auto now = std::chrono::steady_clock::now();
         double dt = std::chrono::duration<double>(now - lastTime).count();
@@ -510,28 +511,48 @@ int main(int argc, char** argv) {
         // CURRENT pose (wherever the previous frame's advancement left it).
         
         ADComms::lidarObstPolyMsg msg = buildObstacleMsg(ui.obstacles);
-        bool localOk = planner.localPlan(&msg, vs, routeCopy, globalRoute);
+        const auto planStart = std::chrono::steady_clock::now();
+        bool localOk = planner.localPlan(&msg, vs, routeCopy);
+        const auto planEnd = std::chrono::steady_clock::now();
+        const double planMs = std::chrono::duration<double, std::milli>(planEnd - planStart).count();
+
+
+
+        // Only prints when there's actually something to optimize (obstacles
+        // present) -- otherwise localPlan() early-returns near-instantly
+        // every single frame and this would just spam the console at
+        // whatever the render loop's frame rate is.
+        if (msg.N > 0) {
+            std::cout << "[localPlan] ok=" << localOk << " optimize time=" << planMs << " ms\n";
+        }
 
         if (!paused) {
-            // Closed-loop-ish: advance sGlobal (persistent, monotonic) and
-            // resample from whichever path is CURRENTLY live (the
-            // just-replanned routeCopy if it changed, otherwise identical
-            // to the global route). Next frame's local plan is then
-            // anchored wherever this leaves the vehicle -- so a successful
-            // detour is actually driven, not just computed and discarded.
-            // This is NOT a tracking controller (no steering/lateral-error
-            // correction) -- it's a receding-horizon re-plan-and-advance
-            // loop, adequate for watching whether the planner's own output
-            // is something a vehicle could sensibly follow. Outside the
-            // vehicle's local re-plan window, routeCopy is byte-identical
-            // to globalRoute, so sGlobal's parameterization carries over
-            // cleanly; inside the window a detour can shorten/lengthen the
-            // path slightly, which this treats as negligible for a test
-            // harness (not meant to be arc-length-exact through a detour).
-            sGlobal += speed * dt;
-            RoutePlayback framePlayback;
-            framePlayback.build(routeCopy);
-            vs = framePlayback.sampleAt(routeCopy, sGlobal);
+            
+            std::vector<Vec3> localWindow = extractLocalWindow(routeCopy, vs, planHorizon);
+            pp.setTrajectory(localWindow);
+            PurePursuitOutput out = pp.step(vs, currentSpeed);
+
+            if (out.goal_reached) {
+                currentSpeed = 0.0;
+            } else {
+                currentSpeed = out.speed_mps;
+                // Standard bicycle model -- wheelbase_m matches what the
+                // controller's OWN steering law just used, so there's no
+                // mismatch between what steer_angle_rad was computed for
+                // and what actually moves the vehicle.
+                vs.x     += currentSpeed * std::cos(vs.theta) * dt;
+                vs.y     += currentSpeed * std::sin(vs.theta) * dt;
+                vs.theta += (currentSpeed / ppCfg.wheelbase_m) * std::tan(out.steer_angle_rad) * dt;
+            }
+ 
+            Vec3 histPoint{}; histPoint.X = static_cast<float>(vs.x); histPoint.Y = static_cast<float>(vs.y);
+            histPoint.Dir = 1; histPoint.V = 0; histPoint.Curvature = 0;
+            trajectoryHistory.push_back(histPoint);
+            if (trajectoryHistory.size() > planHorizon) {
+                trajectoryHistory.erase(trajectoryHistory.begin());
+            }
+
+
         }
 
         // Follow camera recomputed every frame (it depends on vehicle
@@ -546,13 +567,14 @@ int main(int argc, char** argv) {
         drawDrivablePolygons(img, drivablePolygons);
         drawPath(img, globalRoute, ui.cam, cv::Scalar(180, 120, 40), 1);      // global path, thin
         drawPath(img, routeCopy,   ui.cam, cv::Scalar(40, 220, 220), 2);     // current (possibly replanned) path
+        drawPath(img, trajectoryHistory, ui.cam, cv::Scalar(220, 0,0), 2);
         drawObstacles(img, ui.obstacles, ui.cam, &validity_local_, margin);
         drawVehicle(img, vs, ui.cam);
 
         std::ostringstream hud;
         hud << (paused ? "[PAUSED] " : "") << (followMode ? "[FOLLOW r=" + std::to_string((int)followRadius) + "m] " : "[OVERVIEW] ")
-            << "speed=" << std::fixed << std::setprecision(1) << speed
-            << " m/s  s=" << sGlobal << "/" << playback.totalLength() << " m  obstacles=" << ui.obstacles.size()
+            << "speed=" << std::fixed << std::setprecision(1) << currentSpeed
+            << " m/s " << " m  obstacles=" << ui.obstacles.size()
             << "  localPlan=" << (localOk ? "ok" : "FAILED");
         cv::putText(img, hud.str(), cv::Point(12, 24), cv::FONT_HERSHEY_SIMPLEX, 0.55,
                     cv::Scalar(230, 230, 230), 1, cv::LINE_AA);
@@ -564,8 +586,10 @@ int main(int argc, char** argv) {
         else if (key == 'c') ui.obstacles.clear();
         else if (key == 'r') {
             vs.x = globalRoute[0].X; vs.y = globalRoute[0].Y;
-            vs.theta = playback.sampleAt(globalRoute, 0.0).theta;
-            sGlobal = 0.0;
+            vs.theta = atan2(globalRoute[1].Y - globalRoute[0].Y, globalRoute[1].X - globalRoute[0].X);
+            currentSpeed = 0.0;
+            trajectoryHistory.clear();
+
         }
         else if (key == 'v') followMode = !followMode;
         else if (key == '[') followRadius = std::max(5.0, followRadius - 5.0);

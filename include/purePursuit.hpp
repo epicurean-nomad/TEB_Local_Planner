@@ -186,7 +186,7 @@ struct PurePursuitConfig {
     // is intentional.
     double accel_limit_mps2 = 10.0;      // matches `current_cmd_speed + 10*dt_speed`
     double min_speed_mps    = 0.9;       // EFFECTIVE_MIN (real value) -- outer/final clamp floor
-    double max_speed_mps    = 5.5;       // MAX_SPEED (real value) -- see mismatch note above
+    double max_speed_mps    = 8.5;       // MAX_SPEED (real value) -- see mismatch note above
     double max_steering_angle_rad_for_speed = 0.480; // MAX_STEERING_ANGLE (real value, RADIANS -- distinct from max_steering_angle_deg above, used only in the getAdaptiveSpeed fallback's steering-based dropoff)
     double min_speed_fallback_mps = 0.83; // MIN_SPEED (real value) -- getAdaptiveSpeed's own floor input, distinct from min_speed_mps
     double stop_speed_mps    = 0.3;      // STOP_SPEED (real value)

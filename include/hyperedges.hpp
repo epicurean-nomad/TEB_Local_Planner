@@ -14,6 +14,23 @@
 #include <Eigen/Geometry>
 
 
+
+
+
+
+
+
+
+
+inline double penaltyAbove(double x, double bound, double eps) {
+    return std::max(0.0, x - (bound - eps));
+}
+
+
+
+
+
+
 // ----------------------------------------------------------------------
 // g2o vertex/edge types
 // ----------------------------------------------------------------------
@@ -27,7 +44,12 @@
 // exercising every edge shape used here (unary/binary/5-vertex multi-edge,
 // mixed VertexSE2 + scalar vertex types, BlockSolverX + LinearSolverEigen +
 // OptimizationAlgorithmLevenberg) before writing this into the real header.
- 
+
+
+
+
+
+
 class VertexTimeDiff : public g2o::BaseVertex<1, double> {
 public:
     EIGEN_MAKE_ALIGNED_OPERATOR_NEW
@@ -47,7 +69,7 @@ public:
     EIGEN_MAKE_ALIGNED_OPERATOR_NEW
     double obstacleX = 0.0, obstacleY = 0.0, minClearance = 1.0;
     void computeError() override {
-        const auto* v = static_cast<const g2o::VertexSE2*>(_vertices[0]);
+        const g2o::VertexSE2* v = static_cast<const g2o::VertexSE2*>(_vertices[0]);
         auto p = v->estimate().translation();
         double dx = p.x() - obstacleX, dy = p.y() - obstacleY;
         double d = std::sqrt(dx * dx + dy * dy);
@@ -65,7 +87,7 @@ class EdgeViaPoint : public g2o::BaseUnaryEdge<2, Eigen::Vector2d, g2o::VertexSE
 public:
     EIGEN_MAKE_ALIGNED_OPERATOR_NEW
     void computeError() override {
-        const auto* v = static_cast<const g2o::VertexSE2*>(_vertices[0]);
+        const g2o::VertexSE2* v = static_cast<const g2o::VertexSE2*>(_vertices[0]);
         Eigen::Vector2d p = v->estimate().translation();
         _error = p - _measurement;
     }
@@ -78,12 +100,14 @@ public:
 // Binary: non-holonomic "no sideways slip" residual between consecutive
 // poses -- a near-equality soft constraint (large information weight),
 // not an inequality hinge like the others.
-class EdgeKinematics : public g2o::BaseBinaryEdge<1, double, g2o::VertexSE2, g2o::VertexSE2> {
+class EdgeKinematics : public g2o::BaseBinaryEdge<2, double, g2o::VertexSE2, g2o::VertexSE2> {
 public:
     EIGEN_MAKE_ALIGNED_OPERATOR_NEW
+    double gearSign = 1.0;   // +1 forward, -1 reverse; set from teb.isReverse
+    double eps = 0.02;
     void computeError() override {
-        const auto* va = static_cast<const g2o::VertexSE2*>(_vertices[0]);
-        const auto* vb = static_cast<const g2o::VertexSE2*>(_vertices[1]);
+        const g2o::VertexSE2* va = static_cast<const g2o::VertexSE2*>(_vertices[0]);
+        const g2o::VertexSE2* vb = static_cast<const g2o::VertexSE2*>(_vertices[1]);
         Eigen::Vector2d d = vb->estimate().translation() - va->estimate().translation();
         double thetaA = va->estimate().rotation().angle();
         double thetaB = vb->estimate().rotation().angle();
@@ -91,6 +115,7 @@ public:
         double avgTheta = thetaA + 0.5 * dtheta;
         double hx = std::cos(avgTheta), hy = std::sin(avgTheta);
         _error[0] = -d.x() * hy + d.y() * hx; // lateral (sideways) component
+        _error[1] = std::max(0.0, -gearSign * (d.x()*hx + d.y()*hy) + eps);  // reverse penalty
     }
     virtual bool read(std::istream&) override { return true; }
     virtual bool write(std::ostream&) const override { return true; }
@@ -148,7 +173,7 @@ public:
         double kappa_for_v = std::fabs(dtheta) / std::max(dist, 1e-3);
         if (kappa_for_v > 1e-6) vcap = std::min(vcap, std::sqrt(maxLatAcc / kappa_for_v));
  
-        _error[0] = std::max(0.0, std::fabs(v) - vcap);
+        _error[0] = std::max(0.0, std::fabs(v) - vcap );
         _error[1] = std::max(0.0, std::fabs(omega) - omegaMax);
     }
     virtual bool read(std::istream&) override { return true; }

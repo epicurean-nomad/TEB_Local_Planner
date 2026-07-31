@@ -49,13 +49,14 @@ struct TebConfig {
     double min_turn_radius  = 3.0;   // [m] steering-angle limit; matches the RS/RRT wheelbase-style radius used elsewhere
  
     // ---- optimization weights == information (1/variance) on each edge ----
-    double w_obstacle    = 60.0;
+    double w_obstacle    = 40.0;
     double w_velocity    = 8.0;
     double w_accel       = 4.0;
     double w_kinematics  = 100.0;    // non-holonomic (no-sideways-slip) term - should dominate
     double w_curvature   = 20.0;
-    double w_viapoint    = 0.5;      // stay-near-reference pull, kept low
+    double w_viapoint    = 1.5;      // stay-near-reference pull, kept low
     double w_time        = 0.2;      // mild time-optimality pressure
+    double w_forward_drive = 4.0;
  
     // ---- band shape / auto-resize ----
     double dt_ref        = 0.3;      // desired time between poses [s]
@@ -74,8 +75,8 @@ struct TebConfig {
     // that costs a few iterations each time). Cheap to afford: even the
     // full 6*30=180 LM iterations run well under a millisecond for band
     // sizes this small.
-    int    outer_iterations = 6;     // autoResize + rebuild-graph-and-solve cycles
-    int    inner_iterations = 30;    // LM iterations per outer cycle
+    int    outer_iterations = 4;     // autoResize + rebuild-graph-and-solve cycles
+    int    inner_iterations = 5;    // LM iterations per outer cycle
  
     // How close to the target clearance counts as "feasible enough" after
     // optimization (which won't converge to the target exactly, since it's
@@ -87,20 +88,22 @@ struct TebConfig {
 };
 
 
-// Target speed at a given reference point, used only to seed pose spacing
-// and initial dt -- NOT a hard constraint (edgeCost's own velocity/lat-accel
-// terms are the actual enforcement). Uses the velocity profiler's own V
-// directly when it looks meaningfully populated, so the band is naturally
-// denser where the vehicle is already slow (curvy sections, near a cusp)
-// and coarser where it's cruising. Falls back to a safe floor if V looks
-// unpopulated (e.g. still 0, such as before the global path has been
-// profiled at least once) so spacing never collapses toward zero.
+
+
+
+
+// Clamp the speed by MAX and MIN values
 inline double targetSpeedAt(Vec3& p, bool isReverse, TebConfig& cfg) {
     double floor_speed = isReverse ? EFFECTIVE_MIN_REV : EFFECTIVE_MIN;
     double vmax        = isReverse ? cfg.max_vel_reverse : cfg.max_vel;
     if (p.V > floor_speed) return std::min((double)p.V, vmax);
     return floor_speed;
 }
+
+
+
+
+
 
 
 inline double estimateHeadingFromPath(const std::vector<Vec3>& route, int i, int i0, int i1) {
@@ -114,6 +117,9 @@ inline double estimateHeadingFromPath(const std::vector<Vec3>& route, int i, int
     if (std::fabs(dx) < 1e-9 && std::fabs(dy) < 1e-9) return 0.0;
     return std::atan2(dy, dx);
 }
+
+
+
 
 inline double wrapToPi(double a) {
     while (a > M_PI)  a -= 2.0 * M_PI;
@@ -189,6 +195,8 @@ class TimedElasticBand{
         }
 };
 
+
+
 // =========================================================================
 // TebLocalPlanner
 // -------------------------------------------------------------------------
@@ -221,8 +229,6 @@ class TebLocalPlanner{
         }
 
 
-
-
         /* 
         Single entry point, called once per planning tick with the latest
         lidar obstacle message, vehicle state, and the (mutable) global
@@ -244,7 +250,7 @@ class TebLocalPlanner{
         from an earlier version -- targetSpeedAt()/the velocity profiler
         are what actually drive seeding speed now (see initFromRef()).
         */
-        bool localPlan(const ADComms::lidarObstPolyMsg* msg, const VehicleState vs, std::vector<Vec3>& route, std::vector<Vec3>& originalRoute, int* outI0 = nullptr, int* outI1 = nullptr){
+        bool localPlan(const ADComms::lidarObstPolyMsg* msg, const VehicleState vs, std::vector<Vec3>& route, int* outI0 = nullptr, int* outI1 = nullptr){
             
             //If route size is too small or route is not valid, return
             if(!validity_ || route.size() < 2) return true;
@@ -262,8 +268,7 @@ class TebLocalPlanner{
             if (outI0) *outI0 = vehicleIDx;
             if (outI1) *outI1 = i1;
 
-            const int origI0 = (originalRoute.size() >= 2) ? findClosestIndex(originalRoute, vs) : 0;
-            const int origI1 = (originalRoute.size() >= 2) ? findHorizonEnd(originalRoute, origI0) : 0;
+
 
 
             
@@ -279,7 +284,7 @@ class TebLocalPlanner{
 
             teb.initFromRef(route, vs, vehicleIDx, i1, cfg_);
 
-            bool feasible = optimizeBand(teb, obs_vec, originalRoute, origI0, origI1);
+            bool feasible = optimizeBand(teb, obs_vec);
             if(!feasible){
                 std::cout << "[TEB] local re-plan failed to find a feasible band\n";
                 return false;
@@ -390,7 +395,7 @@ class TebLocalPlanner{
             return  std::max(0.0, std::min(1.0, dist < 1e-9 ? 0.0 : t)); 
         }
 
-        bool optimizeBand(TimedElasticBand& teb, const std::vector<TebObstacle>& obstacles, std::vector<Vec3>& originalRoute, int origI0, int origI1)
+        bool optimizeBand(TimedElasticBand& teb, const std::vector<TebObstacle>& obstacles)
         {
             const TimedElasticBand initial = teb;
 
@@ -407,8 +412,9 @@ class TebLocalPlanner{
 
                 for(int outer=0; outer < cfg_.outer_iterations; ++outer)
                 {
-                    autoResize(attempt);
                     solveOnce(attempt, obstacles, refPts);
+                    autoResize(attempt);
+                    
                 }
 
                 if (checkFeasible(attempt, obstacles)) {
@@ -461,13 +467,27 @@ class TebLocalPlanner{
                         double need = minClearance(o);
 
                         if(segDist < need && teb.pose.size() < cfg_.max_samples){
+                            
                             double theta = teb.pose[i].theta + t*angleDiff(teb.pose[i + 1].theta, teb.pose[i].theta);
+
                             double hx = -sin(theta), hy = cos(theta);
-                            double nudge = side*std::max(need - segDist, 0.3 * need);
+                            const Vec2 rel(o.pos.X - proj.X, o.pos.Y - proj.Y);
+                            const double s = rel.X * hx + rel.Y * hy;                   // lateral offset of obstacle
+                            const double a = rel.X * std::cos(theta) + rel.Y * std::sin(theta); // along-track
+                            const double target = 1.15 * need;
+                            const double disc = target * target - a * a;
+                            if (disc <= 0.0) continue;
+                            const double nudge = s + side * std::sqrt(disc);  
                             TebPose mid(proj.X + hx * nudge, proj.Y + hy * nudge, theta);
+
                             teb.dt[i] *= 0.5;
                             teb.pose.insert(teb.pose.begin() + i + 1, mid);
-                            teb.dt.insert(teb.dt.begin() + i + 1, teb.dt[i]);
+                            teb.dt.insert(teb.dt.begin() + i + 1, 0.0f);
+                            const double v_seed = std::max(0.05f, Vec2::Dist(p0, p1) / std::max(teb.dt[i], 1e-3f));
+                            const double dA = Vec2::Dist(p0, Vec2(mid.x, mid.y));
+                            const double dB = Vec2::Dist(Vec2(mid.x, mid.y), p1);
+                            teb.dt[i]     = std::clamp(dA / v_seed, cfg_.dt_min, cfg_.dt_max);
+                            teb.dt[i + 1] = std::clamp(dB / v_seed, cfg_.dt_min, cfg_.dt_max);
                             changed = true;
                             break;
                         }
@@ -517,10 +537,10 @@ class TebLocalPlanner{
         // Final hard check after optimization. Checks both poses AND segment
         // closest-approach points (not just poses) against every obstacle,
         bool checkFeasible(const TimedElasticBand& teb, const std::vector<TebObstacle>& obstacles) const {
-            for (const auto& p : teb.pose) {
+            for (const TebPose& p : teb.pose) {
                 if (!std::isfinite(p.x) || !std::isfinite(p.y) || !std::isfinite(p.theta)) return false;
                 if (validity_ && !validity_->isVehicleFeasible(p.x, p.y, p.theta)) return false;
-                for (const auto& o : obstacles) {
+                for (const TebObstacle& o : obstacles) {
                     double dx = p.x - o.pos.X, dy = p.y - o.pos.Y;
                     double d = std::sqrt(dx * dx + dy * dy);
                     if (d < minClearance(o) * cfg_.feasibility_tolerance) return false;
@@ -529,7 +549,7 @@ class TebLocalPlanner{
             for (size_t i = 0; i + 1 < teb.pose.size(); ++i) {
                 Vec2 p0(teb.pose[i].x, teb.pose[i].y);
                 Vec2 p1(teb.pose[i + 1].x, teb.pose[i + 1].y);
-                for (const auto& o : obstacles) {
+                for (const TebObstacle& o : obstacles) {
                     double t = projectOntoSegment(o.pos, p0, p1);
                     Vec2 proj(p0.X + t * (p1.X - p0.X), p0.Y + t * (p1.Y - p0.Y));
                     double d = Vec2::Dist(o.pos, proj);
@@ -546,7 +566,7 @@ class TebLocalPlanner{
                 const double len1 = std::sqrt(d1x*d1x + d1y*d1y);
                 if (len0 < kMinSegLen || len1 < kMinSegLen) continue;
                 const double cosAngle = (d0x*d1x + d0y*d1y) / (len0 * len1);
-                if (cosAngle < cosThreshold) {
+                if (cosAngle < cosThreshold)  {
                     std::cout << "[TEB checkFeasible] FAIL: direction change (cusp) at pose " << (i+1)
                               << " -- segments " << len0 << "m/" << len1 << "m, angle="
                               << (std::acos(std::max(-1.0, std::min(1.0, cosAngle))) * 180.0 / M_PI) << "deg\n";
@@ -574,15 +594,21 @@ class TebLocalPlanner{
         {
             size_t N = teb.pose.size();
             if (N < 3) return;
-        
+            
+
+            //Initialize the solver
+
             g2o::SparseOptimizer optimizer;
             optimizer.setVerbose(false);
             using LinearSolverT = g2o::LinearSolverEigen<g2o::BlockSolverX::PoseMatrixType>;
-            auto linearSolver = std::make_unique<LinearSolverT>();
-            auto blockSolver  = std::make_unique<g2o::BlockSolverX>(std::move(linearSolver));
-            auto* algorithm   = new g2o::OptimizationAlgorithmLevenberg(std::move(blockSolver));
+            std::unique_ptr<LinearSolverT> linearSolver = std::make_unique<LinearSolverT>();
+            std::unique_ptr<g2o::BlockSolverX> blockSolver  = std::make_unique<g2o::BlockSolverX>(std::move(linearSolver));
+            g2o::OptimizationAlgorithmLevenberg* algorithm   = new g2o::OptimizationAlgorithmLevenberg(std::move(blockSolver));
             optimizer.setAlgorithm(algorithm);
         
+            
+            
+            //Initializing the set of optimization variables
             std::vector<g2o::VertexSE2*> poseVerts(N, nullptr);
             std::vector<VertexTimeDiff*> dtVerts(teb.dt.size(), nullptr);
         
@@ -595,6 +621,7 @@ class TebLocalPlanner{
                 optimizer.addVertex(v);
                 poseVerts[k] = v;
             }
+
             for (size_t i = 0; i < teb.dt.size(); ++i) {
                 VertexTimeDiff* v = new VertexTimeDiff();
                 v->setId(id++);
@@ -602,17 +629,27 @@ class TebLocalPlanner{
                 optimizer.addVertex(v);
                 dtVerts[i] = v;
             }
-        
+            
+
+            // Add Obstacle Edges
             for (size_t k = 0; k < N; ++k) {
-                for (const auto& o : obstacles) {
-                    auto* e = new EdgeObstacle();
-                    e->obstacleX = o.pos.X;
-                    e->obstacleY = o.pos.Y;
-                    e->minClearance = minClearance(o);
-                    e->setVertex(0, poseVerts[k]);
-                    e->setInformation(Eigen::Matrix<double,1,1>::Identity() * cfg_.w_obstacle);
-                    e->setRobustKernel(new g2o::RobustKernelHuber());
-                    optimizer.addEdge(e);
+                for (const TebObstacle& o : obstacles) {
+                    
+                    double dx = teb.pose[k].x - o.pos.X, dy = teb.pose[k].y - o.pos.Y;
+                    double d = dx*dx + dy*dy;
+
+                    if(d < minClearance(o) * minClearance(o)){
+                        
+                        EdgeObstacle* e = new EdgeObstacle();
+                        e->obstacleX = o.pos.X;
+                        e->obstacleY = o.pos.Y;
+                        e->minClearance = minClearance(o);
+                        e->setVertex(0, poseVerts[k]);
+                        e->setInformation(Eigen::Matrix<double,1,1>::Identity() * cfg_.w_obstacle);
+                        e->setRobustKernel(new g2o::RobustKernelHuber());
+                        optimizer.addEdge(e);
+                    }
+                    
                 }
                 // Via-point: pull toward the NEAREST point on the original
                 // (pre-optimization, resize-invariant) reference band -- a
@@ -622,12 +659,12 @@ class TebLocalPlanner{
                 if (!refPts.empty()) {
                     double bestD2 = 1e18;
                     Vec2 nearest = refPts[0];
-                    for (const auto& r : refPts) {
+                    for (const Vec2& r : refPts) {
                         double dx = teb.pose[k].x - r.X, dy = teb.pose[k].y - r.Y;
                         double d2 = dx*dx + dy*dy;
                         if (d2 < bestD2) { bestD2 = d2; nearest = r; }
                     }
-                    auto* e = new EdgeViaPoint();
+                    EdgeViaPoint* e = new EdgeViaPoint();
                     e->setMeasurement(Eigen::Vector2d(nearest.X, nearest.Y));
                     e->setVertex(0, poseVerts[k]);
                     e->setInformation(Eigen::Matrix2d::Identity() * cfg_.w_viapoint);
@@ -636,11 +673,16 @@ class TebLocalPlanner{
             }
             
 
+            //Add 
             for (size_t i = 0; i + 1 < N; ++i) {
                 EdgeKinematics* ek = new EdgeKinematics();
+                ek->gearSign = teb.isReverse ? -1.0 : 1.0;
                 ek->setVertex(0, poseVerts[i]);
                 ek->setVertex(1, poseVerts[i + 1]);
-                ek->setInformation(Eigen::Matrix<double,1,1>::Identity() * cfg_.w_kinematics);
+                Eigen::Matrix2d infoK = Eigen::Matrix2d::Zero();
+                infoK(0,0) = cfg_.w_kinematics;      // 100  — lateral slip
+                infoK(1,1) = cfg_.w_forward_drive;   // add to TebConfig, start at 30
+                ek->setInformation(infoK);
                 optimizer.addEdge(ek);
             
                 EdgeCurvature* ec = new EdgeCurvature();
@@ -736,6 +778,7 @@ class TebLocalPlanner{
         double minClearance(const TebObstacle& o) const {
             double extra = validity_ ? validity_->vehicleWidth() : 0.5;
             return o.radius + margin_ + extra;
+            
         }
 
     
