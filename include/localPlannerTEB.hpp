@@ -474,7 +474,7 @@ class TebLocalPlanner{
                             const Vec2 rel(o.pos.X - proj.X, o.pos.Y - proj.Y);
                             const double s = rel.X * hx + rel.Y * hy;                   // lateral offset of obstacle
                             const double a = rel.X * std::cos(theta) + rel.Y * std::sin(theta); // along-track
-                            const double target = 1.15 * need;
+                            const double target = 0.3 * need;
                             const double disc = target * target - a * a;
                             if (disc <= 0.0) continue;
                             const double nudge = s + side * std::sqrt(disc);  
@@ -528,6 +528,13 @@ class TebLocalPlanner{
                         teb.pose.erase(teb.pose.begin() + i + 1);
                         changed = true;
                         break;
+                    }
+                    const double segLen = Vec2::Dist(Vec2(teb.pose[i].x, teb.pose[i].y), Vec2(teb.pose[i+1].x, teb.pose[i+1].y));
+                    if (segLen < 0.15 && i + 1 < teb.dt.size() && teb.pose.size() > cfg_.min_samples) {
+                        teb.dt[i] += teb.dt[i+1];
+                        teb.dt.erase(teb.dt.begin() + i + 1);
+                        teb.pose.erase(teb.pose.begin() + i + 1);
+                        changed = true; break;
                     }
                 }
             }
