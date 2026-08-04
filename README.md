@@ -1,4 +1,4 @@
-mkdir build && cd build
-cmake ..
-make -j 4
-./test_local_planner
+mkdir build && cd build\n
+cmake ..\n
+make -j 4\n
+./test_local_planner\n
