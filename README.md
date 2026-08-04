@@ -1,4 +1,4 @@
-INSTRUCTIONS TO RUN\
+INSTRUCTIONS TO RUN
 
 
 mkdir build && cd build\
