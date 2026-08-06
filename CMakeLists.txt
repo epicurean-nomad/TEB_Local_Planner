@@ -15,14 +15,17 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
+if(EXISTS "${CMAKE_SOURCE_DIR}/CMakeLocalConfig.cmake")
+    include("${CMAKE_SOURCE_DIR}/CMakeLocalConfig.cmake")
+endif()
+
+set(G2O_ROOT "${G2O_ROOT}" CACHE PATH "Path to g2o clone root")
+set(G2O_BUILD_LIB_DIR "${G2O_ROOT}/build/lib" CACHE PATH "Path to g2o build lib dir")
 
 
 
 find_package(Threads REQUIRED)
 find_package(Eigen3 REQUIRED)
-
-
-
 find_package(OpenCV REQUIRED)
 
 add_executable(test_local_planner_viz
@@ -35,21 +38,21 @@ add_executable(test_local_planner_viz
     aux/APSP.cpp
 )
 target_include_directories(test_local_planner_viz PRIVATE
-    ${CMAKE_SOURCE_DIR}/src lcm_types /usr/include/eigen3
-    /home/abhigyan/aux/g2o                # adjust to wherever your g2o clone root is
+    ${CMAKE_SOURCE_DIR}/src lcm_types 
+    ${G2O_ROOT}                # adjust to wherever your g2o clone root is
     ${OpenCV_INCLUDE_DIRS}
 )
 target_link_directories(test_local_planner_viz PRIVATE
-    /home/abhigyan/aux/g2o/build/lib      # adjust to your g2o build dir
+    ${G2O_BUILD_LIB_DIR}      # adjust to your g2o build dir
 )
 target_link_libraries(test_local_planner_viz PRIVATE
     g2o_core g2o_stuff g2o_solver_eigen g2o_types_slam2d
-    ${OpenCV_LIBS} Threads::Threads
+    ${OpenCV_LIBS} Threads::Threads Eigen3::Eigen
 )
 
 set_target_properties(test_local_planner_viz PROPERTIES
-    BUILD_RPATH "/home/abhigyan/aux/g2o/build/lib"
-    INSTALL_RPATH "/home/abhigyan/aux/g2o/build/lib"
+    BUILD_RPATH "${G2O_BUILD_LIB_DIR}"
+    INSTALL_RPATH "${G2O_BUILD_LIB_DIR}"
 )
 
 install(TARGETS test_local_planner_viz DESTINATION lib/${PROJECT_NAME})
