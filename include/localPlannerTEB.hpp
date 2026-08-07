@@ -75,8 +75,8 @@ struct TebConfig {
     // that costs a few iterations each time). Cheap to afford: even the
     // full 6*30=180 LM iterations run well under a millisecond for band
     // sizes this small.
-    int    outer_iterations = 4;     // autoResize + rebuild-graph-and-solve cycles
-    int    inner_iterations = 5;    // LM iterations per outer cycle
+    int    outer_iterations = 5;     // autoResize + rebuild-graph-and-solve cycles
+    int    inner_iterations = 6;    // LM iterations per outer cycle
  
     // How close to the target clearance counts as "feasible enough" after
     // optimization (which won't converge to the target exactly, since it's
@@ -262,7 +262,7 @@ class TebLocalPlanner{
 
             int vehicleIDx = findClosestIndex(route, vs);
 
-            int i1 = findHorizonEnd(route, vehicleIDx);
+            int i1 = findHorizonEnd(route, vehicleIDx, obs_vec);
 
 
             if (outI0) *outI0 = vehicleIDx;
@@ -274,7 +274,7 @@ class TebLocalPlanner{
             
             if(obs_vec.empty()) return true;
             //If the obstacles are not in the path, return
-            if(!pathConflicts(route, obs_vec, vehicleIDx))return true;
+            if(!pathConflicts(route, obs_vec, vehicleIDx, i1))return true;
 
             //If the horizon is degenerate, return
             if(i1 <= vehicleIDx) return true;
@@ -357,13 +357,13 @@ class TebLocalPlanner{
             return best;
         }
 
-        bool pathConflicts(const std::vector<Vec3> route, std::vector<TebObstacle> obstacles, int vehicle_id) const
+        bool pathConflicts(const std::vector<Vec3> route, std::vector<TebObstacle> obstacles, int vehicle_id, int i1) const
         {
             
             for(TebObstacle& o : obstacles){
                 
                 double min_d = minClearance(o);
-                for(int i=0; i<route.size(); i++){
+                for(int i=vehicle_id; i <= i1 && i<route.size(); i++){
                     double dx = route[i].X - o.pos.X, dy = route[i].Y - o.pos.Y;
                     if (std::sqrt(dx * dx + dy * dy) < min_d) return true;
 
@@ -372,20 +372,49 @@ class TebLocalPlanner{
             return false;
         }
 
-        int findHorizonEnd(const std::vector<Vec3> route, int i0)
+        int findHorizonEnd(const std::vector<Vec3> route, int i0, const std::vector<TebObstacle>& obstacles)
         {
+            
+            int i1 = i0;
             double accum = 0.0;
             for(int i=i0; i+1<route.size(); ++i){
                 
-                if(route[i].Dir != route[i0].Dir) return i;
+                if(route[i].Dir != route[i0].Dir) i1 = i;
 
                 double dx = route[i+1].X - route[i].X;
                 double dy = route[i+1].Y - route[i].Y;
 
                 accum += std::sqrt(dx*dx + dy*dy);
-                if(accum >= plan_horizon_) return i+1;
+                if(accum >= plan_horizon_) return i1 = i+1;
             }
-            return static_cast<int>(route.size()) - 1;
+            i1 = static_cast<int>(route.size()) - 1;
+
+            const double R = std::max(cfg_.min_turn_radius, 0.1);
+            bool extended = true;
+            int guard = 0;
+            while (extended && guard++ < 200) {
+                extended = false;
+                for (const TebObstacle& o : obstacles) {
+                    const double A = minClearance(o);
+                    const double Lret = 4.0 * std::sqrt(A * R) + 2.0 * o.radius;
+                    // arclength from route[i1] back to the obstacle's closest route point
+                    double d = Vec2::Dist(o.pos, Vec2(route[i1].X, route[i1].Y));
+                    if (d < Lret) {
+                        double accum = 0.0;
+                        int j = i1;
+                        while (j + 1 < (int)route.size() && accum < (Lret - d)) {
+                            if (route[j].Dir != route[i0].Dir) break;   // never cross a gear change
+                            accum += Vec2::Dist(Vec2(route[j].X, route[j].Y),
+                                                Vec2(route[j+1].X, route[j+1].Y));
+                            ++j;
+                        }
+                        if (j > i1) { i1 = j; extended = true; }
+                    }
+                }
+            }
+            return i1;
+
+
         }
 
         static double projectOntoSegment(const Vec2& p, const Vec2& a, const Vec2& b)
@@ -426,6 +455,16 @@ class TebLocalPlanner{
             return false;
         }
 
+        void retangent(TimedElasticBand& teb) const {
+            const size_t N = teb.pose.size();
+            if (N < 2) return;
+            for (size_t k = 1; k + 1 < N; ++k) {          // leave pinned endpoints alone
+                const double dx = teb.pose[k+1].x - teb.pose[k-1].x;
+                const double dy = teb.pose[k+1].y - teb.pose[k-1].y;
+                if (dx*dx + dy*dy > 1e-12) teb.pose[k].theta = std::atan2(dy, dx);
+            }
+        }
+
         /*
         Pre-optimization seeding step: wherever a segment of the straight-
         line band seed passes closer than minClearance to an obstacle
@@ -446,55 +485,63 @@ class TebLocalPlanner{
         enforces clearance during optimization.
 
         */
-        void densifyNearObstacles(TimedElasticBand& teb, const std::vector<TebObstacle>& obstacles, int side) const
+        void densifyNearObstacles(TimedElasticBand& teb,
+                          const std::vector<TebObstacle>& obstacles, int side) const
         {
-            size_t guard = 0;
-            bool changed = true;
-
-            while(changed && guard < 500){
-                changed = false;
-                ++guard;
-                for (size_t i=0; i+1<teb.pose.size(); ++i){
-                    Vec2 p0(teb.pose[i].x,teb.pose[i].y);
-                    Vec2 p1(teb.pose[i+1].x,teb.pose[i+1].y);
-
-                    for (const TebObstacle& o : obstacles){
-                        double t = projectOntoSegment(o.pos, p0, p1);
-
-                        Vec2 proj(p0.X + t*(p1.X - p0.X), p0.Y + t*(p1.Y - p0.Y));
-
-                        double segDist = Vec2::Dist(o.pos, proj);
-                        double need = minClearance(o);
-
-                        if(segDist < need && teb.pose.size() < cfg_.max_samples){
-                            
-                            double theta = teb.pose[i].theta + t*angleDiff(teb.pose[i + 1].theta, teb.pose[i].theta);
-
-                            double hx = -sin(theta), hy = cos(theta);
-                            const Vec2 rel(o.pos.X - proj.X, o.pos.Y - proj.Y);
-                            const double s = rel.X * hx + rel.Y * hy;                   // lateral offset of obstacle
-                            const double a = rel.X * std::cos(theta) + rel.Y * std::sin(theta); // along-track
-                            const double target = 0.3 * need;
-                            const double disc = target * target - a * a;
-                            if (disc <= 0.0) continue;
-                            const double nudge = s + side * std::sqrt(disc);  
-                            TebPose mid(proj.X + hx * nudge, proj.Y + hy * nudge, theta);
-
-                            teb.dt[i] *= 0.5;
-                            teb.pose.insert(teb.pose.begin() + i + 1, mid);
-                            teb.dt.insert(teb.dt.begin() + i + 1, 0.0f);
-                            const double v_seed = std::max(0.05f, Vec2::Dist(p0, p1) / std::max(teb.dt[i], 1e-3f));
-                            const double dA = Vec2::Dist(p0, Vec2(mid.x, mid.y));
-                            const double dB = Vec2::Dist(Vec2(mid.x, mid.y), p1);
-                            teb.dt[i]     = std::clamp(dA / v_seed, cfg_.dt_min, cfg_.dt_max);
-                            teb.dt[i + 1] = std::clamp(dB / v_seed, cfg_.dt_min, cfg_.dt_max);
-                            changed = true;
-                            break;
-                        }
-                    }
-                    if(changed) break;
+            const size_t N = teb.pose.size();
+            if (N < 3) return;
+        
+            std::vector<double> s(N, 0.0);
+            for (size_t k = 1; k < N; ++k)
+                s[k] = s[k-1] + Vec2::Dist(Vec2(teb.pose[k-1].x, teb.pose[k-1].y),
+                                           Vec2(teb.pose[k].x,   teb.pose[k].y));
+        
+            std::vector<double> nx(N), ny(N);          // left normals from the SEED headings
+            for (size_t k = 0; k < N; ++k) {
+                nx[k] = -std::sin(teb.pose[k].theta);
+                ny[k] =  std::cos(teb.pose[k].theta);
+            }
+        
+            std::vector<double> off(N, 0.0);
+            const double kappaMax = 1.0 / std::max(cfg_.min_turn_radius, 0.1);
+        
+            for (const TebObstacle& o : obstacles) {
+                const double target = 0.3 * minClearance(o);
+            
+                size_t kc = 0; double best = 1e18;
+                for (size_t k = 0; k < N; ++k) {
+                    const double d = Vec2::Dist(o.pos, Vec2(teb.pose[k].x, teb.pose[k].y));
+                    if (d < best) { best = d; kc = k; }
+                }
+                if (best >= target) continue;                    // already clear: never pull in
+                if (kc == 0 || kc + 1 >= N) continue;
+            
+                // Signed lateral position of the obstacle w.r.t. the band.
+                const double rx = o.pos.X - teb.pose[kc].x, ry = o.pos.Y - teb.pose[kc].y;
+                const double lat   = rx * nx[kc] + ry * ny[kc];
+                const double along = std::sqrt(std::max(0.0, best*best - lat*lat));
+                const double need  = std::sqrt(std::max(0.0, target*target - along*along));
+                const double peak  = (side > 0) ? (lat + need) : (lat - need);
+            
+                // Window wide enough that the raised cosine stays inside the steering limit:
+                // max curvature of  y(u) = A/2 (1+cos(pi u))  is  A pi^2 / (2 W^2).
+                const double W = std::max({ 2.0 * target,
+                                            std::sqrt(std::fabs(peak) * M_PI * M_PI / (2.0 * kappaMax)),
+                                            3.0 });
+                
+                for (size_t k = 0; k < N; ++k) {
+                    const double u = (s[k] - s[kc]) / W;
+                    if (std::fabs(u) >= 1.0) continue;
+                    const double c = peak * 0.5 * (1.0 + std::cos(M_PI * u));
+                    if (std::fabs(c) > std::fabs(off[k])) off[k] = c;   // max demand, not last writer
                 }
             }
+        
+            for (size_t k = 1; k + 1 < N; ++k) {                 // pinned endpoints untouched
+                teb.pose[k].x += nx[k] * off[k];
+                teb.pose[k].y += ny[k] * off[k];
+            }
+            retangent(teb);
         }
 
         // Insert poses where dt grew too large, remove where it shrank too
@@ -553,7 +600,7 @@ class TebLocalPlanner{
                     if (d < minClearance(o) * cfg_.feasibility_tolerance) return false;
                 }
             }
-            for (size_t i = 0; i + 1 < teb.pose.size(); ++i) {
+            for (size_t i = 1; i + 1 < teb.pose.size(); ++i) {
                 Vec2 p0(teb.pose[i].x, teb.pose[i].y);
                 Vec2 p1(teb.pose[i + 1].x, teb.pose[i + 1].y);
                 for (const TebObstacle& o : obstacles) {
@@ -566,7 +613,7 @@ class TebLocalPlanner{
 
             const double kMinSegLen = 0.01;
             const double cosThreshold = std::cos(cfg_.cusp_reject_angle_deg * M_PI / 180.0);
-            for (size_t i = 0; i + 2 < teb.pose.size(); ++i) {
+            for (size_t i = 1; i + 2 < teb.pose.size(); ++i) {
                 const double d0x = teb.pose[i+1].x - teb.pose[i].x,   d0y = teb.pose[i+1].y - teb.pose[i].y;
                 const double d1x = teb.pose[i+2].x - teb.pose[i+1].x, d1y = teb.pose[i+2].y - teb.pose[i+1].y;
                 const double len0 = std::sqrt(d0x*d0x + d0y*d0y);
@@ -638,6 +685,18 @@ class TebLocalPlanner{
             }
             
 
+            std::vector<double> refS(refPts.size(), 0.0);
+            for (size_t r = 1; r < refPts.size(); ++r)
+                refS[r] = refS[r-1] + Vec2::Dist(refPts[r-1], refPts[r]);
+            const double refLen = refS.empty() ? 0.0 : refS.back();
+
+            std::vector<double> tebS(N, 0.0);
+            for (size_t k = 1; k < N; ++k)
+                tebS[k] = tebS[k-1] + Vec2::Dist(Vec2(teb.pose[k-1].x, teb.pose[k-1].y),
+                                                 Vec2(teb.pose[k].x,   teb.pose[k].y));
+            const double tebLen = tebS.back();
+
+
             // Add Obstacle Edges
             for (size_t k = 0; k < N; ++k) {
                 for (const TebObstacle& o : obstacles) {
@@ -653,7 +712,7 @@ class TebLocalPlanner{
                         e->minClearance = minClearance(o);
                         e->setVertex(0, poseVerts[k]);
                         e->setInformation(Eigen::Matrix<double,1,1>::Identity() * cfg_.w_obstacle);
-                        e->setRobustKernel(new g2o::RobustKernelHuber());
+                        // e->setRobustKernel(new g2o::RobustKernelHuber());
                         optimizer.addEdge(e);
                     }
                     
@@ -665,14 +724,19 @@ class TebLocalPlanner{
 
                 if (!refPts.empty()) {
                     double bestD2 = 1e18;
-                    Vec2 nearest = refPts[0];
-                    for (const Vec2& r : refPts) {
-                        double dx = teb.pose[k].x - r.X, dy = teb.pose[k].y - r.Y;
-                        double d2 = dx*dx + dy*dy;
-                        if (d2 < bestD2) { bestD2 = d2; nearest = r; }
-                    }
+                    // Vec2 nearest = refPts[0];
+                    // for (const Vec2& r : refPts) {
+                    //     double dx = teb.pose[k].x - r.X, dy = teb.pose[k].y - r.Y;
+                    //     double d2 = dx*dx + dy*dy;
+                    //     if (d2 < bestD2) { bestD2 = d2; nearest = r; }
+                    // }
+                    const double frac = (tebLen > 1e-6) ? (tebS[k] / tebLen) : 0.0;
+                    const double sTarget = frac * refLen;
+                    size_t r = std::lower_bound(refS.begin(), refS.end(), sTarget) - refS.begin();
+                    r = std::min(r, refPts.size() - 1);
+                    Vec2 assoc = refPts[r];
                     EdgeViaPoint* e = new EdgeViaPoint();
-                    e->setMeasurement(Eigen::Vector2d(nearest.X, nearest.Y));
+                    e->setMeasurement(Eigen::Vector2d(assoc.X, assoc.Y));
                     e->setVertex(0, poseVerts[k]);
                     e->setInformation(Eigen::Matrix2d::Identity() * cfg_.w_viapoint);
                     optimizer.addEdge(e);

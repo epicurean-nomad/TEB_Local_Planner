@@ -436,7 +436,7 @@ int main(int argc, char** argv) {
         validity_local_.setRouteZone(allNodeIds);
     }
 
-    const float margin = 0.1f, planHorizon = 15.0f;
+    const float margin = 0.1f, planHorizon =30.0f;
     TebLocalPlanner planner(margin, planHorizon);
     planner.init(&validity_local_);
 
