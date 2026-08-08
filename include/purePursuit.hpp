@@ -148,7 +148,7 @@ struct PurePursuitConfig {
     // toward positive lookahead-frame y". Default here is -1.0 (faithful to
     // the real controller) since that's the known-correct starting point
     // until we've verified Gazebo's convention.
-    double steer_sign = -1.0;
+    double steer_sign = 1.0;
 
     double reverse_steer_gain = -1.5;      // matches `-target_angle_deg * 1.5` for reverse
 
@@ -220,7 +220,7 @@ struct PurePursuitOutput {
 
 class PurePursuitController {
 public:
-    explicit PurePursuitController(PurePursuitConfig cfg = PurePursuitConfig()) : cfg_(cfg) {}
+    explicit PurePursuitController(PurePursuitConfig cfg = PurePursuitConfig()): cfg_(cfg){}
 
     // route: X, Y, Dir (0=reverse/1=forward), V (target speed at that
     // point, m/s), Curvature (unused here -- already baked into V by
@@ -419,7 +419,7 @@ public:
 
         return out;
     }
-
+PurePursuitConfig cfg_;
 private:
     // REAL formula, from getAdaptiveLookahead(speed_kmph) -- the single-arg
     // overload actually called in pcontroller(): ld = clamp(k * v_mps, min, max).
@@ -459,7 +459,7 @@ private:
         return std::clamp(std::min(speed_steer, speed_transition), cfg_.stop_speed_mps, cfg_.max_speed_mps);
     }
 
-    PurePursuitConfig cfg_;
+    
     std::vector<Vec3> route_;
     int  index_closest_ = 0;
     int  ic_persistent_ = 0;

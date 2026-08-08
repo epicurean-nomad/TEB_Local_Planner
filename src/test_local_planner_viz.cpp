@@ -69,7 +69,7 @@
 
 #include "../aux/ValidityCheckLocal.h"
 #include "../aux/RoutingLayer.h"
-#include "../include/localPlannerTEB.hpp"
+#include "../include/localPlannerTEBV2.hpp"
 #include "../include/purePursuit.hpp"
 
 

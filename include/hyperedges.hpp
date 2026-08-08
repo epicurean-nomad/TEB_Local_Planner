@@ -54,7 +54,7 @@ class VertexTimeDiff : public g2o::BaseVertex<1, double> {
 public:
     EIGEN_MAKE_ALIGNED_OPERATOR_NEW
     virtual void setToOriginImpl() override { _estimate = 0.3; }
-    virtual void oplusImpl(const double* update) override { _estimate += update[0]; }
+    virtual void oplusImpl(const double* update) override { _estimate = std::max(_estimate + update[0], 1e-3); }
     virtual bool read(std::istream&) override { return true; }
     virtual bool write(std::ostream&) const override { return true; }
 };

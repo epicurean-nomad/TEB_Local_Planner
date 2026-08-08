@@ -508,18 +508,21 @@ class TebLocalPlanner{
             for (const TebObstacle& o : obstacles) {
                 const double target = 0.3 * minClearance(o);
             
+                
+                //Find closest obstacle to path
                 size_t kc = 0; double best = 1e18;
                 for (size_t k = 0; k < N; ++k) {
                     const double d = Vec2::Dist(o.pos, Vec2(teb.pose[k].x, teb.pose[k].y));
                     if (d < best) { best = d; kc = k; }
                 }
-                if (best >= target) continue;                    // already clear: never pull in
+                if (best >= target) continue;                    // if closes obstacle is not a threat
                 if (kc == 0 || kc + 1 >= N) continue;
-            
+                
+
                 // Signed lateral position of the obstacle w.r.t. the band.
-                const double rx = o.pos.X - teb.pose[kc].x, ry = o.pos.Y - teb.pose[kc].y;
-                const double lat   = rx * nx[kc] + ry * ny[kc];
-                const double along = std::sqrt(std::max(0.0, best*best - lat*lat));
+                const double rx = o.pos.X - teb.pose[kc].x, ry = o.pos.Y - teb.pose[kc].y;  //vector from nearest path point to nearest obstacle
+                const double lat   = rx * nx[kc] + ry * ny[kc];                             // dot product between left normal at kc and (rx,ry) 
+                const double along = std::sqrt(std::max(0.0, best*best - lat*lat));         // 
                 const double need  = std::sqrt(std::max(0.0, target*target - along*along));
                 const double peak  = (side > 0) ? (lat + need) : (lat - need);
             

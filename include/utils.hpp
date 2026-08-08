@@ -71,7 +71,8 @@ const double STOP_DIST_REV       =  5.0;  // [m]
 struct VehicleState {
     double x     = 0;
     double y     = 0;
-    double theta = 0;   // yaw [rad]
+    double theta = 0;
+    double current_speed = 0;
 };
 
 
