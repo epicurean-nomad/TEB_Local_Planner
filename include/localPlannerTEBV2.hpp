@@ -49,11 +49,11 @@ struct TebConfig {
     double min_turn_radius  = 3.0;   // [m] steering-angle limit; matches the RS/RRT wheelbase-style radius used elsewhere
  
     // ---- optimization weights == information (1/variance) on each edge ----
-    double w_obstacle    = 40.0;
+    double w_obstacle    = 60.0;
     double w_velocity    = 8.0;
     double w_accel       = 4.0;
-    double w_kinematics  = 100.0;    // non-holonomic (no-sideways-slip) term - should dominate
-    double w_curvature   = 20.0;
+    double w_kinematics  = 50.0;    // non-holonomic (no-sideways-slip) term - should dominate
+    double w_curvature   = 10.0;
     double w_viapoint    = 1.5;      // stay-near-reference pull, kept low
     double w_time        = 0.2;      // mild time-optimality pressure
     double w_forward_drive = 4.0;
@@ -242,11 +242,13 @@ class TimedElasticBand{
 
 class TebLocalPlanner{
     public:
-        explicit TebLocalPlanner(float margin, float plan_horizon, TebConfig cfg = TebConfig())
-         : margin_(margin), plan_horizon_(plan_horizon), cfg_(cfg){}
+        explicit TebLocalPlanner(TebConfig cfg = TebConfig())
+         : cfg_(cfg){}
 
-        void init(const ValidityCheckLocal* v){
+        void init(const ValidityCheckLocal* v, float plan_horizon, float margin){
             validity_ = v;
+            plan_horizon_ = plan_horizon;
+            margin_       = margin;
         }
 
 
@@ -822,7 +824,7 @@ class TebLocalPlanner{
 
         double minClearance(const TebObstacle& o) const {
             double extra = validity_ ? validity_->vehicleWidth() : 0.5;
-            return o.radius + margin_ + extra;
+            return o.radius  + extra;
             
         }
 

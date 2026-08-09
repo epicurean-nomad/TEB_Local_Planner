@@ -29,7 +29,7 @@ find_package(Eigen3 REQUIRED)
 find_package(OpenCV REQUIRED)
 
 add_executable(test_local_planner_viz
-    src/test_local_planner_viz.cpp
+    src/test_local_planner_viz_V2.cpp
     aux/RoutingLayer.cpp
     aux/AreaGraph.cpp
     aux/RoadSegment.cpp

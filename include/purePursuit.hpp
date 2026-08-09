@@ -104,7 +104,7 @@ struct PurePursuitConfig {
     // 3-arg overloads exist in utils.hpp but aren't wired into the real
     // control loop, so not ported here) ----
     double lookahead_time_constant = 3.5;  // LOOKAHEAD_TIME_CONSTANT [s]: ld = k * v
-    double lookahead_min_m         = 2.5;  // LOOKAHEAD_MIN
+    double lookahead_min_m         = 6.0;  // LOOKAHEAD_MIN
     double lookahead_max_m         = 18.0; // LOOKAHEAD_MAX
 
     // ---- direction-transition (cusp) lookahead taper (unchanged from the
@@ -172,8 +172,12 @@ struct PurePursuitConfig {
     // steering_smoothening=true in the real utils.hpp, i.e. this IS the
     // actually-active branch of the original's two alternatives -- the
     // encoder-space branch this class never ported is the inactive one. ----
-    double max_steer_rate_deg_per_tick = 1000.0; // MAX_STEER_RATE_DEG_TICK (real value -- see timing-ambiguity note above)
-    double alpha_steer                 = 1.0;  // ALPHA_STEER (real value)
+    double max_steer_rate_deg_per_tick = 80.0; // MAX_STEER_RATE_DEG_TICK (real value -- see timing-ambiguity note above)
+    double alpha_steer                 = 0.6;  // ALPHA_STEER (real value)
+
+
+    bool   force_fixed_lookahead = true;
+    double fixed_lookahead_m     = 3.5;
 
     // ---- speed shaping ----
     // Two different floors, faithfully preserved from the original rather
@@ -186,7 +190,7 @@ struct PurePursuitConfig {
     // is intentional.
     double accel_limit_mps2 = 10.0;      // matches `current_cmd_speed + 10*dt_speed`
     double min_speed_mps    = 0.9;       // EFFECTIVE_MIN (real value) -- outer/final clamp floor
-    double max_speed_mps    = 8.5;       // MAX_SPEED (real value) -- see mismatch note above
+    double max_speed_mps    = 8.0/3.6;       // MAX_SPEED (real value) -- see mismatch note above
     double max_steering_angle_rad_for_speed = 0.480; // MAX_STEERING_ANGLE (real value, RADIANS -- distinct from max_steering_angle_deg above, used only in the getAdaptiveSpeed fallback's steering-based dropoff)
     double min_speed_fallback_mps = 0.83; // MIN_SPEED (real value) -- getAdaptiveSpeed's own floor input, distinct from min_speed_mps
     double stop_speed_mps    = 0.3;      // STOP_SPEED (real value)
@@ -197,7 +201,7 @@ struct PurePursuitConfig {
 
     // ---- misc ----
     int    goal_tolerance_points = 10;
-    double dt_s = 0.05; // control tick period -- see timing-ambiguity note above; matches CONTROL_LOOP_RATE's literal 50'000us
+    double dt_s = 0.02; // control tick period -- see timing-ambiguity note above; matches CONTROL_LOOP_RATE's literal 50'000us
 };
 
 struct PurePursuitOutput {
@@ -236,12 +240,53 @@ public:
         current_cmd_speed_ = 0.0;
     }
 
+    /* Install a new trajectory. `seq` must strictly increase; a repeated seq is
+     * ignored, so the caller can call this unconditionally every tick. Mirrors
+     * controller.hpp::setPath() + ingestPendingPath(): re-project onto the new
+     * array instead of resetting, so steering history and the speed ramp survive. */
+    void setPath(const std::vector<Vec3>& route, uint64_t seq)
+    {
+        if (seq == active_seq_ && !route_.empty()) return;
+        if (route.size() < 2) return;
+
+        route_      = route;
+        active_seq_ = seq;
+
+        
+        if (!initialised_) {
+            
+            vehicle_direction_forward_ = (route_[0].Dir != 0.0);
+            prev_steer_deg_    = 0.0;
+            lead_e_prev_       = 0.0;
+            lead_u_prev_       = 0.0;
+            current_cmd_speed_ = 0.0;
+            initialised_       = true;
+            index_closest_ = 0;
+            ic_persistent_ = 0;
+            return;
+        }
+
+        double best = 1e7; int bi = 0;
+        for (int i = 0; i < (int)route_.size(); ++i) {
+            const double d = std::hypot(route_[i].X - last_pose_x_, route_[i].Y - last_pose_y_);
+            if (d < best) { best = d; bi = i; }
+        }
+        index_closest_ = bi;
+        ic_persistent_ = bi;
+
+    }
+
+    // Keep the old name as a hard reset, for resetVehicle().
+    void resetForNewRoute() { route_.clear(); initialised_ = false; active_seq_ = 0; }
+
     // Call once per control tick with the vehicle's current true pose
     // (from the simulator/localization) and current speed (m/s, signed
     // magnitude -- this class tracks gear via the route's Dir, not sign of
     // speed).
     PurePursuitOutput step(const VehicleState& vs, double current_speed_mps) {
         PurePursuitOutput out;
+        last_pose_x_ = vs.x;
+        last_pose_y_ = vs.y;
         if (route_.size() < 2) { out.goal_reached = true; return out; }
 
         const int size_traj = static_cast<int>(route_.size());
@@ -274,6 +319,7 @@ public:
         } else {
             lookahead_distance = normal_ld;
         }
+        if (cfg_.force_fixed_lookahead) lookahead_distance = cfg_.fixed_lookahead_m;
         // double lookahead_distance = 7.0;
         // ---- search window, bounded directly in meters (arc length) ----
         const double search_window_m = std::clamp(std::max(lookahead_distance * 2.0, 5.0),
@@ -467,4 +513,7 @@ private:
     double prev_steer_deg_ = 0.0;
     double lead_e_prev_ = 0.0, lead_u_prev_ = 0.0;
     double current_cmd_speed_ = 0.0;
+    uint64_t active_seq_    = 0;
+    bool     initialised_   = false;
+    double   last_pose_x_   = 0.0, last_pose_y_ = 0.0;
 };
