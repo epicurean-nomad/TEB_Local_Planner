@@ -423,7 +423,7 @@ class TebLocalPlanner{
              
                  // Skip if outside planning horizon
                  double dx = ox - vs.x, dy = oy - vs.y;
-                 if (std::sqrt(dx*dx + dy*dy) > plan_horizon_) continue;
+                 if (std::sqrt(dx*dx + dy*dy) > 2.0*plan_horizon_) continue;
 
                  obstacles.push_back(TebObstacle(Vec2(ox,oy), r));
             }
@@ -453,7 +453,7 @@ class TebLocalPlanner{
             
             for(TebObstacle& o : obstacles){
                 
-                double min_d = minClearance(o);
+                double min_d = safetyClearance(o);
                 for(int i=vehicle_id; i <= i1 && i<route.size(); i++){
                     double dx = route[i].X - o.pos.X, dy = route[i].Y - o.pos.Y;
                     if (std::sqrt(dx * dx + dy * dy) < min_d) return true;
@@ -470,13 +470,11 @@ class TebLocalPlanner{
             double accum = 0.0;
             for(int i=i0; i+1<route.size(); ++i){
                 
-                if(route[i].Dir != route[i0].Dir) i1 = i;
+                if(route[i].Dir != route[i0].Dir) {i1 = i; break;}
 
-                double dx = route[i+1].X - route[i].X;
-                double dy = route[i+1].Y - route[i].Y;
-
-                accum += std::sqrt(dx*dx + dy*dy);
-                if(accum >= plan_horizon_) return i1 = i+1;
+                accum += Vec2::Dist(Vec2(route[i].X,   route[i].Y),
+                                    Vec2(route[i+1].X, route[i+1].Y));
+                if(accum >= plan_horizon_)  {i1 = i+1; break;}
             }
             i1 = static_cast<int>(route.size()) - 1;
 
@@ -493,7 +491,16 @@ class TebLocalPlanner{
                     if (d < Lret) {
                         double accum = 0.0;
                         int j = i1;
-                        while (j + 1 < (int)route.size() && accum < (Lret - d)) {
+
+                        int i1_cap = i1;
+                        { 
+                            double a = 0.0;
+                            for (int i = i0; i + 1 < (int)route.size() && a < 2.0 * plan_horizon_; ++i) {
+                                a += Vec2::Dist(Vec2(route[i].X, route[i].Y), Vec2(route[i+1].X, route[i+1].Y));
+                                i1_cap = i + 1;
+                            } 
+                        }
+                        while (j + 1 < (int)route.size() && j < i1_cap &&  accum < (Lret - d)) {
                             if (route[j].Dir != route[i0].Dir) break;   // never cross a gear change
                             accum += Vec2::Dist(Vec2(route[j].X, route[j].Y),
                                                 Vec2(route[j+1].X, route[j+1].Y));
@@ -528,7 +535,7 @@ class TebLocalPlanner{
             const int firstSide = (last_side_ != 0) ? last_side_ : -1;
             for (int side : { firstSide, -firstSide }) {
                 TimedElasticBand attempt = initial;
-                // densifyNearObstacles(attempt, obstacles, side);
+                densifyNearObstacles(attempt, obstacles, side);
 
                 const double chi2 = solveBand(attempt, obstacles);
                 if (!std::isfinite(chi2)) continue;
@@ -927,7 +934,7 @@ class TebLocalPlanner{
         }
 
         double minClearance(const TebObstacle& o) const {
-            double extra = validity_ ? validity_->vehicleWidth()/2 : 0.5;
+            double extra = validity_ ? validity_->vehicleWidth()/3 : 0.5;
             return safetyClearance(o) + margin_ + extra;    
         }
 
