@@ -561,6 +561,8 @@ class PlanControlTestNode
 
             std::vector<Vec3> outpath;
             std::vector<Vec3> localWindow;
+
+            outpath = globalRoute; 
             
             while(!shutdown_.load())
             {
@@ -573,7 +575,7 @@ class PlanControlTestNode
                 }
 
                 // std::cout << "globalRoute : " << globalRoute.size() << std::endl;
-                outpath = globalRoute; 
+                
                 // std::cout << "outpath : " << outpath.size() << std::endl;
                 
 
@@ -621,7 +623,7 @@ class PlanControlTestNode
 
                 if(!ok)
                 {
-
+                    outpath = globalRoute;
                     localPath_.write({}, /*valid = */false);
                     consecutiveOk_.store(0);
                     std::cerr << "[LOCAL] infeasible (" << " consecutive)"

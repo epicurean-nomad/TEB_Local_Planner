@@ -78,8 +78,23 @@ public:
     virtual bool read(std::istream&) override { return true; }
     virtual bool write(std::ostream&) const override { return true; }
 };
- 
 
+ 
+class EdgeCorridor : public g2o::BaseUnaryEdge<1, double, g2o::VertexSE2> {
+public:
+    EIGEN_MAKE_ALIGNED_OPERATOR_NEW
+    double refX = 0.0, refY = 0.0, nx = 0.0, ny = 1.0;
+    double leftMax = 1.0, rightMax = 1.0;
+    void computeError() override {
+        const auto* v = static_cast<const g2o::VertexSE2*>(_vertices[0]);
+        const auto p = v->estimate().translation();
+        const double lat = (p.x() - refX) * nx + (p.y() - refY) * ny;
+        _error[0] = (lat > 0.0) ? std::max(0.0, lat - leftMax)
+                                : std::max(0.0, -lat - rightMax);
+    }
+    virtual bool read(std::istream&) override { return true; }
+    virtual bool write(std::ostream&) const override { return true; }
+};
 
 // Unary: pull toward the nearest point on the *original* (pre-optimization)
 // reference band -- a small "stay close to plan" bias. 2D residual (dx, dy).
