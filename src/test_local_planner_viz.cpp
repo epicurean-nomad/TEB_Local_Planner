@@ -1188,7 +1188,7 @@ class PlanControlTestNode
         bool   followMode_   = true;
         bool   goalAnnounced_ = false;
         double followRadius_ = 20.0;
-        double planHorizon_ =  30;
+        double planHorizon_ =  15;
         double margin_ = 0.7;
         
         const size_t MAX_HISTORY         = 500;

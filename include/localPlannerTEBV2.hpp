@@ -701,8 +701,8 @@ class TebLocalPlanner{
                     
                     double dx = teb.pose[k].x - o.pos.X, dy = teb.pose[k].y - o.pos.Y;
                     double d = dx*dx + dy*dy;
-
-                    if(d < minClearance(o) * minClearance(o)){
+                    double gate = 2.5 * minClearance(o);
+                    if(d < gate * gate){
                         
                         EdgeObstacle* e = new EdgeObstacle();
                         e->obstacleX = o.pos.X;
@@ -840,8 +840,8 @@ class TebLocalPlanner{
         }
 
         double minClearance(const TebObstacle& o) const {
-            double extra = validity_ ? validity_->vehicleWidth() : 0.5;
-            return safetyClearance(o) + margin_;    
+            double extra = validity_ ? validity_->vehicleWidth()/2 : 0.5;
+            return safetyClearance(o) + margin_ + extra;    
         }
 
     
