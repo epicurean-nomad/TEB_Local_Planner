@@ -49,10 +49,10 @@ struct TebConfig {
     double min_turn_radius  = 3.0;   // [m] steering-angle limit; matches the RS/RRT wheelbase-style radius used elsewhere
  
     // ---- optimization weights == information (1/variance) on each edge ----
-    double w_obstacle    = 60.0;
+    double w_obstacle    = 100.0;
     double w_velocity    = 8.0;
     double w_accel       = 4.0;
-    double w_kinematics  = 50.0;    // non-holonomic (no-sideways-slip) term - should dominate
+    double w_kinematics  = 100.0;    // non-holonomic (no-sideways-slip) term - should dominate
     double w_curvature   = 10.0;
     double w_viapoint    = 1.5;      // stay-near-reference pull, kept low
     double w_time        = 0.2;      // mild time-optimality pressure
@@ -532,7 +532,7 @@ class TebLocalPlanner{
             const double kappaMax = 1.0 / std::max(cfg_.min_turn_radius, 0.1);
         
             for (const TebObstacle& o : obstacles) {
-                const double target = 0.3 * minClearance(o);
+                const double target = 1.15 * minClearance(o);
             
                 
                 //Find closest obstacle to path
@@ -584,11 +584,19 @@ class TebLocalPlanner{
             for (int k=1; k+1 < teb.pose.size(); k++) {
                 const TebPose& p = teb.pose[k];
                 if (!std::isfinite(p.x) || !std::isfinite(p.y) || !std::isfinite(p.theta)) return false;
-                if (validity_ && !validity_->isVehicleFeasible(p.x, p.y, p.theta)) return false;
+                if (validity_ && !validity_->isVehicleFeasible(p.x, p.y, p.theta)){
+                    std::cout << "[TEB checkFeasible] FAIL: pose " << k << " outside drivable region\n";
+                    return false;
+                } 
                 for (const TebObstacle& o : obstacles) {
                     double dx = p.x - o.pos.X, dy = p.y - o.pos.Y;
                     double d = std::sqrt(dx * dx + dy * dy);
-                    if (d < minClearance(o) * cfg_.feasibility_tolerance) return false;
+                    // if (d < minClearance(o) * cfg_.feasibility_tolerance) return false;
+                    if (d < safetyClearance(o)){
+                        std::cout << "[TEB checkFeasible] FAIL: pose " << k << " clearance "
+                                  << d << " < " << safetyClearance(o) << "\n";
+                        return false;
+                    } 
                 }
             }
 
@@ -600,7 +608,12 @@ class TebLocalPlanner{
                     double t = projectOntoSegment(o.pos, p0, p1);
                     Vec2 proj(p0.X + t * (p1.X - p0.X), p0.Y + t * (p1.Y - p0.Y));
                     double d = Vec2::Dist(o.pos, proj);
-                    if (d < minClearance(o) * cfg_.feasibility_tolerance) return false;
+                    // if (d < minClearance(o) * cfg_.feasibility_tolerance) return false;
+                    if (d < safetyClearance(o)){
+                        std::cout << "[TEB checkFeasible] FAIL: edge " << i << " clearance "
+                                  << d << " < " << safetyClearance(o) << "\n";
+                        return false;
+                    }
                 }
             }
 
@@ -697,7 +710,6 @@ class TebLocalPlanner{
                         e->minClearance = minClearance(o);
                         e->setVertex(0, poseVerts[k]);
                         e->setInformation(Eigen::Matrix<double,1,1>::Identity() * cfg_.w_obstacle);
-                        // e->setRobustKernel(new g2o::RobustKernelHuber());
                         optimizer.addEdge(e);
                     }
                     
@@ -822,10 +834,14 @@ class TebLocalPlanner{
 
         }
 
+        double safetyClearance(const TebObstacle& o) const {
+            const double halfW = validity_ ? validity_->vehicleWidth() * 0.5 : 0.5;
+            return o.radius + halfW;
+        }
+
         double minClearance(const TebObstacle& o) const {
             double extra = validity_ ? validity_->vehicleWidth() : 0.5;
-            return o.radius  + extra;
-            
+            return safetyClearance(o) + margin_;    
         }
 
     
