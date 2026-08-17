@@ -31,6 +31,9 @@ const double SLOW_START_DIST_REV = 15.0;  // [m]
 const double CRAWL_DIST_REV      =  8.0;  // [m]
 const double STOP_DIST_REV       =  5.0;  // [m]
 
+const double WHEELBASE = 2.0;
+const double MAX_STEER_ANGLE_RAD = 0.48;
+
 
 
 // struct Vec3 {

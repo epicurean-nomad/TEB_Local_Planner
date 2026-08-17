@@ -96,7 +96,7 @@
 
 struct PurePursuitConfig {
     // ---- vehicle geometry (real value, from utils.hpp) ----
-    double wheelbase_m = 2.0;              // WHEELBASE
+    double wheelbase_m = WHEELBASE;
 
     // ---- adaptive lookahead (real formula + constants, from
     // getAdaptiveLookahead(speed_kmph) -- the single-arg overload, which is
@@ -165,7 +165,7 @@ struct PurePursuitConfig {
     double lead_tau                 = 0.08; // LEAD_TAU (real value -- measured actuator lag)
     double lead_enable_min_speed_kmh = 5.0;
     double lead_output_clamp_rad_factor = 1.0; // matches `MAX_STEERING_ANGLE * 1.3`
-    double max_steering_angle_deg   = 35.0;    // MAX_STEERING_ANGLE_ACTUAL (real value)
+    double max_steering_angle_rad   = MAX_STEER_ANGLE_RAD;    // MAX_STEERING_ANGLE_ACTUAL (real value)
 
     // ---- steering rate limit + smoothing (now directly in degrees --
     // no encoder-tick conversion, since a simulator wants an angle).
@@ -417,7 +417,7 @@ public:
             lead_e_prev_ = e_k;
             lead_u_prev_ = lead_u;
 
-            const double max_rad = cfg_.max_steering_angle_deg * (M_PI / 180.0) * cfg_.lead_output_clamp_rad_factor;
+            const double max_rad = cfg_.max_steering_angle_rad * cfg_.lead_output_clamp_rad_factor;
             const double clamped = std::clamp(lead_u, -max_rad, max_rad);
             target_angle_deg = clamped * (180.0 / M_PI);
         }

@@ -46,14 +46,14 @@ struct TebConfig {
     double max_accel        = MAX_ACC;             // [m/s^2] speeding up
     double max_decel        = MAX_DEC;             // [m/s^2] slowing down (asymmetric from max_accel)
     double max_lat_acc      = MAX_LAT_ACC;         // [m/s^2] lateral-accel budget coupling curvature <-> speed
-    double min_turn_radius  = 3.0;   // [m] steering-angle limit; matches the RS/RRT wheelbase-style radius used elsewhere
+    double min_turn_radius  = WHEELBASE / std::tan(MAX_STEER_ANGLE_RAD);   // [m] steering-angle limit; matches the RS/RRT wheelbase-style radius used elsewhere
  
     // ---- optimization weights == information (1/variance) on each edge ----
     double w_obstacle    = 100.0;
     double w_velocity    = 8.0;
     double w_accel       = 4.0;
     double w_kinematics  = 100.0;    // non-holonomic (no-sideways-slip) term - should dominate
-    double w_curvature   = 10.0;
+    double w_curvature   = 100.0;
     double w_viapoint    = 1.5;      // stay-near-reference pull, kept low
     double w_time        = 0.2;      // mild time-optimality pressure
     double w_forward_drive = 100.0;
@@ -87,6 +87,8 @@ struct TebConfig {
     // a soft penalty, not a hard constraint). 1.0 = must fully meet target.
     double feasibility_tolerance = 0.8;
     double corridor_margin = 0.2;
+
+    double gather_obs_horizon = 2.0;
 
     double cusp_reject_angle_deg = 150.0; // reject a band only for a substantial reversal, not a marginal near-perpendicular kink
 
@@ -423,7 +425,7 @@ class TebLocalPlanner{
              
                  // Skip if outside planning horizon
                  double dx = ox - vs.x, dy = oy - vs.y;
-                 if (std::sqrt(dx*dx + dy*dy) > 2.0*plan_horizon_) continue;
+                 if (std::sqrt(dx*dx + dy*dy) > plan_horizon_ - (plan_horizon_/3.0 + margin_)) continue;
 
                  obstacles.push_back(TebObstacle(Vec2(ox,oy), r));
             }
@@ -474,7 +476,7 @@ class TebLocalPlanner{
 
                 accum += Vec2::Dist(Vec2(route[i].X,   route[i].Y),
                                     Vec2(route[i+1].X, route[i+1].Y));
-                if(accum >= plan_horizon_)  {i1 = i+1; break;}
+                if(accum >= plan_horizon_)  {return i1 = i+1;}
             }
             i1 = static_cast<int>(route.size()) - 1;
 
@@ -700,7 +702,7 @@ class TebLocalPlanner{
             }
 
             
-            
+            //Check for any direction changes in the route
             const double kMinStep = 0.05;
             int lastSign = 0;
             for (size_t i = 0; i + 1 < teb.pose.size(); ++i) {
@@ -719,7 +721,25 @@ class TebLocalPlanner{
             }
 
 
-
+            
+            const double kappaMax = 1.0 / std::max(cfg_.min_turn_radius, 0.1);
+            const double kappaTol = 1.5 * kappaMax;   // allow modest hinge overshoot
+            const double kMinArc  = 0.10;              // below this, Δθ/Δs is noise
+            for (size_t i = 0; i + 1 < teb.pose.size(); ++i) {
+                const double dx = teb.pose[i+1].x - teb.pose[i].x;
+                const double dy = teb.pose[i+1].y - teb.pose[i].y;
+                const double ds = std::sqrt(dx*dx + dy*dy);
+                if (ds < kMinArc) continue;
+                const double dth   = angleDiff(teb.pose[i+1].theta, teb.pose[i].theta);
+                const double kappa = std::fabs(dth) / ds;
+                if (kappa > kappaTol) {
+                    std::cout << "[TEB checkFeasible] FAIL: curvature at pose " << i
+                              << " kappa=" << std::setprecision(4) << kappa << " > " << std::setprecision(4) << kappaTol
+                              << " (R=" << std::setprecision(4) << 1.0/std::max(kappa,1e-6) << "m)\n";
+                    return false;
+                }
+            }
+            
 
             return true;
         }
