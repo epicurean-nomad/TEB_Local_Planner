@@ -52,7 +52,7 @@ struct TebConfig {
     double w_obstacle    = 100.0;
     double w_velocity    = 8.0;
     double w_accel       = 4.0;
-    double w_kinematics  = 100.0;    // non-holonomic (no-sideways-slip) term - should dominate
+    double w_kinematics  = 500.0;    // non-holonomic (no-sideways-slip) term - should dominate
     double w_curvature   = 100.0;
     double w_viapoint    = 1.5;      // stay-near-reference pull, kept low
     double w_time        = 0.2;      // mild time-optimality pressure
@@ -85,12 +85,9 @@ struct TebConfig {
     // How close to the target clearance counts as "feasible enough" after
     // optimization (which won't converge to the target exactly, since it's
     // a soft penalty, not a hard constraint). 1.0 = must fully meet target.
-    double feasibility_tolerance = 0.8;
+
     double corridor_margin = 0.2;
 
-    double gather_obs_horizon = 2.0;
-
-    double cusp_reject_angle_deg = 150.0; // reject a band only for a substantial reversal, not a marginal near-perpendicular kink
 
 };
 
@@ -665,7 +662,7 @@ class TebLocalPlanner{
         bool checkFeasible(const TimedElasticBand& teb, const std::vector<TebObstacle>& obstacles) const {
             
             //Check if every pose is inside drivable region and sufficiently away from obstacles
-            for (int k=1; k+1 < teb.pose.size(); k++) {
+            for (int k=0; k+1 < teb.pose.size(); k++) {
                 const TebPose& p = teb.pose[k];
                 if (!std::isfinite(p.x) || !std::isfinite(p.y) || !std::isfinite(p.theta)) return false;
                 if (validity_ && !validity_->isVehicleFeasible(p.x, p.y, p.theta)){
@@ -675,7 +672,7 @@ class TebLocalPlanner{
                 for (const TebObstacle& o : obstacles) {
                     double dx = p.x - o.pos.X, dy = p.y - o.pos.Y;
                     double d = std::sqrt(dx * dx + dy * dy);
-                    // if (d < minClearance(o) * cfg_.feasibility_tolerance) return false;
+
                     if (d < safetyClearance(o)){
                         std::cout << "[TEB checkFeasible] FAIL: pose " << k << " clearance "
                                   << d << " < " << safetyClearance(o) << "\n";
@@ -685,14 +682,14 @@ class TebLocalPlanner{
             }
 
             //Check if the edge between every two poses is outside obstacle
-            for (size_t i = 1; i + 1 < teb.pose.size(); ++i) {
+            for (size_t i = 0; i + 1 < teb.pose.size(); ++i) {
                 Vec2 p0(teb.pose[i].x, teb.pose[i].y);
                 Vec2 p1(teb.pose[i + 1].x, teb.pose[i + 1].y);
                 for (const TebObstacle& o : obstacles) {
                     double t = projectOntoSegment(o.pos, p0, p1);
                     Vec2 proj(p0.X + t * (p1.X - p0.X), p0.Y + t * (p1.Y - p0.Y));
                     double d = Vec2::Dist(o.pos, proj);
-                    // if (d < minClearance(o) * cfg_.feasibility_tolerance) return false;
+
                     if (d < safetyClearance(o)){
                         std::cout << "[TEB checkFeasible] FAIL: edge " << i << " clearance "
                                   << d << " < " << safetyClearance(o) << "\n";

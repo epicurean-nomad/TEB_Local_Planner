@@ -528,6 +528,10 @@ class PlanControlTestNode
     
     private:
 
+        
+    
+    
+    
         void resetVehicle()
         {
             {
@@ -547,9 +551,80 @@ class PlanControlTestNode
             halted_.store(false);
             localPath_.write({},false);
             goalAnnounced_ = false;
+
+            btMode_.store(BtMode::NORMAL);
+            btGearReset_.store(true);
+            failStreak_.store(0);
+            btBacked_.store(0.0);
+            btAttempts_ = 0;
         }
 
+
+
+
+        // Distance from the vehicle to the nearest obstacle surface (circle approx).
+        double nearestObstacleDist(const VehicleState& vs) const
+        {
+            std::vector<SimObstacle> obs;
+            { std::lock_guard<std::mutex> lk(ui_.m); obs = ui_.obstacles; }
+
+            double best = 1e18;
+            for (const auto& o : obs)
+                best = std::min(best,
+                                std::hypot(vs.x - o.cx, vs.y - o.cy) - std::hypot(o.halfW, o.halfH));
+            return best;
+        }
         
+
+
+        bool buildReversePath(std::vector<Vec3>& out)
+{
+    std::vector<Vec3> hist;
+    { std::lock_guard<std::mutex> lk(histMtx_); hist = trajectoryHistory; }
+
+    out.clear();
+    if (hist.size() < 2) return false;
+
+    std::vector<SimObstacle> obs;
+    { std::lock_guard<std::mutex> lk(ui_.m); obs = ui_.obstacles; }
+
+    const double vehR = 0.5 * std::hypot(validity_local_.vehicleLength(),
+                                         validity_local_.vehicleWidth());
+    auto clear = [&](double x, double y, double prevX, double prevY) {
+        const float th = (float)std::atan2(y - prevY, x - prevX);
+        if (!validity_local_.isVehicleFeasible((float)x, (float)y, th)) return false;
+        for (const auto& o : obs)
+            if (std::hypot(x - o.cx, y - o.cy) < vehR + std::hypot(o.halfW, o.halfH) + margin_)
+                return false;
+        return true;
+    };
+
+    auto push = [&](double x, double y) {
+        Vec3 p{};
+        p.X = (float)x; p.Y = (float)y;
+        p.Dir = 0;                      // <-- reverse leg
+        p.V = (float)BT_REVERSE_SPEED;
+        p.Curvature = 0.0f;
+        out.push_back(p);
+    };
+
+    push(hist.back().X, hist.back().Y);
+
+    double acc = 0.0;
+    for (int i = (int)hist.size() - 2; i >= 0; --i)
+    {
+        const double d = std::hypot(hist[i].X - out.back().X, hist[i].Y - out.back().Y);
+        if (d < BT_SPACING) continue;
+        if (!clear(hist[i].X, hist[i].Y, out.back().X, out.back().Y)) break;
+
+        push(hist[i].X, hist[i].Y);
+        acc += d;
+        if (acc >= BT_DISTANCE) break;
+    }
+
+    if (out.size() < 3 || acc < BT_MIN_DISTANCE) { out.clear(); return false; }
+    return true;
+}
         // =======================================================================
         //  Thread 1: Local planner -- 10 Hz
         // =======================================================================
@@ -574,6 +649,7 @@ class PlanControlTestNode
                     vs = vs_;
                 }
 
+        
                 // std::cout << "globalRoute : " << globalRoute.size() << std::endl;
                 
                 // std::cout << "outpath : " << outpath.size() << std::endl;
@@ -597,46 +673,114 @@ class PlanControlTestNode
                     }
                 }
 
-                bool ok = true;
+
+
+
+
+                const BtMode mode = btMode_.load();
+                bool   ok     = true;
                 double planMs = 0.0;
 
-                if(have_obs)
-                {
-                    const auto t0 = clk::now();
-                    ok = localPlanner.localPlan(&obs_copy,vs, outpath);
-                    // std::cout << "outpath after localPlan: " << outpath.size() << std::endl;
-                    planMs = std::chrono::duration<double, std::milli>(clk::now() - t0).count();
+                if (mode == BtMode::NORMAL)
+{
+    if (have_obs)
+    {
+        const auto t0 = clk::now();
+        ok = localPlanner.localPlan(&obs_copy, vs, outpath);
+        planMs = std::chrono::duration<double, std::milli>(clk::now() - t0).count();
+    }
+    extractLocalWindow(outpath, localWindow, vs, planHorizon_);
+    atGoal_.store(std::hypot(outpath.back().X - vs.x, outpath.back().Y - vs.y) < 2.0);
+    profileCurrPath(localWindow);
+}
+else
+{
+    std::vector<Vec3> probe = globalRoute;
+    if (have_obs) ok = localPlanner.localPlan(&obs_copy, vs, probe);
+    atGoal_.store(false);
+}
 
-                    
+switch (mode)
+{
+// ─────────────────────────────────────────────────────────────────────
+case BtMode::NORMAL:
+{
+    if (ok)
+    {
+        localPath_.write(localWindow, /*valid=*/true);
+        consecutiveOk_.fetch_add(1);
+        failStreak_.store(0);
+        btAttempts_ = 0;
+        break;
+    }
 
-                }
+    outpath = globalRoute;
+    localPath_.write(trajectoryHistory, /*valid=*/false);
+    consecutiveOk_.store(0);
 
-                extractLocalWindow(outpath, localWindow, vs, planHorizon_);
+    const int streak = failStreak_.fetch_add(1) + 1;
+    const double d   = nearestObstacleDist(vs);
+    std::cerr << "[LOCAL] infeasible (" << streak << " consecutive)"
+              << "  nearest obs=" << std::fixed << std::setprecision(2) << d << " m\n";
 
-                const double dist_to_end = std::hypot(outpath.back().X - vs.x, outpath.back().Y - vs.y);
-                atGoal_.store(dist_to_end < 2.0);
+    if (streak >= BT_FAIL_STREAK && d < BT_TRIGGER_DIST && btAttempts_ < BT_MAX_ATTEMPTS)
+    {
+        ++btAttempts_;
+        btMode_.store(BtMode::BRAKE);
+        std::cout << "[BT] backtrack attempt " << btAttempts_
+                  << "/" << BT_MAX_ATTEMPTS << " -- braking\n";
+    }
+    break;
+}
 
-                profileCurrPath(localWindow);
+// ─────────────────────────────────────────────────────────────────────
+// Hold until stopped, then publish the reverse leg. A direction change is
+// never issued with residual forward speed.
+case BtMode::BRAKE:
+{
+    if (vs.current_speed >= 0.05) break;
 
-                // std::cout << "ok = " << ok << std::endl;
-                // std::cout << "localWindow : " << localWindow.size() << std::endl;
+    std::vector<Vec3> rev;
+    if (!buildReversePath(rev))
+    {
+        std::cerr << "[BT] no usable trace behind us -- staying halted\n";
+        btAttempts_ = BT_MAX_ATTEMPTS;      // don't retry in a loop
+        btMode_.store(BtMode::NORMAL);
+        break;
+    }
 
-                if(!ok)
-                {
-                    outpath = globalRoute;
-                    localPath_.write(trajectoryHistory, /*valid = */false);
-                    consecutiveOk_.store(0);
-                    std::cerr << "[LOCAL] infeasible (" << " consecutive)"
-                          << "  optimize=" << std::fixed << std::setprecision(1) << planMs << " ms\n";
+    btStartX_ = vs.x; btStartY_ = vs.y;
+    btBacked_.store(0.0);
+    btGearReset_.store(true);               // controlLoop re-inits the gear
+    localPath_.write(rev, /*valid=*/true);  // published ONCE; then frozen
+    btMode_.store(BtMode::REVERSE);
+    std::cout << "[BT] reversing " << rev.size() << " pts\n";
+    break;
+}
 
-                }
-                else{
-                    localPath_.write(localWindow, /*valid = */true);
-                    consecutiveOk_.fetch_add(1);
-                    if (obs_copy.N > 0)
-                    std::cout << "[LOCAL] ok  optimize=" << std::fixed << std::setprecision(1) << planMs << " ms\n";
+// ─────────────────────────────────────────────────────────────────────
+// localPath_ is deliberately NOT rewritten here -- the controller needs a
+// stable array and a monotonically advancing index to walk the reverse leg.
+case BtMode::REVERSE:
+{
+    const double backed = std::hypot(vs.x - btStartX_, vs.y - btStartY_);
+    btBacked_.store(backed);
 
-                }
+    if (!ok && backed < BT_DISTANCE) break;
+
+    std::cout << "[BT] done after " << std::fixed << std::setprecision(2) << backed
+              << " m (" << (ok ? "path found" : "distance cap") << ")\n";
+
+    outpath = globalRoute;
+    btGearReset_.store(true);
+    localPath_.write(trajectoryHistory, /*valid=*/false);  // halt for one tick
+    consecutiveOk_.store(0);
+    failStreak_.store(0);
+    btMode_.store(BtMode::NORMAL);
+    break;
+}
+}
+
                 std::this_thread::sleep_until(tick_start + period);
                 
             }
@@ -1186,6 +1330,28 @@ class PlanControlTestNode
         std::atomic<double> speedCap{0.0};
 
         SharedPath localPath_;
+
+
+
+        // ── Backtrack recovery ──────────────────────────────────────────────────
+        enum class BtMode { NORMAL, BRAKE, REVERSE };
+
+        std::atomic<BtMode> btMode_{BtMode::NORMAL};
+        std::atomic<bool>   btGearReset_{false};   // localLoop -> controlLoop handshake
+        std::atomic<int>    failStreak_{0};
+        std::atomic<double> btBacked_{0.0};        // HUD only
+
+        int    btAttempts_ = 0;                    // localLoop-owned
+        double btStartX_   = 0.0, btStartY_ = 0.0; // localLoop-owned
+
+// tuning
+        const int    BT_FAIL_STREAK   = 5;     // consecutive local-plan failures
+        const double BT_TRIGGER_DIST  = 6.0;   // [m] obstacle nearer than this = "too close"
+        const double BT_DISTANCE      = 6.0;   // [m] how far to back up
+        const double BT_MIN_DISTANCE  = 1.5;   // [m] refuse if we can't manage this much
+        const double BT_SPACING       = 0.25;  // [m] resample spacing of the reverse path
+        const double BT_REVERSE_SPEED = 1.0;   // [m/s] V written into the reverse points
+        const int    BT_MAX_ATTEMPTS  = 3;
 
         bool   followMode_   = true;
         bool   goalAnnounced_ = false;
